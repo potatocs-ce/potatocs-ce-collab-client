@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  API_URL: 'https://test-potatocs.com'
+    production: false,
+    API_URL: 'localhost:3300',
+    WORKING_FRONT_URL: 'http://localhost:4300'
 };
 
 /*

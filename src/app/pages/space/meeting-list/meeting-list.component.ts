@@ -44,7 +44,7 @@ export class MeetingListComponent implements OnInit {
     ///////////////////////
     pageEvent: PageEvent
     private API_URL = environment.API_URL;
-
+    private WORKING_FRONT_URL = environment.WORKING_FRONT_URL;
     @Input() spaceInfo: any;
     @Input() memberInSpace: any;
     meetingArray;
@@ -72,11 +72,11 @@ export class MeetingListComponent implements OnInit {
     }
 
     ngOnInit() {
-  
-    
+
+
     }
-    
-    ngOnChanges(){
+
+    ngOnChanges() {
         this.spaceTime = this.route.snapshot.params.spaceTime;
         this.dataService.userProfile.pipe(takeUntil(this.unsubscribe$)).subscribe(
             (data: any) => {
@@ -89,7 +89,7 @@ export class MeetingListComponent implements OnInit {
 
     ngOnDestroy() {
         // unsubscribe all subscription
-        
+
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
         // this.resizeSubscription$.unsubscribe();
@@ -112,7 +112,7 @@ export class MeetingListComponent implements OnInit {
     }
 
     //미팅 호스트인지 확인하고 호스트면 툴바 보이게하기
-    meetingIsHost(){
+    meetingIsHost() {
         this.meetingListStorageService.meeting$.pipe(takeUntil(this.unsubscribe$)).subscribe(
             (data: any) => {
                 this.meetingArray = this.docService.statusInMeeting(data);
@@ -121,7 +121,7 @@ export class MeetingListComponent implements OnInit {
 
                 for (let i = 0; i < this.meetingArray.length; i++) {
                     const hostId = this.meetingArray[i].manager;
-                   
+
                     if (hostId == this.userData._id) {
                         this.meetingArray[i].isHost = true;
                     }
@@ -257,7 +257,7 @@ export class MeetingListComponent implements OnInit {
     }
     enterMeeting(data) {
         // if( this.isMeetingOpen ) {
-        window.open(this.API_URL + '/meeting/room/' + data._id);
+        window.open(this.WORKING_FRONT_URL + '/room/' + data._id);
         // }
         // else if( !this.isMeetingOpen ){
         //     this.dialogService.openDialogNegative('The meeting has not been held yet... Ask the host to open meeting ')
