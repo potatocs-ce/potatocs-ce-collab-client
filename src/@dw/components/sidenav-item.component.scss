@@ -1,0 +1,120 @@
+@import '../../@dw/styles/defaults';
+
+.item {
+  color: #a1a2b6;
+  // color: #fff;
+  cursor: pointer;
+  min-height: 48px;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+  text-decoration: none;
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  user-select: none;
+  width: 100%;
+
+  &:hover, &.active {
+    background: $sidenav-active-color;
+
+    .item-icon {
+      // color: #5c77ff;
+      color: #fff;
+    }
+
+    .item-label {
+      color: #fff;
+    }
+
+    .item-dropdown-icon {
+      color: #fff;
+    }
+  }
+
+  // dropdown icon -> open 상태에서 rotate
+  &.open {
+    .item-dropdown-icon {
+      transform: rotate(90deg) !important;
+    }
+  }
+}
+
+// dropdown menu item의 level에 따라서 들여쓰기 조절. (아래 calc 부분은 추후 수정)
+// for -> https://webclub.tistory.com/178
+// through : 3 포함 to : 3 미만
+@for $i from 1 through 3 {
+  // host -> https://angular.io/guide/component-styles , https://stackoverflow.com/questions/32853924/angular-2-how-to-style-host-element-of-the-component
+  // #{} -> https://stackoverflow.com/questions/42121858/what-does-sharp-e-g-variable-mean-in-scss
+  :host(.item-level-#{$i}) .item {
+    background: #0a142b;
+    // background: #f2bd94cc;
+    //ackground: repeating-linear-gradient(45deg, #f2bd94, #f2bd94 4px, #f2bd94a4 0, #f2bd94a4 6px);
+    // padding-inline-start: calc(var(--sidenav-item-icon-size) + var(--sidenav-item-icon-gap) + var(--sidenav-item-padding) + (var(--sidenav-item-dropdown-gap) * #{$i - 1}));
+    // rtl 안할꺼라서... padding left로 변경 https://stackoverflow.com/questions/19582969/what-is-the-difference-between-padding-left-and-padding-start
+    padding-left: calc(24px + 16px + 1.5rem + 12px * #{$i - 1});
+
+    &:hover {
+      // background: #131721;
+      background: #01091d;
+    }
+  }
+}
+
+.item-icon, .item-label, .item-dropdown-icon {
+  transition: inherit;
+}
+
+// sidenav item의 icon style
+.item-icon {
+  // color: #494b74;
+  color: #fff;
+  font-size: 24px;
+  height: 24px;
+  margin-right: 16px; // margin-inline-end: 16px;
+  width: 24px;
+}
+
+// sidenav item의 제목 명칭
+.item-label {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// drop down 메뉴 우측의 화살표 icon
+.item-dropdown-icon {
+  // color: #494b74;
+  color: #fff;
+  font-size: 18px;
+  height: 18px;
+  line-height: 18px;
+  margin-left: 8px; // margin-inline-start: var(--padding-8);
+  transform: rotate(0deg) !important;
+  width: 18px;
+}
+
+// drop down 내부 부분
+.item-dropdown {
+  overflow: hidden;
+
+}
+
+.subheading {
+  box-sizing: border-box;
+  // color: #a1a2b6;
+  color: #fff;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+// .creatingSpace {
+//   box-sizing: border-box;
+//   color: #a1a2b6;
+//   margin-top: 1.5rem;
+//   padding: 0.75rem 1.5rem;
+//   text-transform: uppercase;
+//   white-space: nowrap;
+//   background-color: #fff;
+// }

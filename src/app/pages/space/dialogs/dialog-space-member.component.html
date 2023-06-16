@@ -1,0 +1,79 @@
+<div class="mainTitle">Invite space member</div>
+<div class="select">
+	<form (ngSubmit)="f.form.valid && searchSpaceMember()" #f="ngForm" novalidate class="submit-form">
+		<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="40px">
+			<label for="type" class="optionLabel">Email</label>
+			<mat-form-field color="accent" appearance="outline" style="min-width:300px;" class="emailInput">
+				<mat-label>E-MAIL</mat-label>
+				<!-- https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+				<input type="email" spellcheck="false" matInput name="id" #id="ngModel" [(ngModel)]="searchEmail"
+					pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+				<mat-error *ngIf="f.submitted && id.hasError('required')">an e-mail is required</mat-error>
+				<mat-error *ngIf="f.submitted && id.hasError('pattern')">Please input a correct e-mail!</mat-error>
+			</mat-form-field>
+		<button mat-raised-button class="submit-button clickBtn" [disabled]='f.form.invalid'>search</button>
+		</div>
+	</form>
+	<div class='mg-20'>
+		<mat-divider></mat-divider>
+	</div>
+</div>
+
+
+<div class="memberList" *ngIf="displaymemberInfo" > 
+    <table mat-table [dataSource]="displaymemberInfo" class="mat-elevation-z8 demo-table">
+        
+		<ng-container matColumnDef="name">
+			<th mat-header-cell *cdkHeaderCellDef> name </th>
+			<td mat-cell *cdkCellDef="let element"> {{element.name}} </td>
+		</ng-container>
+		<ng-container matColumnDef="email">
+			<th mat-header-cell *cdkHeaderCellDef> email </th>
+			<td mat-cell *cdkCellDef="let element"> {{element.email}} </td>
+		</ng-container>
+		<ng-container matColumnDef="invite">
+			<th mat-header-cell *cdkHeaderCellDef></th>
+			<td mat-cell *cdkCellDef="let element">
+				<button mat-raised-button class='clickBtn' (click)="inviteSpaceMember(element)">invite</button>
+			</td>
+		</ng-container>
+		<!-- <ng-container matColumnDef="cancel">
+			<th mat-header-cell *cdkHeaderCellDef> cancel </th>
+			<td mat-cell *cdkCellDef="let element">
+				<div (click)="clearMember()">
+                    <mat-icon>close</mat-icon>
+                </div>
+			</td>
+		</ng-container> -->
+
+		<tr mat-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
+		<tr mat-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="9999">
+			  No data
+			</td>
+		</tr>
+
+	</table>
+</div>
+
+<!-- autocomplete 부분 -->
+<!-- <div class="optionSpace">
+    <label for="type" class="optionLabel">Email</label>
+    <mat-form-field color="accent" appearance="outline" style="min-width:300px;">
+        <mat-label>E-MAIL</mat-label>
+        https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute
+        <input matInput type="email" spellcheck="false" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            [formControl]="myControl" 
+            [matAutocomplete]="auto" 
+            />
+        <mat-error>an e-mail is required</mat-error>
+        <mat-error>Please input a correct e-mail!</mat-error>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.email">
+                {{option.email}} ({{option.name}})
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div> -->
+<!-- <button mat-raised-button color="primary" (click)="inviteSpaceMember()">invite</button> -->

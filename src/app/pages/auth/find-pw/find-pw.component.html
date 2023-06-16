@@ -1,0 +1,67 @@
+<div class="card-container" fxLayoutAlign="center center" fxLayout="column">
+	<mat-card class="cardBox">
+		<mat-card-header fxLayoutAlign="center center" fxLayout="column">
+			<div>
+				<img src="assets/logo/logo-title2-rm.png" alt="">
+			</div>
+
+            <div *ngIf="!isShowed; else emailSentNoti" fxLayoutAlign="center" fxLayout="column" style="width: 300px;">
+                <div>
+                    <mat-card-title>
+                        Please enter your email.
+                    </mat-card-title>
+                </div>
+                <div class="cardSubTitle">
+                    Verification code will be sent to you via the email.
+                </div>
+            </div>
+
+            <ng-template #emailSentNoti>
+                <div fxLayoutAlign="center" fxLayout="column" style="width: 300px;">
+                    <div>
+                        <mat-card-title>
+                            Please enter a verification code.
+                        </mat-card-title>
+                    </div>
+                    <div class="cardSubTitle">
+                        If the code is correct, temporary password will be sent to your email.
+                    </div>
+                </div>
+            </ng-template>
+			
+			
+		</mat-card-header>
+		<mat-card-content fxLayoutAlign="center center" fxLayout="column">
+			<form #emailForm="ngForm" class="example-form" (ngSubmit)="(emailForm.form.valid) && getEcode()">
+				<mat-form-field class="example-full-width">
+					<input matInput 
+						type="text" 
+						placeholder="example@email.com" 
+						[(ngModel)]="emailFormData.email" 
+						name="email" 
+						spellcheck="false" 
+						pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        [disabled]="isDisabled"
+						required>
+				</mat-form-field>
+
+                <mat-form-field class="example-full-width" *ngIf="isShowed">
+					<input matInput 
+						type="text"
+                        placeholder="code"
+						[(ngModel)]="emailFormData.eCode" 
+						name="eCode" 
+						spellcheck="false">
+				</mat-form-field>
+			  
+				<div fxLayoutAlign="center" fxLayout="column wrap" *ngIf="!isShowed">
+					<button type="submit" mat-raised-button class="continueBtn" [disabled]="!emailForm.form.valid">Continue</button>
+				</div>
+
+                <div fxLayoutAlign="center" fxLayout="column wrap" *ngIf="isShowed">
+					<button type="button" mat-raised-button class="continueBtn" (click)="getTempPw()">Confirm</button>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

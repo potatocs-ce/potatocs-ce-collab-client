@@ -1,0 +1,107 @@
+<!-- Desktop일 경우 -->
+<div class="headerContainer" *ngIf="mobileWidth > 780">
+    <div>
+        <button mat-raised-button class="backBtn" (click)="toBack()">Back</button>
+    </div>
+    <div class="periodContent">
+        <span class="period">Period : </span>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput type="text" class="period-picker" mwlFlatpickr [convertModelValue]="true"
+                [(ngModel)]="startDate" (ngModelChange)="refresh.next()" enableTime="true" dateFormat="Y-m-d H:i"
+                placeholder="Not set">
+        </mat-form-field>
+        ~
+        <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput class="period-picker" type="text" mwlFlatpickr [(ngModel)]="endDate"
+                (ngModelChange)="refresh.next()" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-d H:i"
+                placeholder="Not set">
+        </mat-form-field>
+        <mat-form-field class="selectUser" appearance="outline">
+            <mat-label>Select User</mat-label>
+            <mat-select required [(value)]="selectedMember" multiple >
+                <mat-option  (click)="memberSelect()" *ngFor="let member of member_list" [value]="member._id"
+                    multiLineOption>
+                    <div class="member-select-option" fxLayout="row" fxLayoutAlign="">
+                        <img *ngIf="member.profile_img != '' " class="profile-img-select" [src]="member.profile_img" alt="">
+                        <img *ngIf="member.profile_img == '' " class="profile-img-select" [src]="basicProfile" alt="">
+
+                        
+                        <div fxLayout="column" fxLayoutAlign="center">
+                            <div class="member-select-option-name">{{ member.name }}</div>
+                            <div class="member-select-option-email">{{ member.email }}</div>
+                        </div>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+
+    <div>
+        <button mat-raised-button class="saveBtn" (click)="onSave()">Save</button>
+    </div>
+</div>
+
+
+<!-- mobile일 경우 -->
+<div class="headerContainer" *ngIf="mobileWidth <= 780">
+    <div class="btnContent">
+        <button mat-raised-button class="backBtn" (click)="toBack()">Back</button>
+        <button mat-raised-button class="saveBtn" (click)="onSave()">Save</button>
+    </div>
+
+    <div class="periodContent">
+        <div class="dateContent">
+            <mat-form-field appearance="outline" style="width: 47%;">
+                <mat-label>Start Date</mat-label>
+                <input matInput type="text" class="period-picker" mwlFlatpickr [convertModelValue]="true"
+                    [(ngModel)]="startDate" (ngModelChange)="refresh.next()" enableTime="true" dateFormat="Y-m-d H:i"
+                    placeholder="Not set">
+            </mat-form-field>
+            ~
+            <mat-form-field appearance="outline" style="width: 47%;">
+                <mat-label>End Date</mat-label>
+                <input matInput class="period-picker" type="text" mwlFlatpickr [(ngModel)]="endDate"
+                    (ngModelChange)="refresh.next()" [convertModelValue]="true" [enableTime]="true"
+                    dateFormat="Y-m-d H:i" placeholder="Not set">
+            </mat-form-field>
+        </div>
+
+    </div>
+</div>
+
+<mat-divider *ngIf="mobileWidth > 780"></mat-divider>
+
+<div class="editorContainer">
+    <div class="innderContainer">
+
+
+        <div fxLayout="row wrap" class="aboveTitle" fxLayoutAlign="initial center">
+            <div class="docStatus">
+                <mat-form-field appearance="outline" class="spaceSelect">
+                    <mat-select required [(ngModel)]="selectedStatus">
+                        <mat-option *ngFor="let status of docStatus" [value]="status">
+                            {{status}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="docSpaceTitle">
+                {{ spaceTitle }}
+            </div>
+        </div>
+
+        <div class="mg-t-20">
+            <div class="textAreaContainer taFont">
+                <input matInput [(ngModel)]="editorTitle" required placeholder="Enter a title" maxlength="151"
+                    style="font-weight: bold;">
+            </div>
+        </div>
+
+        <div id="editorjs"></div>
+    </div>
+</div>

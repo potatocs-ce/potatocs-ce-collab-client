@@ -1,0 +1,213 @@
+// .docMeeting-div{
+//     // height: 100vh;
+// }
+
+.meetingListBox {
+	overflow: auto;
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    flex: 1 1;
+    width: 100%;
+}
+
+// .select {
+//     // height: 100%;
+// }
+
+// table {
+//     width:100%;
+//     table-layout: fixed;
+//     align-items: center;
+//     word-break: break-all;
+// }
+.select {
+    position: relative;
+    // min-height: 200px;
+    // max-height: 600px;
+    overflow: auto;
+  }
+  .select::-webkit-scrollbar-track{
+	background-color: #F5F5F5;
+}
+.select::-webkit-scrollbar{
+    width: 8px;
+	background-color: #F5F5F5;
+}
+.select::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: #bebebe;
+	border: 1px solid #e2e2e2;
+}
+
+
+.demo-table {
+    flex: 1 1;
+	width: 100%;
+	text-align: center;
+
+	th {
+		text-align: center;
+	}
+    td {
+        cursor: pointer;
+    }
+}
+
+.meetingBtnBox {
+    margin: 15px 0;
+    text-align: center;
+    cursor: pointer; /* "hand" cursor */
+    // position: fixed;
+    // margin-left: 122px;
+    // margin-right: 122px;
+    // margin-bottom: 50px;
+    // bottom: 0;
+}
+
+
+.mat-divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.createMeeting{
+    text-align: center;
+}
+
+
+.mat-column-Enter {
+    width: 30px;
+}
+.mat-column-Delete {
+    width: 30px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.scheduleBtn{
+    background-color: #00154F;
+}
+
+
+/////////////// dialog
+
+.scheduleBox {
+    width: 400px;
+    padding: 20px;
+}
+
+.scheduleTitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.w-100p {
+    width: 100%;
+}
+.w-120px {
+    width: 120px;
+}
+
+.createMeeting {
+    width: 100%;
+}
+
+.clickBtn {
+    background: #00154F;
+    color: #fff;
+    padding: 0 30px;
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+
+.datePickSpace {
+    display: none;
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+.mainTitle {
+    font-size: 20px;
+    margin: 20px 15px;
+}
+
+.leaveTableContainer {
+    min-width: 0;
+    padding: 20px 0px;
+}
+
+.lineDivider {
+    display: flex;
+    width: 100%;
+}
+
+.leftTable {
+    text-align: center;
+    flex: 1 1 !important;
+    padding: 5px 0;
+    font-size: 0.7em;
+    max-width: 20% !important;
+}
+
+.rightTable {
+    // flex: 1 1 !important;
+    max-width: 100%;
+    padding: 10px;
+    font-size: 0.7em !important; 
+}
+
+.matFormSize {
+    width: 100% !important;
+}
+
+.typeSection_1 {
+    margin: 0;
+}
+
+.demo-textarea {
+    height: auto;
+    padding: 0;
+}
+
+.requestLeaveBtn {
+    margin-top: 20px;
+}
+
+.requestBtn {
+    margin-top: 10px;
+}
+
+
+
+
+@media screen and (max-width: 780px) {
+
+
+    .scheduleBox {
+        width: 100%;
+        padding: 0;
+    }
+
+    .w-120px {
+        min-width: 80px;
+        max-width: 88px;
+    }
+}
+
+
+
+
+::ng-deep .cdk-overlay-pane {
+    @media  screen and (max-width: 780px) {
+        max-width: 94vw !important;
+    }
+}

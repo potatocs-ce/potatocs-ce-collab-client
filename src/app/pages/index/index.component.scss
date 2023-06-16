@@ -1,0 +1,331 @@
+.flex-spacer {
+    flex-grow: 1;
+}
+
+.top {
+    background: rgba(255, 255, 255, 0);
+}
+
+.down {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.type-name {
+    color: #4f41a2;
+}
+
+.navbar-header {
+    height: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    // padding: 8px 16px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    .span-signup {
+        color: white;
+        margin-left: 10px;
+    }
+
+    .nav-profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0 20px;
+        font-size: 15px;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.landing-main {
+
+    width: 100%;
+    height: 100%;
+
+    .landing-bg {
+        width: 100%;
+        height: 100%;
+        // padding-top: 250px;
+        background-image: url('../../../assets/wallpaper/wallpaper2.jpg');
+        background-size: cover;
+        background-position: center;
+        // filter: blur(4px);
+        // -webkit-filter: blur(4px);
+        position: absolute;
+    }
+
+    .landing-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(23, 133, 23, 0.8);
+        // background-color: rgba(0, 21, 79, 0.7);
+    }
+
+    .landing-text {
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        text-align: center;
+        top: 30%;
+
+
+        .introduction {
+            font-size: 50px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            // color: #2b2f3c;
+            color: white;
+        }
+
+        .login {
+            padding-top: 30px;
+
+            .login-button {
+                margin-top: 10px;
+                width: 330px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                font-size: 30px;
+                border-radius: 5px;
+                // color: #2b2f3c;
+                color: white;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+.feature {
+    display: block;
+    padding: 100px 20px;
+    // background-color: #f9f9f9;
+    background: url('../../../assets/wallpaper/wallpaper1.jpg');
+    background-size: cover;
+    background-position: center;
+
+    .feature-intro {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+
+        .title1 {
+            color: #788fc7;
+            font-size: 70px;
+            font-weight: bold;
+            font-family: 'jua';
+        }
+
+        .title2 {
+            font-size: 30px;
+            color: #737373;
+            font-family: 'jua';
+        }
+
+        .title-bar {
+            background-color: #536288;
+            height: 4px;
+            border-radius: 20%;
+            width: 20%;
+            align-self: center;
+            margin: 10px;
+        }
+    }
+
+    .feature-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-bottom: 50px;
+
+        mat-card.feature-card {
+            text-align: center;
+            border-radius: 5%;
+            height: 100%;
+            // background-color: aliceblue;
+            background-color: #e9ecef;
+            padding-bottom: 50px;
+
+
+            mat-card-content {
+                span.feature-name {
+                    font-size: 24px;
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                    color: #1d262d;
+                    font-family: jua;
+                }
+
+                span.border-line {
+                    display: block;
+                    width: 10%;
+                    height: 2px;
+                    background-color: #1d262d;
+                    margin: auto;
+                    margin-bottom: 30px;
+                    margin-top: 10px;
+                }
+
+                span.feature-desc {
+                    display: block;
+                    font-family: roboto;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+// ��ũ�� CSS
+body::-webkit-scrollbar {
+	width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+	background-color: #7176809d;
+	border-radius: 10px;
+	background-clip: padding-box;
+    border: 2px solid transparent;
+}
+body::-webkit-scrollbar-track {
+	background-color: transparent;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px white;
+}
+// ��ũ�� CSS
+
+// CONTENT_DESC
+.content_desc {
+    color: #fff;
+}
+
+.tempSize {
+    font-size: 40px;
+}
+
+
+// apps �ڽ� ���� ����
+// https://hyunseob.github.io/solved-by-flexbox-kr/demos/vertical-centering/
+// .use {
+//     text-align: center;
+//     padding: 100px 20px 150px;
+//     background: url('../../../assets/wallpaper/wallpaper1.jpg');
+//     background-size: cover;
+//     background-position: center;
+
+//     .use-title {
+//         font-size: 40px;
+//         font-family: jua;
+//     }
+
+//     .row {
+//         margin-top: 50px;
+
+//         .apps {
+//             align-self: center;
+//             text-align: center;
+
+//             .app-link {
+//                 padding: 15px;
+//                 border: 3px solid #4f41a2;
+//                 margin-top: 20px;
+//             }
+
+//             .app-link:hover {
+//                 background-color: #4f41a2;
+//                 color: white;
+//             }
+
+//             img {
+//                 width: 50px;
+//             }
+//         }
+
+//         .manualNyoutube {
+//             text-align: center;
+//             align-self: center;
+//         }
+
+//         .border-title {
+//             font-size: 25px;
+//             padding-bottom: 10px;
+//             color: #4f41a2;
+//             // font-weight: bold;
+//             font-family: jua;
+//         }
+
+//         .type-name {
+//             color: #4f41a2;
+//             font-weight: bold;
+//             padding-left: 20px;
+//             text-decoration: none;
+//         }
+
+//         .type-name:hover {
+//             color: white;
+//             text-decoration: none;
+//         }
+
+//         .download-button {
+//             font-weight: bold;
+//             padding: 10px 50px;
+//         }
+//     }
+
+
+// }
+
+
+.footer {
+    display: block;
+    align-items: center;
+    font-size: 12px;
+    // background-color: #30394f;
+    background-color: #1d262d;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    bottom: 0;
+    padding-left: 70px;
+    padding-right: 70px;
+
+    .footer-content {
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        a {
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 780px) { 
+
+
+    .nav-profile {
+        font-size: 13px !important;
+    }
+}

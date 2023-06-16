@@ -1,0 +1,102 @@
+
+<div class="contaioner">
+	<div class="mainTitle">Space Setting</div>
+	<div mat-dialog-content>
+		<mat-tab-group mat-stretch-tabs animationDuration="500ms">
+			<mat-tab>
+				<ng-template mat-tab-label>
+					Space Info
+				</ng-template>
+
+				<div fxLayout="column" class="inputContainer">
+					<!-- SpaceName -->
+					<div fxLayout="row">
+						
+						<div fxFlex>
+							<mat-form-field appearance="legacy">
+								<mat-label>Space Name</mat-label>
+								<input matInput [(ngModel)]="displayName" [disabled]="isDisplayName">
+							</mat-form-field>
+						</div>
+						<div fxFlex="30" fxFlexAlign="space-between center">
+							<div *ngIf="isDisplayName; else elseName">
+								<button mat-stroked-button color="primary" (click)="onNameEdit()">Edit</button>
+							</div>
+							<ng-template #elseName>
+                                <div class="spaceBtn">
+                                    <button mat-stroked-button color="primary" (click)="onSaveName()">Save</button>
+                                    <button mat-stroked-button color="primary" (click)="onCancelName()">Cancel</button>
+                                </div>
+							</ng-template>
+						</div>
+					</div>
+
+					<!-- Desscription -->
+					<div fxLayout="row">
+						<div fxFlex>
+						<mat-form-field appearance="legacy">
+							<mat-label>Description</mat-label>
+							<input matInput [(ngModel)]="displayBrief"  [disabled]="isDisplayBrief">
+						</mat-form-field>
+						</div>
+						<div fxFlex="30" fxFlexAlign="center center">
+							<div *ngIf="isDisplayBrief; else elseBrief">
+								<button mat-stroked-button color="primary" (click)="onBriefEdit()">Edit</button>
+							</div>
+							<ng-template #elseBrief>
+                                <div class="spaceBtn">
+                                    <button mat-stroked-button color="primary" (click)="onSaveBrief()">Save</button>
+                                    <button mat-stroked-button color="primary" (click)="onCancelBrief()">Cancel</button>
+                                </div>
+							</ng-template>
+						</div>
+					</div>
+				</div>
+
+			</mat-tab>
+		  
+			<mat-tab>
+				<ng-template mat-tab-label>
+					Manage members
+				</ng-template>
+				<div fxLayout="column wrap" fxLayoutAlign="space-between">
+					<div class="memberList" fxLayoutAlign="none center" *ngFor="let item of memberInSpace">
+						<div>
+							<mat-icon>account_box</mat-icon>
+						</div>
+						<div fxLayout="column">
+							<div>{{ item?.name }}</div>
+							<div>{{ item?.email }}</div>
+						</div>
+						<div class="adminIconCover" fxLayout="row">
+							<div>
+								<mat-icon class="settingIcon" *ngIf="item?.isAdmin">manage_accounts</mat-icon>
+							</div>
+						</div>
+						<div fxLayoutAlign="center start">
+							<div fxLayout="column" fxLayoutAlign="start">
+								<mat-icon [matMenuTriggerFor]="menuRef" class="settingIcon">settings</mat-icon>
+							</div>
+							<mat-menu #menuRef="matMenu" class="menuCustomize">
+								<div fxFlex fxLayout="column">
+									<div *ngIf="item?.isAdmin">
+										<button mat-menu-item class="menuCus_3" (click)="quitAdmin(item?._id)"> Unregister an administrative authority</button>
+									</div>
+									<div *ngIf="!item?.isAdmin">
+										<button mat-menu-item class="menuCus_3" (click)="addAdmin(item?._id)">Register as an administrator</button>
+									</div>
+									<button mat-menu-item class="menuCus_3" (click)="deleteMember(item?._id)">Withdraw this memeber</button>
+								</div>
+							</mat-menu>
+						</div>
+					</div>
+					
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+
+	</div>
+	<div mat-dialog-actions class="deleteOption">
+		<button [mat-dialog-close] mat-button (click)="onDeleteSpace()">Delete the Space</button>
+	</div>
+</div> 

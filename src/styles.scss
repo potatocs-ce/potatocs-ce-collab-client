@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
+@import '../node_modules/flatpickr/dist/flatpickr.min.css';
+@import './theme';
+
+html {
+	overflow-y: hidden;
+}
+
+html, 
+body { 
+	font-family: 'Noto Sans', 'Roboto', "Helvetica Neue", sans-serif; 
+	height: 100%; 
+	padding: 0;
+	margin: 0;
+}
+
+em { 
+	font-style: initial;
+}
+
+@media screen and (min-width: 1280px) {
+	body {
+		font-family: 'Noto Sans', 'Roboto', "Helvetica Neue", sans-serif;
+	}
+}
+

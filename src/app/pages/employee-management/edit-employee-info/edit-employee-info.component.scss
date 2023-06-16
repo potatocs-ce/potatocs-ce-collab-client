@@ -1,0 +1,46 @@
+.headerContainer {
+    margin: 0 20px;
+
+    div {
+        font-size: 40px;
+        margin: 10px;
+    }
+}
+
+.gridBoxContainero {
+    width:100%;
+}
+
+.cardBox {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+mat-form-field {
+    display: inline;
+}
+
+
+@media (min-width: 1200px) {
+
+    .gridBoxContainerox {
+        max-width: 1140px;
+    }
+    
+}
+
+@media (min-width: 992px) {
+
+    .gridBoxContainerox {
+        max-width: 960px;
+    }
+    
+}
+
+@media (min-width: 768px) {
+
+    .gridBoxContainerox {
+        max-width: 720px;
+    }
+
+}

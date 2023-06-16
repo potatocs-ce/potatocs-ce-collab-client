@@ -1,0 +1,239 @@
+<!-- animate.css ÀÌ¿ë -->
+<!-- https://stackoverflow.com/questions/47898153/animate-css-and-angular-4 -->
+<!-- navbar-header¿¡ mat-elevation-z6 »èÁ¦ÇÔ -->
+
+
+<nav class="navbar-header primary" (scroll)="onScroll($event);"
+	[className]="isNavbarOnTop ? 'navbar-header primary top' : 'navbar-header primary down'">
+    <div class="logoImg">
+        <button mat-button tabindex="0" routerLinkActive="active">
+            <img src="assets/logo/logo-potatocs.png" height="30px" [routerLink]="['']">
+        </button>
+    </div>
+	
+	<div class="nav-profile" fxLayout="row" fxLayoutGap="15px">
+		<span class="span-signup" [routerLink]="['/sign-up']" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="7px">
+			<div>
+				<mat-icon>person</mat-icon>
+			</div>
+			<div>
+				SIGN UP
+			</div>
+		</span>
+		<span class="span-signup" [routerLink]="['/sign-in']" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="7px">
+			<div>
+				<mat-icon>person</mat-icon>
+			</div>
+			<div>
+				SIGN IN
+			</div>
+		</span>
+	</div>
+</nav>
+
+<!-- https://www.w3schools.com/howto/howto_css_blurred_background.asp -->
+<div class="landing-main">
+	<div class="landing-bg"></div>
+	<div class="landing-overlay"></div>
+	<div class="landing-text">
+		<!-- <div class="introduction">
+			Potatocs
+		</div> -->
+		<!-- <div class="login">
+			<button mat-stroked-button type="button" class="login-button">
+				¼±»ý´Ô ·Î±×ÀÎ
+			</button>
+			<br>
+			<button mat-stroked-button type="button" class="login-button">
+				ÇÐ»ý ·Î±×ÀÎ
+			</button>
+		</div> -->
+		<div class="content_desc">
+			<div>
+				<h3>
+					Collaborative space that can be created according to various purposes
+				</h3>
+			</div>
+			<div>
+				<div>
+					<b>company notice</b>
+				</div>
+				<div>
+					Notify all members of the company's events or announcements.
+				</div>
+			</div>
+			<div>
+				<div>
+					<b>project management</b>
+				</div>
+				<div>
+					Invite members to join the project and make the project a success.
+				</div>
+			</div>
+			<div>
+				<div>
+					<b>team</b>
+				</div>
+				<div>
+					Create a space where you can share things that only your team members can share and things that require security.
+				</div>
+			</div>
+
+			<!-- <div>
+				<div class="tempSize">
+					이미지 삽입
+				</div>
+			</div> -->
+		</div>
+
+	</div>
+</div>
+
+
+
+
+<!-- 기능 소개(커뮤니티, 질문, 답변, 강의자료) -->
+<!-- <div class="feature">
+	<div class="feature-intro">
+		<span class="title1">Moodgi Community</span>
+		<span class="title2">이렇게 사용할 수 있어요!</span>
+		<div class="title-bar"></div>
+	</div>
+	<div class="feature-content row">
+		<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+			<mat-card class="feature-card mat-elevation-z8">
+				<mat-card-title>
+					<img src="assets/img/community.png">
+				</mat-card-title>
+				<mat-card-content>
+					<span class="feature-name">COMMUNITY</span>
+					<span class="border-line"></span>
+					<span class="feature-desc">
+						선생님과 학생이 Follow 관계를 통해
+						수업 안에서 자유롭게
+						질문하고 답변할 수 있습니다.
+					</span>
+				</mat-card-content>
+			</mat-card>
+		</div>
+
+		<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+			<mat-card class="feature-card mat-elevation-z8">
+				<mat-card-title>
+					<img src="assets/img/question2.png">
+				</mat-card-title>
+				<mat-card-content>
+					<span class="feature-name">QUESTION</span>
+					<span class="border-line"></span>
+					<span class="feature-desc">
+						학생은 모르는 문제를
+						촬영하거나 텍스트로 입력하여
+						선생님께 질문할 수 있습니다.
+					</span>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+	<div class="feature-content row">
+		<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+			<mat-card class="feature-card mat-elevation-z8">
+				<mat-card-title>
+					<img src="assets/img/answer.png">
+				</mat-card-title>
+				<mat-card-content>
+					<span class="feature-name">ANSWER</span>
+					<span class="border-line"></span>
+					<span class="feature-desc">
+						선생님은 학생의 질문에 대해서
+						이미지 또는 실시간 녹화를 통해
+						답변할 수 있습니다.
+					</span>
+				</mat-card-content>
+			</mat-card>
+		</div>
+
+		<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+			<mat-card class="feature-card mat-elevation-z8">
+				<mat-card-title>
+					<img src="assets/img/lecture.png">
+				</mat-card-title>
+				<mat-card-content>
+					<span class="feature-name">LECTURE</span>
+					<span class="border-line"></span>
+					<span class="feature-desc">
+						선생님은 수업 내에 강의 내용을 업로드하여
+						학생이 스스로 공부하는데
+						도움을 줍니다.
+					</span>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div> -->
+
+
+<!-- 앱, 매뉴얼, 영상 -->
+<!-- <div class="use">
+	<div class="use-bg"></div>
+	<div class="use-overlay"></div>
+	<div class="use-title">이제 묻기커뮤니티를 직접 사용해 보세요!</div>
+	<div class="row">
+		<div class="apps col-lg-3 col-md-12 col-sm-12 offset-lg-3">
+			<div class="border-title">안드로이드 어플리케이션</div>
+			<div class="app-link">
+				<a href="{{teacherApp}}" target="_blank">
+					<div class="inline-block">
+						<img src="assets/img/moodgiApp.png">
+						<span class="type-name">
+							묻기 커뮤니티T - 선생님용
+						</span>
+					</div>
+				</a>
+			</div>
+			<div class="app-link">
+				<a href="{{studentApp}}" target="_blank">
+					<div class="inline-block">
+						<img src="assets/img/moodgiApp.png">
+						<span class="type-name">
+							묻기 커뮤니티S - 학생용
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="manualNyoutube col-lg-3 col-md-12 col-sm-12 pull-lg-3">
+			<div class="border-title">사용법 다운로드</div>
+			<div>
+				<button mat-flat-button class="download-button" style="margin-right: 15px;"
+					(click)="downloadManual2('teacher');">
+					<mat-icon>bookmark</mat-icon>선생님용
+				</button>
+				<button mat-flat-button class="download-button" (click)="downloadManual2('student');">
+					<mat-icon>bookmark</mat-icon>학생용
+				</button>
+			</div>
+			<div style="padding-top: 70px;">
+				<a href="https://www.youtube.com/watch?v=7m72-ElZ9XQ" target="_blank">
+					<img src="assets/img/youtube2.png"><span class="border-title">소개영상 바로가기</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+
+<!-- <div class="footer">
+	<div class="row footer-content">
+		<div class="col-lg-6 col-md-12 col-sm-12">
+			<a [routerLink]="['/privacy']">개인정보처리방침</a>
+			<br><br>
+			(주)엔스마트솔루션(N Smart Solution Co., Ltd)<br>
+			주소 : 서울특별시 서초구 서운로 13 중앙로얄 1105호<br>
+			Tel : 02-2038-8892&nbsp;&nbsp; | &nbsp;&nbsp;Fax : 02-587-3347 <br>
+			Email : info@nsmarts.co.kr<br>
+			<a href="http://www.nsmarts.co.kr" target="_blank">URL : www.nsmarts.co.kr</a>
+			<br><br>
+			Copyright 2018. N Smart Solution Co., Ltd. All rights reserved
+		</div>
+	</div>
+</div> -->
