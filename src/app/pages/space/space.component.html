@@ -1,18 +1,22 @@
 <div class="contentContainer">
-
     <div class="titleContent">
         <div class="content_1">
             <div class="content content_left">
-                <div class="title_info" >
+                <div class="title_info">
                     <div class="title_main mat-22">
                         {{ spaceInfo?.displayName }}
                     </div>
                     <div class="spaceOption" fxLayoutAlign="default center">
-                        <mat-icon class="mat-18" [class.isNotActive]="!spaceInfo?.isAdmin" (click)="openSpaceOption()"
+                        <mat-icon
+                            class="mat-18"
+                            [class.isNotActive]="!spaceInfo?.isAdmin"
+                            (click)="openSpaceOption()"
                             matTooltip="Space setting"
                             matTooltipPosition="above"
-                            [matTooltipShowDelay]="500">
-                            settings</mat-icon>
+                            [matTooltipShowDelay]="500"
+                        >
+                            settings</mat-icon
+                        >
                     </div>
                 </div>
                 <div class="title_sub">
@@ -27,10 +31,9 @@
                         <span class="mat-18">Create Document</span>
                     </button>
                 </div> -->
-    
+
                 <!-- hokyun - 2022-08-16 - add labels -->
                 <div class="content memberContent">
-                    
                     <!-- <div>   
                         <button mat-button (click)='openSpaceMemeber()'
                             matTooltip="Invite space member"
@@ -46,41 +49,67 @@
                                 <mat-icon class="mat-18">expand_more</mat-icon>
                             </button>
                         </div>
-                        
+
                         <mat-menu #memberList="matMenu" class="dropdown-box">
                             <div class="dropdown">
                                 <div fxLayout="row" fxLayoutAlign="space-between center" class="dropdown-header">
                                     <div>
-                                        <div class="dropdown-heading">Member <span>({{ memberInSpace?.length }})</span>  
-                                            <button mat-button (click)='openSpaceMemeber()'
+                                        <div class="dropdown-heading">
+                                            Member <span>({{ memberInSpace?.length }})</span>
+                                            <button
+                                                mat-button
+                                                (click)="openSpaceMemeber()"
                                                 matTooltip="Invite space member"
                                                 matTooltipPosition="above"
-                                                [matTooltipShowDelay]="500">
+                                                [matTooltipShowDelay]="500"
+                                            >
                                                 <mat-icon class="mat-18">person_add</mat-icon>
-                                            </button></div>
+                                            </button>
+                                        </div>
                                         <!-- <div class="dropdown-subheading">You have 8 new notifications.</div> -->
                                     </div>
                                     <div>
-
-
                                         <mat-icon>apps</mat-icon>
                                     </div>
                                 </div>
                                 <div class="dropdown-content">
-                                    <div *ngFor="let item of memberInSpace; let last=last">
-                                        <div matRipple fxLayout="row" fxLayoutAlign="space-between center"
-                                            class="notification notification-cursor">
+                                    <div *ngFor="let item of memberInSpace; let last = last">
+                                        <div
+                                            matRipple
+                                            fxLayout="row"
+                                            fxLayoutAlign="space-between center"
+                                            class="notification notification-cursor"
+                                        >
                                             <div fxLayout="row" fxLayoutAlign="start center">
-                                                <img *ngIf= "item?.profile_img != '' " class="profile-img" [src]="item?.profile_img" alt="">
-                                                <img *ngIf= "item?.profile_img == '' " class="profile-img" [src]="basicProfile" alt="">
-        
+                                                <img
+                                                    *ngIf="item?.profile_img != ''"
+                                                    class="profile-img"
+                                                    [src]="item?.profile_img"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    *ngIf="item?.profile_img == ''"
+                                                    class="profile-img"
+                                                    [src]="basicProfile"
+                                                    alt=""
+                                                />
+
                                                 <div>
                                                     <div class="notification-label">{{ item?.name }}</div>
                                                     <div class="notification-description">{{ item?.email }}</div>
                                                 </div>
-                                                <div class="adminIconCover" fxLayout="column" fxLayoutAlign="center center">
-                                                    <mat-icon class="adminIcon" fxFlex [class.isNotActive]="!item?.isAdmin">
-                                                        manage_accounts</mat-icon>
+                                                <div
+                                                    class="adminIconCover"
+                                                    fxLayout="column"
+                                                    fxLayoutAlign="center center"
+                                                >
+                                                    <mat-icon
+                                                        class="adminIcon"
+                                                        fxFlex
+                                                        [class.isNotActive]="!item?.isAdmin"
+                                                    >
+                                                        manage_accounts</mat-icon
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -93,30 +122,25 @@
                 </div>
             </div>
         </div>
-            </div>
-            
-
+    </div>
 </div>
 
 <div>
-	
-
-	<mat-tab-group mat-stretch-tabs>
+    <mat-tab-group mat-stretch-tabs>
         <mat-tab label="Scrumboard">
             <div class="height_100">
                 <app-scrumboard-list [spaceInfo]="spaceInfo" [memberInSpace]="memberInSpace"></app-scrumboard-list>
             </div>
-        </mat-tab> 
-		<mat-tab label="Calendar">
-			<app-calendar-list [memberInSpace]="memberInSpace"></app-calendar-list>
-		</mat-tab>
-        <mat-tab label="Meeting">
-            <app-meeting-list *ngIf="spaceInfo" [spaceInfo]="spaceInfo"  [memberInSpace]="memberInSpace"></app-meeting-list>
         </mat-tab>
-		<mat-tab label="Document">
-			<app-doc-list *ngIf="spaceInfo" [spaceInfo]="spaceInfo" [spaceTime]="spaceTime"></app-doc-list>
-		</mat-tab>
-		
-		
-	</mat-tab-group>
+        <mat-tab label="Calendar">
+            <app-calendar-list [memberInSpace]="memberInSpace"></app-calendar-list>
+        </mat-tab>
+        <mat-tab label="Meeting">
+            <app-meeting-list
+                *ngIf="spaceInfo"
+                [spaceInfo]="spaceInfo"
+                [memberInSpace]="memberInSpace"
+            ></app-meeting-list>
+        </mat-tab>
+    </mat-tab-group>
 </div>
