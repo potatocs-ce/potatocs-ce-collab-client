@@ -135,8 +135,14 @@ export class PendingLeaveComponent implements OnInit {
                 // console.log(data);
                 if (data.message == 'getPendingData') {
                     data.pendingLeaveReqList = data.pendingLeaveReqList.map((item) => {
+                        console.log(item)
+
                         item.leave_start_date = this.commonService.dateFormatting(item.leave_start_date, 'timeZone');
                         item.leave_end_date = this.commonService.dateFormatting(item.leave_end_date, 'timeZone');
+
+                        console.log(item.leave_start_date)
+                        console.log(item.leave_end_date)
+
                         return item;
                     });
                 }
