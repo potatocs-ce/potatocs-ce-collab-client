@@ -84,7 +84,7 @@ export class ReplacementDayRequestComponent implements OnInit, OnDestroy {
 		)
 
 		this.getInputData = '';
-		this.getInputData = this.data.info;
+		this.getInputData = this.data;
 
 		this.rdLeaveForm = this.fb.group({
 			leaveType1: ['', [Validators.required]],
