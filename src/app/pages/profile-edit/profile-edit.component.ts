@@ -28,6 +28,9 @@ export class ProfileEditComponent implements OnInit {
 		mobileFlag: true,
 		departmentFlag: true,
 		positionFlag: true,
+		//박재현
+		writeFlag:true,
+		//end
 	}
 
 	constructor(
