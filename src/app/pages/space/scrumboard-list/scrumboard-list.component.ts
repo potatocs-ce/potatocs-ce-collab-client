@@ -305,11 +305,6 @@ export class ScrumboardListComponent implements OnInit {
     )
     this.textareaDisable();
   }
-  deleteStatus(data: any) {
-    this.http.post({ ...data }).subscribe({
-      res.data
-    })
-  }
 
 
   openSummary(document, status) {
