@@ -28,6 +28,45 @@ export class PendingEmployeeComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getRegReqList();
+		//박재현
+		this.dataService.userProfile.pipe(takeUntil(this.unsubscribe$)).subscribe(
+			(data: any) => {
+				this.user = data;
+				if (data._id == null || data._id == '') {
+					return
+				}
+				else {
+					if (data.location == null || data.location == '') {
+					}
+					else {
+						const nationId = {
+							_id: data.location
+						}
+
+						this.leaveMngmtService.getNationList(nationId).subscribe(
+							(data: any) => {
+
+								const nationHoliday = data.nation[0];
+								// console.log(nationHoliday);
+								if (data.nation == null || data.nation == '') {
+								}
+								else {
+									for (let index = 0; index < nationHoliday.countryHoliday.length; index++) {
+										const element = nationHoliday.countryHoliday[index].holidayDate;
+										this.holidayList.push(element);
+									}
+									console.log(this.holidayList);
+								}
+							},
+							(err: any) => {
+								console.log(err)
+							}
+						)
+					}
+				}
+			})
+			//end
+
 	}
 
 	ngOnDestroy() {
