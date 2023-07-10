@@ -132,171 +132,162 @@ export class DocumentComponent implements OnInit, AfterViewInit {
     // console.log(window.innerHeight);
   }
 
-  updateInfo() {
-    console.log(this.data)
-    if (data) {
-      this.dialogService.openDialogConfirm('Do you want to save?').subscribe(result => {
-        if (res) {
-          this.data = res
-        }
-      }
-  }
-    updateDoc() {
-      // const result = confirm('Do you want to save the modified version?');
-      // if (result) {
+  updateDoc() {
+    // const result = confirm('Do you want to save the modified version?');
+    // if (result) {
 
-      this.dialogService.openDialogConfirm('Do you want to save?').subscribe(result => {
-        if (result) {
-          this.editor
-            .save()
-            .then(
-              (outputData) => {
-                const updateDocData = {
-                  _id: this.docId,
-                  status: this.selectedStatus,
-                  docTitle: this.editorTitle,
-                  docContent: outputData
-                }
+    this.dialogService.openDialogConfirm('Do you want to save?').subscribe(result => {
+      if (result) {
+        this.editor
+          .save()
+          .then(
+            (outputData) => {
+              const updateDocData = {
+                _id: this.docId,
+                status: this.selectedStatus,
+                docTitle: this.editorTitle,
+                docContent: outputData
+              }
 
-                this.docService.updateDoc(updateDocData).subscribe(
-                  (data: any) => {
-                    if (data.message == 'updated') {
-                      this.snackbar.open('Successfully document saved', 'Close', {
-                        duration: 3000,
-                        horizontalPosition: "center"
-                      });
-                      // this.dialogService.openDialogPositive('succeed document save!');
-                      // this.router.navigate(['/collab/space/' + this.spaceTime]);
-                    }
-                  },
-                  (err: any) => {
-                    console.log(err);
+              this.docService.updateDoc(updateDocData).subscribe(
+                (data: any) => {
+                  if (data.message == 'updated') {
+                    this.snackbar.open('Successfully document saved', 'Close', {
+                      duration: 3000,
+                      horizontalPosition: "center"
+                    });
+                    // this.dialogService.openDialogPositive('succeed document save!');
+                    // this.router.navigate(['/collab/space/' + this.spaceTime]);
                   }
-                );
-              })
-            .catch((error) => {
-              console.log('getting a content data has failed: ', error)
+                },
+                (err: any) => {
+                  console.log(err);
+                }
+              );
             })
-        }
-      });
-    }
-
-    docUpdate(updateDocData) {
-
-    }
-
-    toBack(): void {
-      this.dialogService.openDialogConfirm('Unsaved data disappears. Do you want to go back?').subscribe(result => {
-        if (result) {
-          const spaceId = this.spaceTime;
-          this.spaceTime = '';
-          this.router.navigate(['/collab/space/' + spaceId]);
-        }
-      });
-    }
-
-    getInfo(): void {
-
-      this.docService.getInfo(this.docId).subscribe(
-        (data: any) => {
-          this.spaceTitle = data.docInfo.displayName;
-          this.selectedStatus = data.docInfo.status;
-          this.editorTitle = data.docInfo.docTitle;
-          this.docContent = data.docInfo.docContent[0];
-          this.renderEditor(this.docContent);
-          this.isSpaceAdmin = data.docInfo.isSpaceAdmin
-        }
-      );
-    }
-
-    deleteDoc() {
-      // const result = confirm('문서에 업로드 된 파일도 모두 삭제됩니다. 그래도 삭제하시겠습니까?');
-
-      // if (result) {
-
-      this.dialogService.openDialogConfirm('All files uploaded to the document will also be deleted. Do you still want to delete this document?').subscribe(result => {
-        if (result) {
-          const docId = this.docId;
-          this.docService.deleteDoc({ docId }).subscribe(
-            (data: any) => {
-              this.router.navigate(['/collab/space/' + this.spaceTime]);
-              this.dialogService.openDialogPositive('Successfully,the document has been deleted.');
-            },
-            (err: any) => {
-              console.log(err);
-            }
-          )
-        }
-        // else {
-        // 	console.log('문서 삭제 취소')
-        // }
-      });
-    }
-
-    renderEditor(editorData): void {
-      this.editor = new EditorJS({
-        autofocus: true,
-        /** 
-         * Id of Element that should contain the Editor 
-         */
-        holder: 'editorjs',
-
-        /** 
-         * Available Tools list. 
-         * Pass Tool's class or Settings object for each Tool you want to use 
-         */
-        tools: {
-          header: {
-            class: Header,
-            inlineToolbar: true,
-            config: {
-              placeholder: 'Enter a header',
-              levels: [2, 3, 4, 5, 6],
-              defaultLevel: 3
-            }
-          },
-          list: {
-            class: List,
-            inlineToolbar: true,
-          },
-          image: SimpleImage,
-          quote: {
-            class: Quote,
-            inlineToolbar: true,
-          },
-          inlineCode: {
-            class: InlineCode,
-            inlineToolbar: true,
-          },
-          marker: {
-            class: Marker,
-            inlineToolbar: true,
-          },
-          table: {
-            class: Table,
-            inlineToolbar: true,
-          },
-          delimiter: Delimiter,
-        },
-        data: editorData
-      });
-    }
-
-
-
-    rightBlockDisplayBtn() {
-      if (this.rightBlockDisplay == false) {
-        this.rightBlockDisplay = true;
-        this.matIcon = 'arrow_forward_ios'
-      } else {
-        this.rightBlockDisplay = false;
-        this.matIcon = 'arrow_back_ios'
+          .catch((error) => {
+            console.log('getting a content data has failed: ', error)
+          })
       }
-
-    }
-
-
-    viewMore() {
-      this.eventBusService.emit(new EventData('viewMore', ''));
-    }
+    });
   }
+
+  docUpdate(updateDocData) {
+
+  }
+
+  toBack(): void {
+    this.dialogService.openDialogConfirm('Unsaved data disappears. Do you want to go back?').subscribe(result => {
+      if (result) {
+        const spaceId = this.spaceTime;
+        this.spaceTime = '';
+        this.router.navigate(['/collab/space/' + spaceId]);
+      }
+    });
+  }
+
+  getInfo(): void {
+
+    this.docService.getInfo(this.docId).subscribe(
+      (data: any) => {
+        this.spaceTitle = data.docInfo.displayName;
+        this.selectedStatus = data.docInfo.status;
+        this.editorTitle = data.docInfo.docTitle;
+        this.docContent = data.docInfo.docContent[0];
+        this.renderEditor(this.docContent);
+        this.isSpaceAdmin = data.docInfo.isSpaceAdmin
+      }
+    );
+  }
+
+  deleteDoc() {
+    // const result = confirm('문서에 업로드 된 파일도 모두 삭제됩니다. 그래도 삭제하시겠습니까?');
+
+    // if (result) {
+
+    this.dialogService.openDialogConfirm('All files uploaded to the document will also be deleted. Do you still want to delete this document?').subscribe(result => {
+      if (result) {
+        const docId = this.docId;
+        this.docService.deleteDoc({ docId }).subscribe(
+          (data: any) => {
+            this.router.navigate(['/collab/space/' + this.spaceTime]);
+            this.dialogService.openDialogPositive('Successfully,the document has been deleted.');
+          },
+          (err: any) => {
+            console.log(err);
+          }
+        )
+      }
+      // else {
+      // 	console.log('문서 삭제 취소')
+      // }
+    });
+  }
+
+  renderEditor(editorData): void {
+    this.editor = new EditorJS({
+      autofocus: true,
+      /** 
+       * Id of Element that should contain the Editor 
+       */
+      holder: 'editorjs',
+
+      /** 
+       * Available Tools list. 
+       * Pass Tool's class or Settings object for each Tool you want to use 
+       */
+      tools: {
+        header: {
+          class: Header,
+          inlineToolbar: true,
+          config: {
+            placeholder: 'Enter a header',
+            levels: [2, 3, 4, 5, 6],
+            defaultLevel: 3
+          }
+        },
+        list: {
+          class: List,
+          inlineToolbar: true,
+        },
+        image: SimpleImage,
+        quote: {
+          class: Quote,
+          inlineToolbar: true,
+        },
+        inlineCode: {
+          class: InlineCode,
+          inlineToolbar: true,
+        },
+        marker: {
+          class: Marker,
+          inlineToolbar: true,
+        },
+        table: {
+          class: Table,
+          inlineToolbar: true,
+        },
+        delimiter: Delimiter,
+      },
+      data: editorData
+    });
+  }
+
+
+
+  rightBlockDisplayBtn() {
+    if (this.rightBlockDisplay == false) {
+      this.rightBlockDisplay = true;
+      this.matIcon = 'arrow_forward_ios'
+    } else {
+      this.rightBlockDisplay = false;
+      this.matIcon = 'arrow_back_ios'
+    }
+
+  }
+
+
+  viewMore() {
+    this.eventBusService.emit(new EventData('viewMore', ''));
+  }
+}

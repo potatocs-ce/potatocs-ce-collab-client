@@ -10,16 +10,6 @@
           <button mat-button [matMenuTriggerFor]="menuRef" *ngIf="isSpaceAdmin">
             <mat-icon class="settingIcon">more_vert</mat-icon>
           </button>
-          <!-- <mat-menu #menuRef="matMenu" class="menuCustomize">
-						<div fxFlex fxLayout="column" >
-							<div>
-								<button mat-menu-item class="menuCus_3" (click)="deleteDoc()">Delete Document</button>
-							</div>
-                            <div *ngIf="mobileWidth <=780" class="menuCus_4">
-								<button mat-menu-item (click)="viewMore()">View more</button>
-							</div>
-						</div>
-					</mat-menu> -->
           <mat-menu #menuRef="matMenu" class="menuCustomize">
             <div fxFlex fxLayout="column">
               <div>
@@ -27,8 +17,6 @@
               </div>
               <div *ngIf="mobileWidth <=780" class="menuCus_4">
                 <button mat-menu-item (click)="viewMore()">View more</button>
-                <button mat-menu-item (click)="updateInfo()">View more</button>
-
               </div>
             </div>
           </mat-menu>
