@@ -23,9 +23,7 @@ export class CommonService {
         } else if (mode === 'chatDate') {
             return moment(date).format('YYYY-MM-DD HH:mm');
         } else if (mode === 'timeZone') {
-            let day = moment(date).add(addDay, 'days').format('YYYY-MM-DD');
-            return day
-            // return moment(date).add(addDay , 'days').format('YYYY-MM-DD');
+            return moment(date).add(addDay, 'days').format('YYYY-MM-DD');
         } else if (mode === 'searchStartDate') {
             return moment(date).startOf('month').add(addDay, 'days').format('YYYY-MM-DD');
         }
