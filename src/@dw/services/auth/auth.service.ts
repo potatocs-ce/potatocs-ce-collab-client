@@ -42,10 +42,6 @@ export class AuthService {
         return this.http.post('/api/v1/auth/getEcode', emailData)
     }
 
-    getEcodetest(emailData) {
-        return this.http.post('/api/v1/auth/getEcodetest', emailData)
-    }
-
     // set temp password + email
     getTempPw(emailData) {
         return this.http.put('/api/v1/auth/getTempPw', emailData)
