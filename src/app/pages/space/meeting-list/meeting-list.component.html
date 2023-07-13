@@ -55,22 +55,8 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="meetingArray.length < 1">
-        <div class="no-meeting-room" fxLayout="column" fxLayoutAlign="center center">
-            <mat-icon>
-                no_meeting_room
-            </mat-icon>
-            <div>
-                No meetings were created
-            </div>
-            <div>
-                Schedule a new meeting
-            </div>
-        </div>
-
-    </div> -->
-  <div>
-    <div class="no__meeting_data">
+  <div *ngIf="meetingArray.length < 1">
+    <div class="no-meeting-room" fxLayout="column" fxLayoutAlign="center center">
       <mat-icon>
         no_meeting_room
       </mat-icon>
@@ -81,6 +67,7 @@
         Schedule a new meeting
       </div>
     </div>
+
   </div>
 </div>
 <!-- <mat-card class="card">
