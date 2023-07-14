@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     API_URL: 'localhost:3300',
+    ROUTER_URL:'127.0.0.1',
     WORKING_FRONT_URL: 'http://localhost:4300'
 };
 
