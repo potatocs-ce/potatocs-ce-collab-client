@@ -126,8 +126,12 @@ export class DocFileUploadComponent implements OnInit {
   fileChangeEventHandler(file: File) {
     if (file) {
       this.fileService.uplaodFile(file).subscribe((res) => {
-        console.log(res)
-      })
+        this.dataRef = res
+      },
+        (err) => {
+          this.dialogService.openDialogNegative(err.error.message)
+        }
+      )
     }
 
   }
