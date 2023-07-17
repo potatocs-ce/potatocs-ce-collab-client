@@ -8,20 +8,9 @@
         <span class="example-spacer"></span>
         <mat-icon *ngIf="fileName != ''" class="choose_file_delete" (click)="uploadFileDelete()">close</mat-icon>
       </div>
-      <!-- <div id="upload">
-                <label>
-                    <input type="file" ngf-select (change)="fileChangeEvent($event)">
-                    <div class="choose_button_span"
-                        matTooltip="File attachment"
-                        matTooltipPosition="above"
-                        [matTooltipShowDelay]="500">
-                        <mat-icon> attach_file</mat-icon>
-                    </div>
-                </label>
-            </div> -->
       <div id="upload">
         <label>
-          <input type="file" ngf-select (change)="fileChangeEventHandler($event)">
+          <input type="file" ngf-select (change)="fileChangeEvent($event)">
           <div class="choose_button_span" matTooltip="File attachment" matTooltipPosition="above"
             [matTooltipShowDelay]="500">
             <mat-icon> attach_file</mat-icon>

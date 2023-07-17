@@ -123,19 +123,6 @@ export class DocFileUploadComponent implements OnInit {
     }
   }
 
-  fileChangeEventHandler(file: File) {
-    if (file) {
-      this.fileService.uplaodFile(file).subscribe((res) => {
-        this.dataRef = res
-      },
-        (err) => {
-          this.dialogService.openDialogNegative(err.error.message)
-        }
-      )
-    }
-
-  }
-
   // 업로드 다이어로그 description 넣는 곳
   openFileUploadDescription() {
     const dialogRef = this.dialog.open(FileUploadDescriptionComponent, {
