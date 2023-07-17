@@ -11,8 +11,8 @@ export class FileUploadDescriptionComponent implements OnInit {
 
 
   fileUpload = new FormGroup({
-		description: new FormControl()
-	});
+    description: new FormControl()
+  });
 
   constructor(
     public dialogRef: MatDialogRef<FileUploadDescriptionComponent>,
@@ -24,10 +24,15 @@ export class FileUploadDescriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  descriptionMade(){
+  descriptionMade() {
     const formValue = this.fileUpload.value;
-		const description = formValue.description;
-		this.data.description = description;
+    console.log(formValue)
+
+
+    const description = {
+      ...formValue.description
+    };
+    this.data.description = description;
 
     this.dialogRef.close(this.data);
   }
