@@ -26,12 +26,7 @@ export class FileUploadDescriptionComponent implements OnInit {
 
   descriptionMade() {
     const formValue = this.fileUpload.value;
-    console.log(formValue)
-
-
-    const description = {
-      ...formValue.description
-    };
+    const description = formValue.description;
     this.data.description = description;
 
     this.dialogRef.close(this.data);
