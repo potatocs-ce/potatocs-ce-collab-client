@@ -133,48 +133,6 @@ export class EmployeeListComponent implements OnInit {
             }
         );
     }
-
-    getMyEmployeeListstest() {
-        this.managerName = '';
-        this.employeeMngmtService.getMyEmployeeList().subscribe(
-            (data: any) => {
-                if (data.message == 'found') {
-
-                    // tenure 계산
-                    this.calculateTenure(data.myEmployeeList);
-
-
-                    // rollover 체크, company 의 rollover_max_day 로 하기.
-                    if (this.isRollover) {
-                        for (let index = 0; index < data.myEmployeeList.length; index++) {
-                            data.myEmployeeList[index].totalLeave.rollover = Math.min(data.myEmployeeList[index].totalLeave.rollover, this.company_max_day);
-                        }
-                    }
-
-
-                    ////////////////	
-                    this.getMyEmployeeList.data = data.myEmployeeList;
-
-
-
-                    this.filterSelectObj.filter((filter) => {
-                        filter.options = this.getFilterObject(data.myEmployeeList, filter.columnProp);
-                    });
-
-                    this.getMyEmployeeList.filterPredicate = this.createFilter();
-
-                    ////////////////
-
-                    this.getMyEmployeeList.paginator = this.paginator;
-                }
-            },
-            err => {
-                console.log(err);
-                this.dialogService.openDialogNegative(err.error.message)
-                // alert(err.error.message);
-            }
-        );
-    }
     ngOnDestroy() {
         // unsubscribe all subscription
         this.unsubscribe$.next();

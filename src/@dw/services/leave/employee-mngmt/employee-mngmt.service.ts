@@ -26,10 +26,6 @@ export class EmployeeMngmtService {
         return this.http.get('/api/v1/leave/myEmployee-list');
     }
 
-    getMyEmployeeListtest() {
-        return this.http.get('/api/v1/leave/myEmployee-list');
-    }
-
     getEmployeeInfo(id) {
         return this.http.get('/api/v1/leave/employee-info/' + id);
     }
