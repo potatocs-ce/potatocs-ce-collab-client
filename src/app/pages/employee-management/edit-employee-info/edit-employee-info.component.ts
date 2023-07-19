@@ -61,15 +61,7 @@ export class EditEmployeeInfoComponent implements OnInit {
 
         this.employeeId = this.route.snapshot.params.id;
 
-        // this.employeeMngmtService.getEmployeeInfo(this.employeeId).subscribe(
-        // 	(data: any) => {
-
-        // 		this.getEmployeeInfo = data.employee;
-        // 		this.setEmployeeFormValue(this.getEmployeeInfo);
-        // 	}
-        // );
-
-        this.employeeMngmtService.getEmployeeInfotest(this.employeeId).subscribe(
+        this.employeeMngmtService.getEmployeeInfo(this.employeeId).subscribe(
             (data: any) => {
 
                 this.getEmployeeInfo = data.employee;

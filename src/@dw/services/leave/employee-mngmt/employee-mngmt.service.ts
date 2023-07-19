@@ -30,10 +30,6 @@ export class EmployeeMngmtService {
         return this.http.get('/api/v1/leave/employee-info/' + id);
     }
 
-    getEmployeeInfotest(id) {
-        return this.http.get('/api/v1/leave/employee-infotest/' + id);
-    }
-
     putEmployeeInfo(sendData) {
         return this.http.put('/api/v1/leave/put-employee-info', sendData);
     }
