@@ -39,6 +39,10 @@ export class EmployeeMngmtService {
         return this.http.get('/api/v1/leave/myEmployee-leaveList-search', { params: data });
     }
 
+    getMyEmployeeLeaveListSearchtest(data) {
+        return this.http.get('/api/v1/leave/myEmployee-leaveList-searchtest', { params: data });
+    }
+
     // admin 이 관리하는 manager의 employee 리스트 가져오기
     getMyManagerEmployeeList(managerID) {
         return this.http.get('/api/v1/leave/myManager-employee-list', { params: managerID });
