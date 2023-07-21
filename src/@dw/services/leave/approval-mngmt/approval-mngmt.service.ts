@@ -35,6 +35,9 @@ export class ApprovalMngmtService {
     getConfirmRdRequest() {
         return this.http.get('/api/v1/leave/getConfirmRdRequest');
     }
+    getConfirmRdRequesttest() {
+        return this.http.get('/api/v1/leave/getConfirmRdRequesttest');
+    }
 
     // RD 요청 거절
     rejectReplacementRequest(data) {
