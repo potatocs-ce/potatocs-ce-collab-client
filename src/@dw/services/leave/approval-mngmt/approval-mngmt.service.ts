@@ -11,8 +11,8 @@ export class ApprovalMngmtService {
         private http: HttpClient
     ) { }
 
-    getLeaveRequest() {
-        return this.http.get('/api/v1/leave/pending-leave-request');
+    getLeaveRequest(data) {
+        return this.http.get('/api/v1/leave/pending-leave-request', { params: data });
     }
 
     approvedLeaveRequest(data) {
@@ -34,9 +34,6 @@ export class ApprovalMngmtService {
     // Get a list of Members who has submitted a RD request to be confirmed.
     getConfirmRdRequest() {
         return this.http.get('/api/v1/leave/getConfirmRdRequest');
-    }
-    getConfirmRdRequesttest() {
-        return this.http.get('/api/v1/leave/getConfirmRdRequesttest');
     }
 
     // RD 요청 거절
