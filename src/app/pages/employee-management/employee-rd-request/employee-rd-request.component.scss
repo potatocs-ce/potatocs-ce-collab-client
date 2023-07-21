@@ -1,30 +1,11 @@
-// .mainContentContainer {
-//     padding: 40px 40px;
-//     margin: 0 auto;
-//     height: 100%;
-// }
-
-// .mainTitle {
-//     font-size: 22px;
-//     font-weight: bold;
-//     margin: 20px 0;
-// }
-
-// .historyTableBox {
-//     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
-//     // min-width: 1200px;
-// }
-
 .mainContentContainer {
-  flex-direction: row;
   padding: 40px 40px;
   margin: 0 auto;
   height: 100%;
-
 }
 
 .mainTitle {
-  flex-aling: center font-size: 22px;
+  font-size: 22px;
   font-weight: bold;
   margin: 20px 0;
 }
@@ -33,7 +14,6 @@
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
   // min-width: 1200px;
 }
-
 
 .historyTable {
   width: 100%;
