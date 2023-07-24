@@ -1,22 +1,23 @@
-.body-margin{
+.body-margin {
   margin: 10px;
 }
 
 .chevrons {
   padding-top: 10px;
   font-size: 30px;
-  .mat-form-field{
+
+  .mat-form-field {
     font-size: 14px;
   }
 }
 
 .dateContent {
-    display: flex;
-    flex-direction: row !important;
+  display: flex;
+  flex-direction: row !important;
 }
 
 
-.date{
+.date {
   margin: 0px 10px;
   font-size: 0.7em;
   display: flex;
@@ -24,62 +25,94 @@
 }
 
 .monthBtnContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 
-.monthBtn{
+.monthBtn {
   .mat-icon {
     width: 100%;
     height: 100%;
     padding-top: 9px;
-		font-size: 40px;
-	}
+    font-size: 40px;
+  }
 }
 
 .memberFilter {
-  .mat-form-field{
+  .mat-form-field {
     padding: 0px;
   }
 }
 
+// @media screen and (max-width: 780px) {
+
+//     .flex {
+//         padding-bottom: 10px;
+//     }
+
+//     .chevrons {
+//         display: flex;
+//         flex-direction: column !important;
+//     }
+
+//     .dateContent {
+//         display: flex;
+//         flex-direction: row !important;
+//     }
+
+//     .memberFilter {
+//         width: 100%;
+//         text-align: center;
+//     }
+
+//     .monthBtnContainer {
+//         display: flex;
+//         flex-direction: row !important;
+//     }
+
+//     mwl-calendar-month-view {
+//         font-size: 12px;
+//     }
+
+
+// }
+
 @media screen and (max-width: 780px) {
 
-    .flex {
-        padding-bottom: 10px;
-    }
+  .flex {
+    padding-bottom: auto;
+  }
 
-    .chevrons {
-        display: flex;
-        flex-direction: column !important;
-    }
+  .chevrons {
+    display: flex;
+    flex-direction: column !important;
+  }
 
-    .dateContent {
-        display: flex;
-        flex-direction: row !important;
-    }
+  .dateContent {
+    display: flex;
+    flex-direction: row !important;
+  }
 
-    .memberFilter {
-        width: 100%;
-        text-align: center;
-    }
+  .memberFilter {
+    width: 100%;
+    text-align: center;
+  }
 
-    .monthBtnContainer {
-        display: flex;
-        flex-direction: row !important;
-    }
+  .monthBtnContainer {
+    display: flex;
+    flex-direction: row !important;
+  }
 
-    mwl-calendar-month-view {
-        font-size: 12px;
-    }
+  mwl-calendar-month-view {
+    font-size: 12rm;
+  }
 
-    
+
 }
 
 ::ng-deep .mat-form-field {
-    @media screen and (max-width: 780px) {
-        width: 70%;
-    }
+  @media screen and (max-width: 780px) {
+    width: 70%;
+  }
 }
-
