@@ -66,16 +66,6 @@ export class CalendarListComponent implements OnInit {
 
     );
 
-    this.getData()
-  }
-
-  getData() {
-    this.memberService.getMemberInfo(this.meetingInfo.memberData).subscribe((res) => {
-      console.log(this.data)
-      res: this.data
-    }, (error) => {
-      this.dialogService.openNegativeDialge(error.error.meesage)
-    })
 
   }
   ngOnDestroy() {
