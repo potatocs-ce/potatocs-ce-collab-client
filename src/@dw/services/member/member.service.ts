@@ -29,6 +29,17 @@ export class memberService {
     return this.http.get('/api/v1/members/', id)
   }
 
+  addMember({ name: string, age: string, todos: any }: Member) {
+    return this.http.post('/api/v1/members/')
+  }
 
+  updateMember({ name: string, age: string, todos: any }: Member) {
+    return this.http.patch('/api/v1/members/')
+  }
+
+  deleteMember(id) {
+    return this.http.delete('/api/v1/members/', id)
+
+  }
 
 }
