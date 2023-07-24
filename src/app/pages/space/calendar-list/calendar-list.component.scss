@@ -45,43 +45,10 @@
   }
 }
 
-// @media screen and (max-width: 780px) {
-
-//     .flex {
-//         padding-bottom: 10px;
-//     }
-
-//     .chevrons {
-//         display: flex;
-//         flex-direction: column !important;
-//     }
-
-//     .dateContent {
-//         display: flex;
-//         flex-direction: row !important;
-//     }
-
-//     .memberFilter {
-//         width: 100%;
-//         text-align: center;
-//     }
-
-//     .monthBtnContainer {
-//         display: flex;
-//         flex-direction: row !important;
-//     }
-
-//     mwl-calendar-month-view {
-//         font-size: 12px;
-//     }
-
-
-// }
-
 @media screen and (max-width: 780px) {
 
   .flex {
-    padding-bottom: auto;
+    padding-bottom: 10px;
   }
 
   .chevrons {
@@ -105,7 +72,7 @@
   }
 
   mwl-calendar-month-view {
-    font-size: 12rm;
+    font-size: 12px;
   }
 
 

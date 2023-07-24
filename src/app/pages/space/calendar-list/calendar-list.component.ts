@@ -75,38 +75,18 @@ export class CalendarListComponent implements OnInit {
   }
 
   ngOnChanges() {
-    // if (this.memberInSpace == undefined) {
-    //   return;
-    // }
+    if (this.memberInSpace == undefined) {
+      return;
+    }
 
-    // const checkMemberArray = [];
+    const checkMemberArray = [];
 
-    // for (let index = 0; index < this.memberInSpace.length; index++) {
-    //   checkMemberArray.push(this.memberInSpace[index]._id);
-
-    //   if (index == this.memberInSpace.length - 1) {
-    //     this.member.setValue(checkMemberArray);
-    //   }
-    // }
-    // this.memberFilter();
-
-    let checkMemberArray = []
-
-    /**
-     * for문 수정사항
-     */
     for (let index = 0; index < this.memberInSpace.length; index++) {
-
-      const mamberInSpace = {
-        ...this.memberInSpace[index]
-      }
-      checkMemberArray.push(mamberInSpace);
+      checkMemberArray.push(this.memberInSpace[index]._id);
 
       if (index == this.memberInSpace.length - 1) {
         this.member.setValue(checkMemberArray);
       }
-
-
     }
     this.memberFilter();
   }
