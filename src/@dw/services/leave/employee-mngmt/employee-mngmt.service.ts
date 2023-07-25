@@ -13,10 +13,6 @@ export class EmployeeMngmtService {
         return this.http.get('/api/v1/leave/pending-list');
     }
 
-    getPendingtest() {
-        return this.http.get('/api/v1/leave/pending-listtest');
-    }
-
     acceptRequest(sendData) {
         return this.http.put('/api/v1/leave/accept-request', sendData);
     }
