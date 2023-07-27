@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from 'src/@dw/services/layout.service';
 
 @Component({
   selector: 'po-navigation',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private layoutService: LayoutService,) { }
 
   ngOnInit(): void {
   }
-
+  openSidenav() {
+    this.layoutService.openSidenav();
+  }
 }
