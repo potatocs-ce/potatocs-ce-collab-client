@@ -1,4 +1,4 @@
-# Potatocs Community Client v0.1.0
+# Potatocs Community Client v1.0.0
 > It made by nsmart solution  
 
 ## 📖 Contents
