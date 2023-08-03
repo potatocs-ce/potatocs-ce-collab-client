@@ -10,15 +10,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-    moveToPage(item) {
-        this.notificationService.editNotification(item).subscribe(
-            (data: any) => {
-                // console.log(data);
-            }
-        )
-        // console.log(navi);
-        this.router.navigate([item.navigate]);
-    }
+
     navItems;
     user;
     rd;
