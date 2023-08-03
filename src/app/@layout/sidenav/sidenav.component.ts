@@ -10,12 +10,20 @@ import { Router } from '@angular/router';
     styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
+    moveToPage(item) {
+        this.notificationService.editNotification(item).subscribe(
+            (data: any) => {
+                // console.log(data);
+            }
+        )
+        // console.log(navi);
+        this.router.navigate([item.navigate]);
+    }
     navItems;
     user;
     rd;
     flag = {
-        isReplacementDay : null,
+        isReplacementDay: null,
         isManager: null,
     };
 
@@ -35,10 +43,10 @@ export class SidenavComponent implements OnInit {
                 this.dataService.userCompanyProfile.subscribe(
                     (data: any) => {
                         // console.log(data);
-                        if(data == null || data.isReplacementDay == undefined){
+                        if (data == null || data.isReplacementDay == undefined) {
                             this.rd = false;
                         }
-                        else{
+                        else {
                             this.rd = data.isReplacementDay;
                         }
                         // console.log('22',this.rd);
@@ -51,11 +59,11 @@ export class SidenavComponent implements OnInit {
                         this.user = data.isManager;
                         // console.log('11', this.user);
                         this.flag.isManager = data.isManager;
-                        
+
                     }
                 );
-                
-                
+
+
 
                 const space = data.navList[0].spaces
                 // console.log('sidenav component');
@@ -84,6 +92,6 @@ export class SidenavComponent implements OnInit {
 
 
     main() {
-		this.router.navigate(['main']);
-	}
+        this.router.navigate(['main']);
+    }
 }
