@@ -41,17 +41,13 @@ export class ProfileEditComponent implements OnInit {
 
     this.dataService.userProfile.subscribe(
       (data: any) => {
-        // this.userInfo = data;
+        this.userInfo = data;
 
-        // this.info._id = this.userInfo._id;
-        // this.info.name = this.userInfo.name;
-        // this.info.mobile = this.userInfo.mobile;
-        // this.info.department = this.userInfo.department;
-        // this.info.position = this.userInfo.position;
-        this.userInfo = {
-          ...data
-        }
-        console.log(this.userInfo)
+        this.info._id = this.userInfo._id;
+        this.info.name = this.userInfo.name;
+        this.info.mobile = this.userInfo.mobile;
+        this.info.department = this.userInfo.department;
+        this.info.position = this.userInfo.position;
       }
       , (err: any) => {
         console.log(err);
