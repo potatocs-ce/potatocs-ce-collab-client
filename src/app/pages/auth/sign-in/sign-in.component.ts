@@ -82,6 +82,11 @@ export class SignInComponent implements OnInit {
             case 'retired':
                 this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
                 break;
-		}
+            //박재현
+            case 'miss value':
+                this.dialogService.openDialogNegative('The value is not collect')
+                break;
+            //end
+            }
 	};
 }
