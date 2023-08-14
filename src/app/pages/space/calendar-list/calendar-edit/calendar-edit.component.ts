@@ -24,7 +24,7 @@ export class CalendarEditComponent implements OnInit {
     private dialogRef: MatDialogRef<CalendarEditComponent>,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private  docService: DocumentService,
+    private docService: DocumentService,
     @Inject(MAT_DIALOG_DATA) public event: CalendarEvent<any>,
 
   ) { }
@@ -37,14 +37,30 @@ export class CalendarEditComponent implements OnInit {
     // console.log(this.form.value);
   }
 
-  
+  ngOnChanges() {
+    if (this.memberInSpace == undefined) {
+      return;
+    }
+
+    const checkMemberArray = [];
+
+    for (let index = 0; index < this.memberInSpace.length; index++) {
+      checkMemberArray.push(this.memberInSpace[index]._id);
+
+      if (index == this.memberInSpace.length - 1) {
+        this.member.setValue(checkMemberArray);
+      }
+    }
+    this.memberFilter();
+  }
+
   save() {
     console.log(this.form.value);
     const data = {
-      _id : this.form.value.docId,
-      docTitle : this.form.value.title,
-      startDate : this.form.value.start,
-      endDate : this.form.value.end
+      _id: this.form.value.docId,
+      docTitle: this.form.value.title,
+      startDate: this.form.value.start,
+      endDate: this.form.value.end
     }
 
     this.docService.editDocDate(data).subscribe(

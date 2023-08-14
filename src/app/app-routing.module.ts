@@ -15,19 +15,16 @@ const routes: Routes = [
         path: 'sign-in',
         loadChildren: () =>
             import(`./pages/auth/auth.module`).then(m => m.AuthModule),
-        canActivate: [SignInGuard]
     },
     {
         path: 'sign-up',
         loadChildren: () =>
             import(`./pages/auth/auth.module`).then(m => m.AuthModule),
-        canActivate: [SignInGuard]
     },
     {
         path: 'find-pw',
         loadChildren: () =>
             import(`./pages/auth/auth.module`).then(m => m.AuthModule),
-        canActivate: [SignInGuard]
     },
     {
         path: '',
