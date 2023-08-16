@@ -37,22 +37,6 @@ export class CalendarEditComponent implements OnInit {
     // console.log(this.form.value);
   }
 
-  ngOnChanges() {
-    if (this.memberInSpace == undefined) {
-      return;
-    }
-
-    const checkMemberArray = [];
-
-    for (let index = 0; index < this.memberInSpace.length; index++) {
-      checkMemberArray.push(this.memberInSpace[index]._id);
-
-      if (index == this.memberInSpace.length - 1) {
-        this.member.setValue(checkMemberArray);
-      }
-    }
-    this.memberFilter();
-  }
 
   save() {
     console.log(this.form.value);

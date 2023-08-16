@@ -34,10 +34,10 @@ export class PendingEmployeeComponent implements OnInit {
 		// unsubscribe all subscription
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
-	
+
 	}
 
-	getRegReqList(){
+	getRegReqList() {
 		this.employeeMngmtService.getPending().subscribe(
 			(data: any) => {
 				console.log('[[pending-employee component]] >>', data);
@@ -58,11 +58,11 @@ export class PendingEmployeeComponent implements OnInit {
 		);
 		this.employeeRegisterStorageService.regReq$.pipe(takeUntil(this.unsubscribe$))
 			.subscribe(
-			(data: any) => {
-				this.getPendingList = data;
-				console.log(this.getPendingList);
-			}
-		);
+				(data: any) => {
+					this.getPendingList = data;
+					console.log(this.getPendingList);
+				}
+			);
 	}
 
 
