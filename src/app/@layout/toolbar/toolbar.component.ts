@@ -33,7 +33,7 @@ export class ToolbarComponent implements OnInit {
         private notificationService: NotificationService,
         private notificationStorageService: NotificationStorageService,
         private snackbar: MatSnackBar,
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.profileService.getUserProfile().subscribe((data: any) => {
@@ -62,7 +62,7 @@ export class ToolbarComponent implements OnInit {
     logOut() {
         // console.log('logout');
         this.authService.logOut();
-        this.snackbar.open('Logout Goodbye ' + this.userProfileData.name,'Close' ,{
+        this.snackbar.open('Logout Goodbye ' + this.userProfileData.name, 'Close', {
             duration: 3000,
             horizontalPosition: "center"
         });
@@ -79,7 +79,7 @@ export class ToolbarComponent implements OnInit {
     getNotificationData() {
         const today = new Date();
 
-        this.notificationStorageService.myNotificationData.pipe(takeUntil(this.unsubscribe$)).subscribe((res: any) =>{
+        this.notificationStorageService.myNotificationData.pipe(takeUntil(this.unsubscribe$)).subscribe((res: any) => {
 
             // console.log(res)
 
@@ -88,7 +88,7 @@ export class ToolbarComponent implements OnInit {
             for (let index = 0; index < this.notiItems.length; index++) {
                 const element = this.notiItems[index].isRead;
                 this.notiItems[index].period = moment(this.notiItems[index].createdAt).from(moment(today));
-                if(element == false){
+                if (element == false) {
                     count++;
                 }
             }
@@ -98,7 +98,7 @@ export class ToolbarComponent implements OnInit {
 
     // notification 눌렀을때 이동
     // 
-    moveToPage(item){
+    moveToPage(item) {
         this.notificationService.editNotification(item).subscribe(
             (data: any) => {
                 // console.log(data);
@@ -109,19 +109,28 @@ export class ToolbarComponent implements OnInit {
     }
 
     // MARK ALL AS READ 눌렀을때
-    allRead(){
+    allRead() {
         this.notificationService.allReadNotification().subscribe(
             (data: any) => {
-                
+
             }
         )
     }
 
-
-    /**
-     * open side nav
-     */
-    openSidenav() {
-        this.layoutService.openSidenav();
-    }
+    this.authService.signUp(this.signUpFormData).subscribe(
+        (data: any) => {
+            this.dialogService.openDialogPositive('Successfully, signed up');
+            this.router.navigate(['/sign-in']);
+        },
+        err => {
+            // this.dialogService.openDialogNegative('failed to sign up.' + err.message)
+            this.errorAlert(err.error.message);
+        }
+    )
+/**
+ * open side nav
+ */
+openSidenav() {
+    this.layoutService.openSidenav();
+}
 }
