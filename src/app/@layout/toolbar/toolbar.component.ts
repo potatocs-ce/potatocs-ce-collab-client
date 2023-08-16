@@ -117,20 +117,11 @@ export class ToolbarComponent implements OnInit {
         )
     }
 
-    this.authService.signUp(this.signUpFormData).subscribe(
-        (data: any) => {
-            this.dialogService.openDialogPositive('Successfully, signed up');
-            this.router.navigate(['/sign-in']);
-        },
-        err => {
-            // this.dialogService.openDialogNegative('failed to sign up.' + err.message)
-            this.errorAlert(err.error.message);
-        }
-    )
-/**
- * open side nav
- */
-openSidenav() {
-    this.layoutService.openSidenav();
-}
+
+    /**
+     * open side nav
+     */
+    openSidenav() {
+        this.layoutService.openSidenav();
+    }
 }
