@@ -7,8 +7,8 @@ import { DialogService } from 'src/@dw/dialog/dialog.service';
 import { OnDestroy } from '@angular/core';
 
 interface EmailFormData {
-	email: string;
-	eCode: String;
+    email: string;
+    eCode: String;
 }
 
 @Component({
@@ -18,12 +18,12 @@ interface EmailFormData {
 })
 export class FindPwComponent implements OnInit, OnDestroy {
     form: FormGroup;
-	isDisabled: boolean;
-	isShowed: boolean;
+    isDisabled: boolean;
+    isShowed: boolean;
 
     emailFormData: EmailFormData = {
         email: '',
-		eCode: ''
+        eCode: ''
     };
 
     constructor(
@@ -34,7 +34,7 @@ export class FindPwComponent implements OnInit, OnDestroy {
     ) {
         this.form = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
-			eCode: ['']
+            eCode: ['']
         });
     }
 
@@ -45,57 +45,41 @@ export class FindPwComponent implements OnInit, OnDestroy {
         return this.form.controls;
     }
 
-	ngOnDestroy(): void {
+    ngOnDestroy(): void {
 
-	}
+    }
 
-    getEcode() {
-        // console.log(this.emailFormData);
-        this.authService.getEcode(this.emailFormData).subscribe(
+
+
+    getTempPw() {
+        this.authService.getTempPw(this.emailFormData).subscribe(
             (data: any) => {
-                if (data.message == 'created') {
+                // console.log(data);
+                if (data.message == 'sentPw') {
+                    this.dialogService.openDialogPositive('Your password has been reset successfully. Temporary password is sent to your email.');
 
-                    this.isDisabled = true;
-					this.isShowed = true;
+                    this.router.navigate(['main']);
                 }
-                
             },
             err => {
                 console.log(err.error);
-				this.errorAlert(err.error.message);
+                this.errorAlert(err.error.message);
             },
         );
     }
 
-	getTempPw() {
-		this.authService.getTempPw(this.emailFormData).subscribe(
-			(data: any) => {
-				// console.log(data);
-				if(data.message == 'sentPw') {
-					this.dialogService.openDialogPositive('Your password has been reset successfully. Temporary password is sent to your email.');
+    errorAlert(err) {
+        switch (err) {
+            case 'not found':
+                this.dialogService.openDialogNegative('Cannot find the email.');
+                break;
+            case 'not match':
+                this.dialogService.openDialogNegative('Wrong verification code.');
+                break;
+            case 'pwd err':
+                this.dialogService.openDialogNegative('Cannot change your password. Try again.');
+                break;
+        }
 
-					this.router.navigate(['main']);
-				}
-			},
-			err => {
-                console.log(err.error);
-				this.errorAlert(err.error.message);
-            },
-		);
-	}
-
-	errorAlert(err) {
-		switch(err) {
-			case 'not found':
-				this.dialogService.openDialogNegative('Cannot find the email.');
-				break;
-			case 'not match':
-				this.dialogService.openDialogNegative('Wrong verification code.');
-				break;
-			case 'pwd err':
-				this.dialogService.openDialogNegative('Cannot change your password. Try again.');
-				break;
-		}
-
-	};
+    };
 }
