@@ -49,7 +49,23 @@ export class FindPwComponent implements OnInit, OnDestroy {
 
     }
 
+    getEcode() {
+        // console.log(this.emailFormData);
+        this.authService.getEcode(this.emailFormData).subscribe(
+            (data: any) => {
+                if (data.message == 'created') {
 
+                    this.isDisabled = true;
+                    this.isShowed = true;
+                }
+
+            },
+            err => {
+                console.log(err.error);
+                this.errorAlert(err.error.message);
+            },
+        );
+    }
 
     getTempPw() {
         this.authService.getTempPw(this.emailFormData).subscribe(
