@@ -30,6 +30,15 @@ export class ProfileEditComponent implements OnInit {
 		positionFlag: true,
 	}
 
+
+	public continue_flag = {
+		nameFlag: true,
+		passwordFlag: true,
+		emailFlag: true,
+		mobileFlag: true,
+		departmentFlag: true,
+		positionFlag: true,
+	}
 	constructor(
 		private profileService: ProfileService,
 		private dataService: DataService,
