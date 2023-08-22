@@ -90,9 +90,9 @@ export class CollaborationComponent implements OnInit, OnDestroy {
       notiLabel: 'A new leave request received'
     }
   ]
-  
+
   navItems = this.navigationService.items;
-  
+
   constructor(
     private router: Router,
     private layoutService: LayoutService,
@@ -131,18 +131,18 @@ export class CollaborationComponent implements OnInit, OnDestroy {
 
     // 처음에는 router event는 안들어옴 (component 생성전?) --> startWith를 이용. url check 가능한 듯.
     // Initial Router Test
-    // https://stackoverflow.com/questions/43237318/angular-2-router-event-not-firing-first-time
-    // this.router.events
-    //   .pipe(
-    //     filter((event) => event instanceof NavigationEnd),
-    //     startWith(this.router)
-    //   )
-    //   .subscribe((event: NavigationEnd) => {
-    //     // there will be first router.url - and next - router events
-    //     console.log(event.url); // .RouterState.snapshot.url
+    https://stackoverflow.com/questions/43237318/angular-2-router-event-not-firing-first-time
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        startWith(this.router)
+      )
+      .subscribe((event: NavigationEnd) => {
+        // there will be first router.url - and next - router events
+        console.log(event.url); // .RouterState.snapshot.url
 
-    //   });
-    
+      });
+
   }
 
   ngOnDestroy() {

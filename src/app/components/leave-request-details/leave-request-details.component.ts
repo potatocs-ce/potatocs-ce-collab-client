@@ -14,13 +14,13 @@ import { ViewType } from 'src/@dw/interfaces/viewType.interface';
 })
 export class LeaveRequestDetailsComponent implements OnInit {
 
-	isPending;
-	viewType:ViewType  = {
-		'annual_leave': 'Annual Leave',
-		'rollover': 'Rollover',
-		'sick_leave': 'Sick Leave',
-		'replacement_leave': 'Replacement Day'
-	}
+    isPending;
+    viewType: ViewType = {
+        'annual_leave': 'Annual Leave',
+        'rollover': 'Rollover',
+        'sick_leave': 'Sick Leave',
+        'replacement_leave': 'Replacement Day'
+    }
 
     reject = new FormGroup({
         rejectReason: new FormControl()
@@ -34,10 +34,10 @@ export class LeaveRequestDetailsComponent implements OnInit {
         private leaveMngmtService: LeaveMngmtService,
     ) { }
 
-	ngOnInit(): void {
-		console.log(this.data);
-		this.isPending = this.data.status=='pending'?true:false;
-	}
+    ngOnInit(): void {
+        console.log(this.data);
+        this.isPending = this.data.status == 'pending' ? true : false;
+    }
 
     // 휴가 reject
     rejectLeave() {
@@ -49,28 +49,28 @@ export class LeaveRequestDetailsComponent implements OnInit {
         // const result = confirm(`Will you be reject employee's manager?`);
         // if (result) {
 
-		this.dialogService.openDialogConfirm(`Do you reject the leave request?`).subscribe(result => {
-			if (result) {
-				this.approvalMngmtService.deleteLeaveRequest(this.data).subscribe(
-					(data: any) => {
-						console.log('[[ delete leave request >>>', data);
-						if (data.message == 'delete') {
-							this.dialogService.openDialogPositive('Successfully, the request has been rejected');
-							// this.approvalMngmtService.getLeaveRequest().subscribe(
-							// 	(data: any) => {
-			
-							// 	},
-							// 	(err: any) => {
-							// 		this.dialogService.openDialogNegative(err.message);
-							// 	}
-							// )
-						}
-					}
-				);
-			}
-			this.dialogRef.close();
-		});
-	}
+        this.dialogService.openDialogConfirm(`Do you reject the leave request?`).subscribe(result => {
+            if (result) {
+                this.approvalMngmtService.deleteLeaveRequest(this.data).subscribe(
+                    (data: any) => {
+                        console.log('[[ delete leave request >>>', data);
+                        if (data.message == 'delete') {
+                            this.dialogService.openDialogPositive('Successfully, the request has been rejected');
+                            // this.approvalMngmtService.getLeaveRequest().subscribe(
+                            // 	(data: any) => {
+
+                            // 	},
+                            // 	(err: any) => {
+                            // 		this.dialogService.openDialogNegative(err.message);
+                            // 	}
+                            // )
+                        }
+                    }
+                );
+            }
+            this.dialogRef.close();
+        });
+    }
 
     // employee request leave cancel
     requestCancel() {
@@ -97,15 +97,15 @@ export class LeaveRequestDetailsComponent implements OnInit {
             if (result) {
                 // console.log('approve leave cancel')
                 this.approvalMngmtService.cancelEmployeeApproveLeave(this.data).subscribe((data: any) => {
-                        console.log(data);
-                        this.dialogService.openDialogPositive('Successfully, the request has been canceled');
-                        this.dialogRef.close();
-                    }
+                    console.log(data);
+                    this.dialogService.openDialogPositive('Successfully, the request has been canceled');
+                    this.dialogRef.close();
+                }
                 )
 
             }
         });
-        
+
     }
 
 }
