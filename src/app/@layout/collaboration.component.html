@@ -4,11 +4,8 @@
   <mat-sidenav-container class="sidenav-container">
 
     <!-- 1. side nav -->
-    <mat-sidenav #sidenav  class="sidenav"
-      [autoFocus] = "false"
-      [opened]="(isDesktop$ | async)"
-      [mode]="(isDesktop$ | async) ? 'side' : 'over'"
-      [disableClose] = "isDesktop$|async"
+    <mat-sidenav #sidenav class="sidenav" [autoFocus]="false" [opened]="(isDesktop$ | async)"
+      [mode]="(isDesktop$ | async) ? 'side' : 'over'" [disableClose]="isDesktop$|async"
       [fixedInViewport]="!(isDesktop$ | async)">
 
       <po-sidenav></po-sidenav>
@@ -20,7 +17,7 @@
       <!-- 2.1 상단 toolbar  -->
       <po-toolbar></po-toolbar>
 
-      
+
 
       <!-- 2.2 main contents -->
       <main>
@@ -33,7 +30,9 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
-
+  <main>
+    <div>this is main</div>
+  </main>
 </div>
 
 
