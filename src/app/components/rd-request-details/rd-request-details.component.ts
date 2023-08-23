@@ -37,7 +37,36 @@ export class RdRequestDetailsComponent implements OnInit {
     this.isPending = this.data.status == 'pending' ? true : false;
   }
 
-  
+  //박재현
+  getRegReqList(){
+		this.employeeMngmtService.getPending().subscribe(
+			(data: any) => {
+				console.log('[[pending-employee component]] >>', data);
+				if (data.message == 'found') {
+					this.getPendingList = data.pendingList
+					console.log(this.getPendingList);
+					this.employeeRegisterStorageService.updateRegReq(data.pendingList);
+
+				} else {
+					this.getPendingList = null;
+				}
+			},
+			err => {
+				console.log(err);
+				this.dialogService.openDialogNegative(err.error.message);
+				// alert(err.error.message);
+			}
+		);
+		this.employeeRegisterStorageService.regReq$.pipe(takeUntil(this.unsubscribe$))
+			.subscribe(
+			(data: any) => {
+				this.getPendingList = data;
+				console.log(this.getPendingList);
+			}
+		);
+	}
+
+  //end
   rejectLeave() {
 
     const formValue = this.reject.value;
