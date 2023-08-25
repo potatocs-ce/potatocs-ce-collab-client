@@ -45,8 +45,6 @@ export class DocListComponent implements OnInit {
 			.subscribe(
 			(data: any) => {
 				this.docsArray = data;
-
-
 				console.log(this.docsArray);
                 this.docsArray = new MatTableDataSource<PeriodicElement>(data);
 				this.docsArray.paginator = this.paginator;
