@@ -9,11 +9,10 @@
 	<span class="example-spacer"></span>
 	<div fxLayout="row" fxLayoutGap="20px">
 		<div>
-			<button mat-button [matMenuTriggerFor]="notification" class="mat-icon-button"
-					matTooltip="Notification"
-					matTooltipPosition="above"
-					[matTooltipShowDelay]="500">
-				<mat-icon *ngIf="notiItemsLength > 0" matBadge="{{notiItemsLength}}" matBadgeColor="warn">notifications</mat-icon>
+			<button mat-button [matMenuTriggerFor]="notification" class="mat-icon-button" matTooltip="Notification"
+				matTooltipPosition="above" [matTooltipShowDelay]="500">
+				<mat-icon *ngIf="notiItemsLength > 0" matBadge="{{notiItemsLength}}"
+					matBadgeColor="warn">notifications</mat-icon>
 				<mat-icon *ngIf="notiItemsLength == 0">notifications</mat-icon>
 			</button>
 			<mat-menu #notification="matMenu" xPosition="before" class="dropdown-box">
@@ -30,8 +29,45 @@
 					<div class="dropdown-content">
 						<div *ngFor="let item of notiItems; let last=last">
 							<div matRipple fxLayout="row" fxLayoutAlign="space-between center"
-								class="notification notification-cursor"
-								(click)="moveToPage(item)"
+								class="notification notification-cursor" (click)="moveToPage(item)"
+								[ngClass]="{'isReadTrue': item.isRead === true, 'newNotification': item.isRead === false}">
+								<div fxLayout="row" fxLayoutAlign="start center">
+									<mat-icon class="icon-box-1" ngClass="{{item.notiType}}">{{ item.iconText }}
+									</mat-icon>
+
+									<div>
+										<div class="notification-label">{{ item.notiLabel }}</div>
+										<div class="notification-description">{{ item.period }}</div>
+									</div>
+								</div>
+
+								<mat-icon class="icon-box-2">keyboard_arrow_right</mat-icon>
+
+							</div>
+							<mat-divider *ngIf="!last"></mat-divider>
+						</div>
+					</div>
+					<div class="dropdown-footer" fxLayout="row" fxLayoutAlign="center center">
+						<button mat-button color="primary" (click)="allRead()">MARK ALL AS READ</button>
+					</div>
+				</div>
+			</mat-menu>
+
+			<mat-menu #notification="matMenu" xPosition="before" class="dropdown-box">
+				<div class="dropdown">
+					<div fxLayout="row" fxLayoutAlign="space-between center" class="dropdown-header">
+						<div>
+							<div class="dropdown-heading">Notifications</div>
+							<div class="dropdown-subheading">You have {{ notiItemsLength }} new notifications.</div>
+						</div>
+						<div>
+							<mat-icon>apps</mat-icon>
+						</div>
+					</div>
+					<div class="dropdown-content">
+						<div *ngFor="let item of notiItems; let last=last">
+							<div matRipple fxLayout="row" fxLayoutAlign="space-between center"
+								class="notification notification-cursor" (click)="moveToPage(item)"
 								[ngClass]="{'isReadTrue': item.isRead === true, 'newNotification': item.isRead === false}">
 								<div fxLayout="row" fxLayoutAlign="start center">
 									<mat-icon class="icon-box-1" ngClass="{{item.notiType}}">{{ item.iconText }}
@@ -55,11 +91,9 @@
 				</div>
 			</mat-menu>
 		</div>
-		
+
 		<div>
-			<button mat-button [matMenuTriggerFor]="profile"
-				matTooltip="Profile"
-				matTooltipPosition="above"
+			<button mat-button [matMenuTriggerFor]="profile" matTooltip="Profile" matTooltipPosition="above"
 				[matTooltipShowDelay]="500">
 				<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
 					<!-- <mat-icon>person</mat-icon> -->
@@ -83,22 +117,22 @@
 						<div matRipple fxLayout="row" fxLayoutAlign="space-between center"
 							class="notification notification-cursor" [routerLink]="['/profile']">
 							<div fxLayout="row" fxLayoutAlign="start center">
-								
+
 								<mat-icon class="icon-box-1 company-request">account_circle</mat-icon>
 								<div>
 									<div class="notification-label">My Profile</div>
 									<div class="notification-description">Personal Information</div>
 								</div>
 							</div>
-	
+
 							<mat-icon class="icon-box-2">keyboard_arrow_right</mat-icon>
-	
+
 						</div>
 						<!-- <mat-divider></mat-divider> -->
-	
+
 					</div>
 					<div class="dropdown-footer" fxLayout="row" fxLayoutAlign="center center" (click)="logOut();">
-						<button mat-button color="primary" >LOGOUT</button>
+						<button mat-button color="primary">LOGOUT</button>
 					</div>
 				</div>
 			</mat-menu>
