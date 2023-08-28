@@ -43,6 +43,20 @@ export class DialogService {
     })
   }
 
+  //zion
+    // positive
+    openDialog(data) {
+      const dialogRef = this.dialog.open(PositiveDialogComponent, {
+        data: {
+          content: data
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('dialog close');
+      })
+    }
+  //end
   // negative
   openDialogNegative(data) {
     const dialogRef = this.dialog.open(NegativeDialogComponent, {
