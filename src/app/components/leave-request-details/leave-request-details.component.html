@@ -49,6 +49,15 @@
         </tr>
         <tr>
             <th>
+                Period2
+            </th>
+            <td>
+                {{data.leave_start_date | date: 'YYYY-MM-dd'}} ~ {{data.leave_end_date | date: 'YYYY-MM-dd'}}
+                ({{data.leaveDuration}} days)
+            </td>
+        </tr>
+        <tr>
+            <th>
                 Leave of used
             </th>
             <td>
@@ -97,10 +106,10 @@
     <button class="requestCancel" color="primary" mat-raised-button mat-dialog-close> Confirm </button>
     <!-- employee -->
     <button *ngIf="data.pending && data.isManager == false " class="requestCancel pendingCancel" mat-raised-button
-    (click)="requestCancel()"> Pending Cancel </button>
+        (click)="requestCancel()"> Pending Cancel </button>
     <!-- manager -->
-    <button *ngIf="data.status == 'approve' && data.isManager == true" class="requestCancel approveCancel" mat-raised-button
-    (click)="approveLeaveCancel()"> Approve Cancel </button>
+    <button *ngIf="data.status == 'approve' && data.isManager == true" class="requestCancel approveCancel"
+        mat-raised-button (click)="approveLeaveCancel()"> Approve Cancel </button>
 </div>
 
 <div class="modal-btn-reject" *ngIf="data.reject == true">
