@@ -52,44 +52,6 @@
 					</div>
 				</div>
 			</mat-menu>
-
-			<mat-menu #notification="matMenu" xPosition="before" class="dropdown-box">
-				<div class="dropdown">
-					<div fxLayout="row" fxLayoutAlign="space-between center" class="dropdown-header">
-						<div>
-							<div class="dropdown-heading">Notifications</div>
-							<div class="dropdown-subheading">You have {{ notiItemsLength }} new notifications.</div>
-						</div>
-						<div>
-							<mat-icon>apps</mat-icon>
-						</div>
-					</div>
-					<div class="dropdown-content">
-						<div *ngFor="let item of notiItems; let last=last">
-							<div matRipple fxLayout="row" fxLayoutAlign="space-between center"
-								class="notification notification-cursor" (click)="moveToPage(item)"
-								[ngClass]="{'isReadTrue': item.isRead === true, 'newNotification': item.isRead === false}">
-								<div fxLayout="row" fxLayoutAlign="start center">
-									<mat-icon class="icon-box-1" ngClass="{{item.notiType}}">{{ item.iconText }}
-									</mat-icon>
-
-									<div>
-										<div class="notification-label">{{ item.notiLabel }}</div>
-										<div class="notification-description">{{ item.period }}</div>
-									</div>
-								</div>
-
-								<mat-icon class="icon-box-2">keyboard_arrow_right</mat-icon>
-
-							</div>
-							<mat-divider *ngIf="!last"></mat-divider>
-						</div>
-					</div>
-					<div class="dropdown-footer" fxLayout="row" fxLayoutAlign="center center">
-						<button mat-button color="primary" (click)="allRead()">MARK ALL AS READ</button>
-					</div>
-				</div>
-			</mat-menu>
 		</div>
 
 		<div>
