@@ -34,6 +34,30 @@ export const sidenavRouteInfo: NavigationItem[] = [
 		]	
 	},
 
+	// zion
+		// study
+		{
+			type: 'subheading',
+			label: 'study',
+			children: [
+				{
+					type: 'click',
+					label: 'Create space',
+					icon: 'create_new_folder'
+				},
+				{
+					type: 'dropdown',
+					label: 'Space',
+					icon: 'library_books',
+					isManager: false,
+					children: [
+					
+					]
+				}
+			]	
+		},
+	// end
+
 
 	// Leave
 	{
