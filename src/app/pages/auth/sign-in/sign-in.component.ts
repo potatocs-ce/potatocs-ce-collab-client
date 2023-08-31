@@ -82,13 +82,6 @@ export class SignInComponent implements OnInit {
             case 'retired':
                 this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
                 break;
-            case 'retired':
-                this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
-                break;
-            case 'duplicated':
-                this.dialogService.openDialogNegative(`This email already exists.`);
-                break;
         }
-    }
-};
+    };
 }
