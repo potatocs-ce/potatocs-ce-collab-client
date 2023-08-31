@@ -46,7 +46,7 @@ export class SignInComponent implements OnInit {
         // console.log(this.f);
         this.route.queryParams.subscribe(params => {
             this.params = params;
-          });
+        });
     }
 
     get f() {
@@ -57,31 +57,38 @@ export class SignInComponent implements OnInit {
         // console.log(this.signInFormData);
         this.authService.signIn(this.signInFormData).subscribe(
             (data: any) => {
-                if(this.params.redirectURL != '' && this.params.redirectURL != null && data.token != '' && data.token != null ){
+                if (this.params.redirectURL != '' && this.params.redirectURL != null && data.token != '' && data.token != null) {
                     this.router.navigate([`${this.params.redirectURL}`]);
                 }
-                else if(data.token != '' && data.token != null) {
+                else if (data.token != '' && data.token != null) {
                     this.router.navigate(['main']);
-                }        
+                }
             },
             err => {
                 console.log(err.error);
-				this.errorAlert(err.error.message);
+                this.errorAlert(err.error.message);
             },
         );
     }
 
     errorAlert(err) {
-		switch(err) {
-			case 'not found':
-				this.dialogService.openDialogNegative('The email does not exist. Try again.');
-				break;
+        switch (err) {
+            case 'not found':
+                this.dialogService.openDialogNegative('The email does not exist. Try again.');
+                break;
             case 'mismatch':
                 this.dialogService.openDialogNegative('Password is incorrect. Try again.');
                 break;
             case 'retired':
                 this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
                 break;
-		}
-	};
+            case 'retired':
+                this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
+                break;
+            case 'duplicated':
+                this.dialogService.openDialogNegative(`This email already exists.`);
+                break;
+        }
+    }
+};
 }
