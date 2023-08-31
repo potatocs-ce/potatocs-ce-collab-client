@@ -59,23 +59,23 @@ export class EmployeeListComponent implements OnInit {
 				columnProp: 'location',
 				options: []
 			},
-			// {
-			//   name: 'NAME',
-			//   columnProp: 'name',
-			//   options: []
-			// }, {
-			//   name: 'USERNAME',
-			//   columnProp: 'username',
-			//   options: []
-			// }, {
-			//   name: 'EMAIL',
-			//   columnProp: 'email',
-			//   options: []
-			// }, {
-			//   name: 'STATUS',
-			//   columnProp: 'status',
-			//   options: []
-			// }
+			{
+				name: 'NAME',
+				columnProp: 'name',
+				options: []
+			}, {
+				name: 'USERNAME',
+				columnProp: 'username',
+				options: []
+			}, {
+				name: 'EMAIL',
+				columnProp: 'email',
+				options: []
+			}, {
+				name: 'STATUS',
+				columnProp: 'status',
+				options: []
+			}
 		]
 	}
 
@@ -83,12 +83,12 @@ export class EmployeeListComponent implements OnInit {
 		this.dataService.userCompanyProfile.pipe(takeUntil(this.unsubscribe$)).subscribe(
 			(data: any) => {
 				this.company_max_day = data.rollover_max_day
-				if(this.company_max_day != undefined){
+				if (this.company_max_day != undefined) {
 					this.isRollover = true;
-					this.displayedColumns = ['name', 'position', 'location', 'annual_leave','rollover', 'sick_leave', 'replacementday_leave', 'tenure_today'];
+					this.displayedColumns = ['name', 'position', 'location', 'annual_leave', 'rollover', 'sick_leave', 'replacementday_leave', 'tenure_today'];
 				}
-		})
-			
+			})
+
 		this.getMyEmployeeLists();
 	}
 
@@ -97,31 +97,31 @@ export class EmployeeListComponent implements OnInit {
 		this.employeeMngmtService.getMyEmployeeList().subscribe(
 			(data: any) => {
 				if (data.message == 'found') {
-					
+
 					// tenure 계산
 					this.calculateTenure(data.myEmployeeList);
 
 
 					// rollover 체크, company 의 rollover_max_day 로 하기.
-					if(this.isRollover){
+					if (this.isRollover) {
 						for (let index = 0; index < data.myEmployeeList.length; index++) {
 							data.myEmployeeList[index].totalLeave.rollover = Math.min(data.myEmployeeList[index].totalLeave.rollover, this.company_max_day);
 						}
 					}
-					
+
 
 					////////////////	
 					this.getMyEmployeeList.data = data.myEmployeeList;
-					
-					
-					
+
+
+
 					this.filterSelectObj.filter((filter) => {
 						filter.options = this.getFilterObject(data.myEmployeeList, filter.columnProp);
 					});
 
 					this.getMyEmployeeList.filterPredicate = this.createFilter();
 
-////////////////
+					////////////////
 
 					this.getMyEmployeeList.paginator = this.paginator;
 				}
@@ -137,8 +137,8 @@ export class EmployeeListComponent implements OnInit {
 		// unsubscribe all subscription
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
-	
-	  }
+
+	}
 
 	// getMyManagerEmployeeList(managerID, managerName) {
 	// 	this.managerName = managerName;
