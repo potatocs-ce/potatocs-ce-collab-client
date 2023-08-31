@@ -59,23 +59,23 @@ export class EmployeeListComponent implements OnInit {
 				columnProp: 'location',
 				options: []
 			},
-			{
-				name: 'NAME',
-				columnProp: 'name',
-				options: []
-			}, {
-				name: 'USERNAME',
-				columnProp: 'username',
-				options: []
-			}, {
-				name: 'EMAIL',
-				columnProp: 'email',
-				options: []
-			}, {
-				name: 'STATUS',
-				columnProp: 'status',
-				options: []
-			}
+			// {
+			//   name: 'NAME',
+			//   columnProp: 'name',
+			//   options: []
+			// }, {
+			//   name: 'USERNAME',
+			//   columnProp: 'username',
+			//   options: []
+			// }, {
+			//   name: 'EMAIL',
+			//   columnProp: 'email',
+			//   options: []
+			// }, {
+			//   name: 'STATUS',
+			//   columnProp: 'status',
+			//   options: []
+			// }
 		]
 	}
 
@@ -91,7 +91,26 @@ export class EmployeeListComponent implements OnInit {
 
 		this.getMyEmployeeLists();
 	}
+	getRdRequest() {
+		this.approvalMngmtService.getConfirmRdRequest().subscribe(
+			(data: any) => {
+				// console.log(data);
+				if (data.message == 'getConfirmRdRequest') {
+					data = data.rdConfirmRequests.map((item) => {
+						item.leave_start_date = this.commonService.dateFormatting(item.leave_start_date, 'timeZone');
+						item.leave_end_date = this.commonService.dateFormatting(item.leave_end_date, 'timeZone');
+						return item;
+					});
+				}
+				this.dataSource = data.rdConfirmRequest;
+				// console.log(this.dataSource);
 
+			},
+			(err: any) => {
+				console.log(err);
+			}
+		)
+	}
 	getMyEmployeeLists() {
 		this.managerName = '';
 		this.employeeMngmtService.getMyEmployeeList().subscribe(
