@@ -221,52 +221,7 @@
                     </div>
                 </div>
             </div>
-            <!-- zion -->
-            <div
-            fxLayout.gt-sm="row" 
-            fxLayoutAlign.gt-sm="start center"
-            fxLayoutGap.gt-sm="30px"
-            fxLayout.lt-sm="column"
-            fxLayoutAlign.lt-sm="start"
-            fxLayoutGap.lt-sm="30px"
-        >
-            <div fxFlex.gt-sm="50" fxFlex.lt-sm="100">
-                <div class="addMe">
-                    <div fxLayout="row" fxLayoutAlign="start">
-                        <div class="addTitle">
-                            Company
-                        </div>
-                        <span class="example-spacer"></span>
-                        <mat-icon class="closeMark" (click)="deleteCompany(company?.request_id)" *ngIf="company != null
-                        ">close</mat-icon>
-                    </div>
-
-                    <div *ngIf="company?.length == 0 || company == undefined; else showCompanyInfo">
-                        <div fxLayout="row" fxLayoutAlign="center">
-                            <div >
-                                <mat-icon class="addMark"  (click)="openDialogFindMyCompany()">add</mat-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <ng-template #showCompanyInfo>
-                        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
-                            <div fxLayout="row" fxLayoutAlign="start center">
-                                <!-- <img matCardImage class="dashImg" src="./assets/image/todo-list.png"> -->
-                                <mat-icon class="addImage">business</mat-icon>
-                            </div>
-                            <div fxLayout="column" fxLayoutAlign="center default">
-                                <div class="addDesc">
-                                    <span class="descSpan">Company :</span> {{ company?.company_name | uppercase }}
-                                </div>
-                                <div class="addDesc">
-                                    <span class="descSpan">Status :</span> {{ company?.status | titlecase }}
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-                </div>
-            </div>
-            <!-- end -->
+        
         </div>
         
 

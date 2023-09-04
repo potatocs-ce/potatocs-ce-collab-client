@@ -21,32 +21,6 @@
                     <button mat-raised-button color="primary" class="submit-button"
                         [disabled]="!searchBtn">search</button>
                 </div>
-                <!-- zion -->
-                
-            <table mat-table [dataSource]="manager" class="mat-elevation-z8 historyTable">
-
-                <ng-container matColumnDef="name" class="historyWrap">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="email" class="historyWrap">
-                    <th mat-header-cell *matHeaderCellDef> email </th>
-                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="acceptButton" class="historyWrap">
-                    <th mat-header-cell *matHeaderCellDef> . </th>
-                    <td mat-cell *matCellDef="let element">
-                        <button mat-raised-button color="primary" color="primary" (click)="addManager()">
-                            Add Manager
-                        </button>
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-                <!-- end -->
             </div>
         </form>
 

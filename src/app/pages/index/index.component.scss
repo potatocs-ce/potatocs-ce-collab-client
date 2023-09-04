@@ -329,23 +329,3 @@ body::-webkit-scrollbar-track {
         font-size: 13px !important;
     }
 }
-
-//zion
-$pending: isPending;    // pending 일때 스타일 다르게 적용을 위한 변수
-.modal-btn{
-    margin-top: 20px;
-    text-align: center;
-
-    button{
-        padding: 0px 40px;
-        background-color: #00154F;
-        @if $pending {          // if 문 
-            margin: 0 15px;
-        }
-    }
-    .requestCancel{
-        color: #fff;
-        // margin: 0 30px;
-    }
-}
-//end

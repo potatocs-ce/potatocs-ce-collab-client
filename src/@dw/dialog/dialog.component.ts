@@ -23,13 +23,7 @@ export class DialogComponent implements OnInit {
 })
 export class ConfirmDialogComponent implements OnInit {
 
-  //zion
-    // service method 변수 설정 (본문 내에서 간략하게 사용)
-    isLink = this.navigationService.isLink;
-    isDropdown = this.navigationService.isDropdown;
-    isSubheading = this.navigationService.isSubheading;
-    isCreateSpace = this.navigationService.isCreateSpace;
-  //end
+
   flag: boolean;
 
   constructor(

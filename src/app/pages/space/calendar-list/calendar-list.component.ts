@@ -92,24 +92,7 @@ export class CalendarListComponent implements OnInit {
     }
 
 
-    // zion
-    private onChangeFunc(){
-        if (this.memberInSpace == undefined) {
-            return;
-        }
-  
-        const checkMemberArray = [];
 
-        for (let index = 0; index < this.memberInSpace.length; index++) {
-            checkMemberArray.push(this.memberInSpace[index]._id);
-
-            if (index == this.memberInSpace.length-1) {
-                this.member.setValue(checkMemberArray);
-            }
-        }
-        this.memberFilter();
-    }
-    // end
     private initializeEvents(members?) {
         this.events = [];
 
