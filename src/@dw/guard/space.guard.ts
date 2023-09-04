@@ -37,14 +37,16 @@ export class SpaceGuard implements CanActivate, OnInit {
         const spaceList:any = await this.sideNavService.updateSideMenu().toPromise();
 
         this.space = spaceList.navList[0].spaces;
-        
+        // Check if 'spaceTime' exists in the 'this.space' array
         for (let index = 0; index < this.space.length; index++) {
             const element = this.space[index]._id;
+            // If 'spaceTime' matches an element in the array, set 'this.flag' to true and exit the loop
             if(spaceTime == element){
                 this.flag = true;
                 break;
             }
             else{
+                // If no match is found, set 'this.flag' to false
                 this.flag = false;
             }
             
