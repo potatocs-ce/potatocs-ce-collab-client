@@ -7,7 +7,7 @@
 ---
 > https://potatocs.com
 
-## Installation
+## ⚙️Installation
 --- 
 
 ## 🪃Skills
