@@ -7,8 +7,10 @@
 ---
 > https://potatocs.com
 
+## Installation
+--- 
 
-## 🪛Development Environment
+## 🪃Skills
 ---
 > <img src="https://img.shields.io/badge/angular-0F0F11?style=for-the-badge&logo=angular&logoColor=white"><img src="https://img.shields.io/badge/13.0.1-515151?style=for-the-badge">
 > <img src="https://img.shields.io/badge/node-339933?style=for-the-badge&logo=node.js&logoColor=white"><img src="https://img.shields.io/badge/13.13.0-515151?style=for-the-badge">
