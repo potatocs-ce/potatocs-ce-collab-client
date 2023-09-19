@@ -1,11 +1,16 @@
 # Potatocs Community Client v1.0
 > made by nsmart solution  
 
-
 ## 🔗Link
 > https://potatocs.com
 
 ## ⚙️Installation
+```
+git clone https://github.com/potatocs-ce/potatocs-ce-collab-client.git
+cd potatocs-ce-collab-client
+npm install
+npm start
+```
 
 ## 🪃Skills
 > <img src="https://img.shields.io/badge/angular-0F0F11?style=for-the-badge&logo=angular&logoColor=white"><img src="https://img.shields.io/badge/13.0.1-515151?style=for-the-badge">
