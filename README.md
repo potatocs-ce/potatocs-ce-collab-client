@@ -5,6 +5,10 @@
 > https://potatocs.com
 
 ## ⚙️Installation
+### Setup
+- The following pre-tasks are required to run in a local environment  
+    - [MongoDB](https://www.mongodb.com/ko-kr/cloud/atlas/lp/try4)
+### Client
 ```
 git clone https://github.com/potatocs-ce/potatocs-ce-collab-client.git
 cd potatocs-ce-collab-client
