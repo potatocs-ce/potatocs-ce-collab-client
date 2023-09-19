@@ -4,7 +4,7 @@
 ## 🔗Link
 > https://potatocs.com
 
-## Requirement
+## ⚠️Requirement
 > We recommend using the latest Chrome Browser
 
 ## ⚙️Installation
