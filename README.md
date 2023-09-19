@@ -1,8 +1,13 @@
-# Potatocs Community Client v1.0
+# Potatocs Community Client v0.1
 > made by nsmart solution  
 
 ## 🔗Link
 > https://potatocs.com
+
+## Release Note
+|version|log|
+|---|---|
+|0.1.0| Create community versions and upload code |
 
 ## ⚠️Requirement
 > We recommend using the latest Chrome Browser
