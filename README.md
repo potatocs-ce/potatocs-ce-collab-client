@@ -4,6 +4,9 @@
 ## 🔗Link
 > https://potatocs.com
 
+## Requirement
+> We recommend using the latest Chrome Browser
+
 ## ⚙️Installation
 ### Setup
 - The following pre-tasks are required to run in a local environment  
