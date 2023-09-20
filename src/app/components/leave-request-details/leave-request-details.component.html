@@ -103,16 +103,6 @@
     mat-raised-button (click)="approveLeaveCancel()"> Approve Cancel </button>
 </div>
 
-
-<div class="modal-btn" *ngIf="!data.reject">
-  <button class="requestCancel" color="primary" mat-raised-button mat-dialog-close> Confirm </button>
-  <!-- employee -->
-  <button *ngIf="data.pending && data.isManager == false " class="requestCancel pendingCancel" mat-raised-button
-    (click)="requestCancel()"> Pending Cancel </button>
-  <!-- manager -->
-  <button *ngIf="data.status == 'approve' && data.isManager == true" class="requestCancel approveCancel"
-    mat-raised-button (click)="approveLeaveCancel()"> Approve Cancel </button>
-</div>
 <div class="modal-btn-reject" *ngIf="data.reject == true">
   <button class="rejectBtn" (click)="rejectLeave()" mat-raised-button> Reject </button>
   <button class="cancelBtn" mat-raised-button mat-dialog-close> Cancel </button>
