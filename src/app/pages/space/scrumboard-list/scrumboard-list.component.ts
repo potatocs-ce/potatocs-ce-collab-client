@@ -286,7 +286,7 @@ export class ScrumboardListComponent implements OnInit {
     }
 
     if (status == value) {
-      console.log("안바꼇지롱");
+      // console.log("안바꼇지롱");
       return;
     }
 
@@ -353,7 +353,8 @@ export class ScrumboardListComponent implements OnInit {
 
   createCard(status, title) {
 
-
+    console.log(status);
+    console.log(title);
 
 
     if (title.replace(/\s/g, "").length === 0) {
