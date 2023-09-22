@@ -50,4 +50,4 @@ npm start
 ## 🚀 Deployment
 <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
 
-Please Check package.json  
+🙏 Please Check package.json  
