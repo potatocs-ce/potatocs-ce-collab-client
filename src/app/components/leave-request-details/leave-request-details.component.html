@@ -79,6 +79,14 @@
         {{data.approver}}
       </td>
     </tr>
+    <tr *ngIf="data.rejectStatus">
+      <th>
+        Status
+      </th>
+      <td *ngIf="data.rejectStatus">
+        {{data.rejectStatus}}
+      </td>
+    </tr>
     <tr *ngIf="data.reject == true">
       <th>
         Reject reason
