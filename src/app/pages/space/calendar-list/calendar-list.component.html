@@ -33,10 +33,6 @@
   </div>
 
   <div [ngSwitch]="view" class="px-0 shadow flex-auto relative">
-    <mwl-calendar-year-view (dayClicked)="dayClicked($event.day)" (eventClicked)="moveToDoc($event.event)"
-      (eventTimesChanged)="eventTimesChanged($event)" *ngSwitchCase="'year'" [activeDayIsOpen]="activeDayIsOpen"
-      [events]="events" [refresh]="refresh" [viewDate]="viewDate">
-    </mwl-calendar-year-view>
     <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" (eventClicked)="moveToDoc($event.event)"
       (eventTimesChanged)="eventTimesChanged($event)" *ngSwitchCase="'month'" [activeDayIsOpen]="activeDayIsOpen"
       [events]="events" [refresh]="refresh" [viewDate]="viewDate">
