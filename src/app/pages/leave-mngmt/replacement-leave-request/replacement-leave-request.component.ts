@@ -91,9 +91,9 @@ export class ReplacementLeaveRequestComponent implements OnInit, OnDestroy {
         (data: any) => {
           this.company = data;
           // console.log(this.company);
-          if (this.company.rollover_max_day != undefined) {
-            this.isRollover = true;
-          }
+          // if(this.company.rollover_max_day != undefined){
+          // 	this.isRollover = true;
+          // }
         },
         (err: any) => {
           console.log(err);
