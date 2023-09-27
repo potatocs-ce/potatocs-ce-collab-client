@@ -458,7 +458,7 @@ export class ScrumboardListComponent implements OnInit {
   }
 
   checkDone(doc: any) {
-    if (doc.done !== undefined) {
+    if (!doc.done) {
 
       const uploadData = {
         doc_id: doc.doc_id,
