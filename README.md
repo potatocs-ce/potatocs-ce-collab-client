@@ -5,6 +5,9 @@
 > https://potatocs.com
 <br/>
 
+## 📄 doc
+> https://potatocs.com/docs/
+
 ## 🛠️ Features
 - Kanban Board
 - Real Time Meeting
