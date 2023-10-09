@@ -3,19 +3,24 @@
 
 ## 📖 Contents
 - [🔗 Link](#-Link)
-- [📄 doc](#-doc)
-- [🛠️ Features](#-features)
+- [📄 Doc](#-doc)
+- [🛠️ Features](#-%EF%B8%8F-features)
 - [📈 Release Note](#-release-note)
-- [⚠️ Requirement](#-requirement)
-- [⚙️ Installation](#-installation)
+- [⚠️ Requirement](#%EF%B8%8F-requirement)
+- [⚙️ Installation](#%EF%B8%8F-installation)
     - [Setup](#setup)
     - [Installation](#installation)
+- [🪃 Skills](#-skills)
+- [🪛 Project Control](#-project-control)
+    - [Version Control](#version-control)
+    - [Task Control](#task-control)
+- [🚀 Deployment](#-deployment)
 
 ## 🔗 Link
 > https://potatocs.com
 <br/>
 
-## 📄 doc
+## 📄 Doc
 > https://potatocs.com/docs/
 <br/>
 
