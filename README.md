@@ -4,7 +4,7 @@
 ## 📖 Contents
 - [🔗 Link](#-Link)
 - [📄 Doc](#-doc)
-- [🛠️ Features](#-%EF%B8%8F-features)
+- [🛠️ Features](#%EF%B8%8F-features)
 - [📈 Release Note](#-release-note)
 - [⚠️ Requirement](#%EF%B8%8F-requirement)
 - [⚙️ Installation](#%EF%B8%8F-installation)
