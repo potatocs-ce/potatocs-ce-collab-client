@@ -21,6 +21,8 @@
 ## 🔍 Preview
 ![img](./readmeImg/스크린샷.png)
 
+<br/>
+
 ## 🔗 Link
 > https://potatocs.com
 <br/>
