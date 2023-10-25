@@ -2,6 +2,7 @@
 > It made by nsmart solution  
 
 ## 📖 Contents
+- [🔍 Preview](#-preview)
 - [🔗 Link](#-Link)
 - [📄 Doc](#-doc)
 - [🛠️ Features](#%EF%B8%8F-features)
@@ -15,6 +16,10 @@
     - [Version Control](#version-control)
     - [Task Control](#task-control)
 - [🚀 Deployment](#-deployment)
+
+
+## 🔍 Preview
+![img](./readmeImg/스크린샷.png)
 
 ## 🔗 Link
 > https://potatocs.com
