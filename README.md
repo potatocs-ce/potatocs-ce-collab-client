@@ -33,7 +33,7 @@
 
 ## 🛠️ Features
 - Kanban Board
-    - Kanban board are available for team work
+    - Available for team collaboration.
     - You can create groups in teams and manage your work effectively.
     - You can easily manage task-specific documents by uploading files.
     - You can manage tasks in detail by tagging them for each task.
