@@ -35,7 +35,7 @@
 - Kanban Board
     - Available for team collaboration.
     - Allows creation of groups in teams for effective work management.
-    - You can easily manage task-specific documents by uploading files.
+    - Facilitates easy management of task-specific documents through file uploads.
     - You can manage tasks in detail by tagging them for each task.
 - Real Time Meeting
     - You can create real-time meetings per groups.
