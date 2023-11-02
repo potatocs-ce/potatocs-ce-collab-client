@@ -36,7 +36,7 @@
     - Available for team collaboration.
     - Allows creation of groups in teams for effective work management.
     - Facilitates easy management of task-specific documents through file uploads.
-    - You can manage tasks in detail by tagging them for each task.
+    - Enables detailed task management through tagging.
 - Real Time Meeting
     - You can create real-time meetings per groups.
     - You can record and share the contents of the meeting through real-time chat at the same time as the meeting.
