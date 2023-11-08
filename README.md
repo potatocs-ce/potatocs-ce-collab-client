@@ -39,7 +39,7 @@
     - Enables detailed task management through tagging.
 - Real Time Meeting
     - Allows creation of real-time meetings for groups.
-    - You can record and share the contents of the meeting through real-time chat at the same time as the meeting.
+    - Records and shares meeting content through real-time chat.
 - Real Time Document Sharing
     - You can create real-time document sharing per groups.
     - You can hold meetings through real-time document sharing and writing.
