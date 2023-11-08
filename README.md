@@ -38,7 +38,7 @@
     - Facilitates easy management of task-specific documents through file uploads.
     - Enables detailed task management through tagging.
 - Real Time Meeting
-    - You can create real-time meetings per groups.
+    - Allows creation of real-time meetings for groups.
     - You can record and share the contents of the meeting through real-time chat at the same time as the meeting.
 - Real Time Document Sharing
     - You can create real-time document sharing per groups.
