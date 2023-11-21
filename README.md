@@ -43,7 +43,7 @@
     - Provides simultaneous chat during meetings for discussions.
 - Real Time Document Sharing
     - Enables real-time document sharing for groups.
-    - You can hold meetings through real-time document sharing and writing.
+    - Supports meetings through shared documents and collaborative writing.
     - You can automatically follow and check the documents presented by the presenter.
 <br/>
 
