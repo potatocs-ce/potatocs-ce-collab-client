@@ -42,7 +42,7 @@
     - Records and shares meeting content through real-time chat.
     - Provides simultaneous chat during meetings for discussions.
 - Real Time Document Sharing
-    - You can create real-time document sharing per groups.
+    - Enables real-time document sharing for groups.
     - You can hold meetings through real-time document sharing and writing.
     - You can automatically follow and check the documents presented by the presenter.
 <br/>
