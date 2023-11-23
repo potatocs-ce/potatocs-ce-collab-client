@@ -11,8 +11,8 @@ export class ApprovalMngmtService {
         private http: HttpClient
     ) { }
 
-    getLeaveRequest() {
-        return this.http.get('/api/v1/leave/pending-leave-request');
+    getLeaveRequest(data) {
+        return this.http.get('/api/v1/leave/pending-leave-request', { params: data });
     }
 
     approvedLeaveRequest(data) {
