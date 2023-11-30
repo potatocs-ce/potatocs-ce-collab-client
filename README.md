@@ -44,7 +44,7 @@
 - Real Time Document Sharing
     - Enables real-time document sharing for groups.
     - Supports meetings through shared documents and collaborative writing.
-    - You can automatically follow and check the documents presented by the presenter.
+    - Automatically follows and checks documents presented by the presenter.
 <br/>
 
 ## 📈 Release Note
