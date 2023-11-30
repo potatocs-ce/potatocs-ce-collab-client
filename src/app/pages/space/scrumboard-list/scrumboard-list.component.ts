@@ -25,7 +25,7 @@ export interface ScrumboardDoc {
     visible: boolean;
     color: {},
     createdAt: Date,
-    creator:any,
+    creator: any,
     creator_id: string,
     docContent: [],
     docTitle: string,
@@ -85,6 +85,31 @@ export class ScrumboardListComponent implements OnInit {
         this.list = []
     }
 
+    getMembers() {
+        this.mdsService.members.pipe(takeUntil(this.unsubscribe$)).subscribe(
+            async (data: any) => {
+                console.log(data);
+                this.spaceInfo = {
+                    _id: data[0]._id,
+                    displayName: data[0].displayName,
+                    displayBrief: data[0].displayBrief,
+                    spaceTime: data[0].spaceTime,
+                    isAdmin: data[0].isAdmin
+                }
+                this.displayName = data[0].displayName,
+                    this.displayBrief = data[0].displayBrief,
+                    this.memberInSpace = data[0].memberObjects;
+                this.adminInSpace = data[0].admins;
+
+                await this.memberInSpace.map(data => this.commonService.checkArray(data, this.adminInSpace));
+
+            },
+            (err: any) => {
+                console.log('mdsService error', err);
+            }
+        )
+    }
+
     ngOnInit(): void {
 
         this.scrumService.scrum$.pipe(takeUntil(this.unsubscribe$)).subscribe(
@@ -108,11 +133,11 @@ export class ScrumboardListComponent implements OnInit {
         this.dataService.userProfile.subscribe(
             (data: any) => {
                 console.log(data)
-                if(!data._id){
+                if (!data._id) {
                     return
                 }
-                else{
-                    this.loginId=data._id;
+                else {
+                    this.loginId = data._id;
                     console.log(this.loginId);
                 }
             }
@@ -189,7 +214,7 @@ export class ScrumboardListComponent implements OnInit {
         }
         this.docService.scrumEditDocStatus(data).subscribe(
             (data: any) => {
-                 console.log(data);
+                console.log(data);
             },
             (err: any) => {
                 // console.log(err);
@@ -285,7 +310,7 @@ export class ScrumboardListComponent implements OnInit {
             statusIndex: index
         }
 
-        if(status==value){
+        if (status == value) {
             console.log("안바꼇지롱");
             return;
         }
@@ -322,9 +347,9 @@ export class ScrumboardListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
- 
+
             this.initializeScrumBoard(this.member.value);
-            
+
         });
         this.textareaDisable();
     }
@@ -344,19 +369,19 @@ export class ScrumboardListComponent implements OnInit {
 
     //park
     //카드 만들기
-    createCardAble(status,i){
+    createCardAble(status, i) {
         console.log(status);
         console.log(i);
-        this.createCardFlag =i;
+        this.createCardFlag = i;
 
     }
 
-    createCard(status,title){
+    createCard(status, title) {
 
 
 
 
-        if(title.replace(/\s/g, "").length === 0){
+        if (title.replace(/\s/g, "").length === 0) {
             this.dialogService.openDialogNegative('Please');
             this.createCardFlag = -1;
             return;
@@ -374,20 +399,20 @@ export class ScrumboardListComponent implements OnInit {
         }
         console.log(docData);
         this.docService.createDoc(docData).subscribe(
-			(data: any) => {
-				if (data.message == 'created') {
+            (data: any) => {
+                if (data.message == 'created') {
                     console.log("만들어버렸다");
                     this.initializeScrumBoard(this.member.value);
                     this.createCardFlag = -1;
-				}
-			},
-			(err: any) => {
-				console.log(err);
-			}
-		);
+                }
+            },
+            (err: any) => {
+                console.log(err);
+            }
+        );
 
     }
-    
+
 
     // textarea able flag
     textareaAble() {
@@ -414,25 +439,25 @@ export class ScrumboardListComponent implements OnInit {
                 const creator = this.docStatusList[i].children[index].creator;
 
 
-              
- 
-                  //이 스페이스의 멤버가 크리에이터안에있으면 화면에 보여줌
+
+
+                //이 스페이스의 멤버가 크리에이터안에있으면 화면에 보여줌
                 for (let j = 0; j < creator.length; j++) {
 
-                    if(member.includes(creator[j]._id)){
+                    if (member.includes(creator[j]._id)) {
                         this.docStatusList[i].children[index].visible = true;
                         break;
                     }
-                    else{
+                    else {
                         this.docStatusList[i].children[index].visible = false;
                     }
-  
+
                 }
 
 
             }
         }
-        
+
 
 
     }
@@ -442,32 +467,32 @@ export class ScrumboardListComponent implements OnInit {
 
 
 
-    checkDate(endDate:any){
+    checkDate(endDate: any) {
         const today = moment(new Date());
         const docDate = moment(new Date(endDate));
 
         let diff = docDate.startOf('day').diff(today.startOf('day'), 'days');
-        if(diff === 0){
+        if (diff === 0) {
             //빨간색
-            return {'background-color':'#ed2131', 'color' : '#fff'} ;
-        }else if (diff === 1){
-            return {'background-color' : '#ffb412'};
-        }else if (diff < 0){
-            return {'background-color' : 'pink'};
+            return { 'background-color': '#ed2131', 'color': '#fff' };
+        } else if (diff === 1) {
+            return { 'background-color': '#ffb412' };
+        } else if (diff < 0) {
+            return { 'background-color': 'pink' };
         }
     }
 
-    checkDone(doc:any){
-        if(doc.done !== undefined){
+    checkDone(doc: any) {
+        if (doc.done !== undefined) {
 
             const uploadData = {
-                doc_id : doc.doc_id,
-                done : !doc.done
+                doc_id: doc.doc_id,
+                done: !doc.done
             }
             doc.done = !doc.done;
             this.docService.updateDoneEntry(uploadData).subscribe(
-                (data:any) => {
-                    if(data.message == 'updated'){
+                (data: any) => {
+                    if (data.message == 'updated') {
                         console.log('Update document check')
                     }
                 }
