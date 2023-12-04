@@ -76,31 +76,6 @@ export class MeetingListComponent implements OnInit {
 
     }
 
-    getMembers() {
-        this.mdsService.members.pipe(takeUntil(this.unsubscribe$)).subscribe(
-            async (data: any) => {
-                console.log(data);
-                this.spaceInfo = {
-                    _id: data[0]._id,
-                    displayName: data[0].displayName,
-                    displayBrief: data[0].displayBrief,
-                    spaceTime: data[0].spaceTime,
-                    isAdmin: data[0].isAdmin
-                }
-                this.displayName = data[0].displayName,
-                    this.displayBrief = data[0].displayBrief,
-                    this.memberInSpace = data[0].memberObjects;
-                this.adminInSpace = data[0].admins;
-
-                await this.memberInSpace.map(data => this.commonService.checkArray(data, this.adminInSpace));
-
-            },
-            (err: any) => {
-                console.log('mdsService error', err);
-            }
-        )
-    }
-
     ngOnChanges() {
         this.spaceTime = this.route.snapshot.params.spaceTime;
         this.dataService.userProfile.pipe(takeUntil(this.unsubscribe$)).subscribe(

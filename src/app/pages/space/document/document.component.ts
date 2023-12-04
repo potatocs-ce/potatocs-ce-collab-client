@@ -42,21 +42,46 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 	docId: any;
 	isSpaceAdmin: boolean;
 
-    mobileWidth: any;
+	mobileWidth: any;
 
-    private unsubscribe$ = new Subject<void>();
+	private unsubscribe$ = new Subject<void>();
 
-    // 브라우저 크기 변화 체크 ///
-    resizeObservable$: Observable<Event>
-    resizeSubscription$: Subscription
-    ///////////////////////
+	// 브라우저 크기 변화 체크 ///
+	resizeObservable$: Observable<Event>
+	resizeSubscription$: Subscription
+	///////////////////////
 
-    rightBlockDisplay= false;
-    matIcon = 'arrow_back_ios'
-    toggle = false;
+	rightBlockDisplay = false;
+	matIcon = 'arrow_back_ios'
+	toggle = false;
 
 	// docStatus
 	docStatus;
+	getMembers() {
+		this.mdsService.members.pipe(takeUntil(this.unsubscribe$)).subscribe(
+			async (data: any) => {
+				console.log(data);
+				this.spaceInfo = {
+					_id: data[0]._id,
+					displayName: data[0].displayName,
+					displayBrief: data[0].displayBrief,
+					spaceTime: data[0].spaceTime,
+					isAdmin: data[0].isAdmin
+				}
+				this.displayName = data[0].displayName,
+					this.displayBrief = data[0].displayBrief,
+					this.memberInSpace = data[0].memberObjects;
+				this.adminInSpace = data[0].admins;
+
+				await this.memberInSpace.map(data => this.commonService.checkArray(data, this.adminInSpace));
+
+			},
+			(err: any) => {
+				console.log('mdsService error', err);
+			}
+		)
+	}
+
 
 	constructor(
 		private route: ActivatedRoute,
@@ -64,7 +89,7 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 		private docService: DocumentService,
 		private dialogService: DialogService,
 		private spaceService: SpaceService,
-        private eventBusService: EventBusService,
+		private eventBusService: EventBusService,
 		private snackbar: MatSnackBar,
 	) {
 		this.spaceTime = this.route.snapshot.params.spaceTime
@@ -80,18 +105,18 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 	}
 
 
-    ////////////////////////////////////
-    // 브라우저 크기
-    @HostListener('window:resize', ['$event'])
-    onResize(event) {
-        this.mobileWidth = event.target.innerWidth;
-    }
-    ////////////////////////////////////
-    
+	////////////////////////////////////
+	// 브라우저 크기
+	@HostListener('window:resize', ['$event'])
+	onResize(event) {
+		this.mobileWidth = event.target.innerWidth;
+	}
+	////////////////////////////////////
+
 
 	ngOnInit(): void {
 
-        this.mobileWidth = window.screen.width;
+		this.mobileWidth = window.screen.width;
 
 		this.spaceService.getSpaceMembers(this.spaceTime).subscribe(
 			(data: any) => {
@@ -99,34 +124,34 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 				this.docStatus = data.spaceMembers[0].docStatus
 			},
 			(err: any) => {
-				
+
 			}
 		)
 		this.getInfo();
 
 
-        ////////////////////////////////////
-        // 브라우저 크기 변화 체크
-        this.resizeObservable$ = fromEvent(window, 'resize')
-        this.resizeSubscription$ = this.resizeObservable$.subscribe( evt => {
-        // console.log('event: ', evt)
-        })
-        ////////////////////////////////////
+		////////////////////////////////////
+		// 브라우저 크기 변화 체크
+		this.resizeObservable$ = fromEvent(window, 'resize')
+		this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
+			// console.log('event: ', evt)
+		})
+		////////////////////////////////////
 
-        this.eventBusService.on('viewMore', this.unsubscribe$, () => {
-            if (this.toggle == false) {
-                this.toggle = true;
-            } else {
-                this.toggle = false
-            }
-        })
+		this.eventBusService.on('viewMore', this.unsubscribe$, () => {
+			if (this.toggle == false) {
+				this.toggle = true;
+			} else {
+				this.toggle = false
+			}
+		})
 	}
 
-    ngOnDestroy() {
-        // unsubscribe all subscription
-        this.resizeSubscription$.unsubscribe()
+	ngOnDestroy() {
+		// unsubscribe all subscription
+		this.resizeSubscription$.unsubscribe()
 
-    }
+	}
 
 	ngAfterViewInit() {
 		// console.log(window.innerHeight);
@@ -152,7 +177,7 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 							this.docService.updateDoc(updateDocData).subscribe(
 								(data: any) => {
 									if (data.message == 'updated') {
-										this.snackbar.open('Successfully document saved','Close' ,{
+										this.snackbar.open('Successfully document saved', 'Close', {
 											duration: 3000,
 											horizontalPosition: "center"
 										});
@@ -273,21 +298,21 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 		});
 	}
 
-    
-    
-    rightBlockDisplayBtn() {
-        if(this.rightBlockDisplay == false){
-            this.rightBlockDisplay = true;
-            this.matIcon = 'arrow_forward_ios'
-        } else {
-            this.rightBlockDisplay = false;
-            this.matIcon = 'arrow_back_ios'
-        }
-        
-    }
 
 
-    viewMore() {
-        this.eventBusService.emit(new EventData('viewMore', ''));
-    }
+	rightBlockDisplayBtn() {
+		if (this.rightBlockDisplay == false) {
+			this.rightBlockDisplay = true;
+			this.matIcon = 'arrow_forward_ios'
+		} else {
+			this.rightBlockDisplay = false;
+			this.matIcon = 'arrow_back_ios'
+		}
+
+	}
+
+
+	viewMore() {
+		this.eventBusService.emit(new EventData('viewMore', ''));
+	}
 }
