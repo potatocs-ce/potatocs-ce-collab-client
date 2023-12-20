@@ -3,12 +3,14 @@
 
 ## 🔗 Link
 > https://potatocs.com
-
+<br/>
+<br/>
 ## 🛠️ Features
 - Kanban Board
 - Real Time Meeting
 - Real Time Document Sharing
-
+<br/>
+<br/>
 ## 📈 Release Note
 |version|log|
 |---|---|
@@ -16,6 +18,8 @@
 
 ## ⚠️ Requirement
 > We recommend using the latest Chrome Browser
+<br/>
+<br/>
 
 ## ⚙️ Installation
 ### Setup
@@ -28,6 +32,8 @@ cd potatocs-ce-collab-client
 npm install
 npm start
 ```
+<br/>
+<br/>
 
 ## 🪃 Skills
 <img src="https://img.shields.io/badge/angular-0F0F11?style=for-the-badge&logo=angular&logoColor=white"><img src="https://img.shields.io/badge/13.0.1-515151?style=for-the-badge">
@@ -39,15 +45,23 @@ npm start
 <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
 <img src="https://img.shields.io/badge/materialdesign-757575?style=for-the-badge&logo=materialdesign&logoColor=white">
 
+<br/>
+
 ## 🪛 Project Control
 ### Version Control
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 
+<br/>
+
 ### Task Control
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">  
 
+<br/>
 
 ## 🚀 Deployment
 <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
+
+<br/>
+<br/>
 
 🙏 Please Check package.json  
