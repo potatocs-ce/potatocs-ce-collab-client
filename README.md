@@ -4,6 +4,11 @@
 ## 🔗 Link
 > https://potatocs.com
 
+## Features
+- Kanban Board
+- Real Time Meeting
+- Real Time Document Sharing
+
 ## 📈 Release Note
 |version|log|
 |---|---|
