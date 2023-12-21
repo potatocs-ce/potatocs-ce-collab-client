@@ -129,11 +129,11 @@ export class DocumentComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		console.log(window.innerHeight);
+		// console.log(window.innerHeight);
 	}
 
 	updateDoc() {
-		const result = confirm('Do you want to save the modified version?');
+		// const result = confirm('Do you want to save the modified version?');
 		// if (result) {
 
 		this.dialogService.openDialogConfirm('Do you want to save?').subscribe(result => {
