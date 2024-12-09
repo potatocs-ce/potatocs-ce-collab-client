@@ -1,87 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { AuthService } from 'src/@dw/services/auth/auth.service';
-import { DialogService } from 'src/@dw/dialog/dialog.service';
-
-interface LoginFormData {
-    email: string;
-    password: string;
-}
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { MaterialsModule } from '../../../materials/materials.module';
+import { Router, RouterLink } from '@angular/router';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
+import { DialogService } from '../../../stores/dialog/dialog.service';
 
 @Component({
-    selector: 'app-sign-in',
-    templateUrl: './sign-in.component.html',
-    styleUrls: ['./sign-in.component.scss'],
+  selector: 'app-sign-in',
+  standalone: true,
+  imports: [CommonModule, MaterialsModule, RouterLink],
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.scss',
 })
+export class SignInComponent {
+  fb = inject(FormBuilder);
+  authService = inject(AuthService);
+  dialogService = inject(DialogService);
+  router = inject(Router);
 
-// https://material.angular.io/components/input/overview
-// ErrorStateMatcher
-export class SignInComponent implements OnInit {
+  signInForm: FormGroup = this.fb.group({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(15),
+    ]),
+  });
 
-    params: any;
-
-    form: FormGroup;
-
-    signInFormData: LoginFormData = {
-        email: '',
-        password: '',
-    };
-
-    constructor(
-        private router: Router,
-        private authService: AuthService,
-        private fb: FormBuilder,
-        private dialogService: DialogService,
-        private route: ActivatedRoute,
-    ) {
-        this.form = this.fb.group({
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(4), Validators.minLength(15)]],
-        });
-    }
-
-    ngOnInit(): void {
-        // console.log(this.f);
-        this.route.queryParams.subscribe(params => {
-            this.params = params;
-          });
-    }
-
-    get f() {
-        return this.form.controls;
-    }
-
-    signIn() {
-        // console.log(this.signInFormData);
-        this.authService.signIn(this.signInFormData).subscribe(
-            (data: any) => {
-                if(this.params.redirectURL != '' && this.params.redirectURL != null && data.token != '' && data.token != null ){
-                    this.router.navigate([`${this.params.redirectURL}`]);
-                }
-                else if(data.token != '' && data.token != null) {
-                    this.router.navigate(['main']);
-                }        
-            },
-            err => {
-                console.log(err.error);
-				this.errorAlert(err.error.message);
-            },
-        );
-    }
-
-    errorAlert(err) {
-		switch(err) {
-			case 'not found':
-				this.dialogService.openDialogNegative('The email does not exist. Try again.');
-				break;
-            case 'mismatch':
-                this.dialogService.openDialogNegative('Password is incorrect. Try again.');
-                break;
-            case 'retired':
-                this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
-                break;
-		}
-	};
+  signIn() {
+    this.authService.signIn(this.signInForm.value).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.router.navigate(['/main']);
+      },
+      error: (error: any) => {
+        console.log(error.error.message);
+        this.dialogService.openDialogNegative(error.error.message);
+      },
+    });
+  }
 }

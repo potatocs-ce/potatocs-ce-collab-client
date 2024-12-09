@@ -8,12 +8,10 @@ describe('FindPwComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FindPwComponent ]
+      imports: [FindPwComponent]
     })
     .compileComponents();
-  });
-
-  beforeEach(() => {
+    
     fixture = TestBed.createComponent(FindPwComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

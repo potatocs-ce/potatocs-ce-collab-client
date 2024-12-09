@@ -1,51 +1,76 @@
-<div class="card-container" fxLayoutAlign="center center" fxLayout="column">
-	<mat-card class="cardBox">
-		<mat-card-header fxLayoutAlign="center center" fxLayout="column">
-			<div>
-				<img src="assets/logo/logo-title2-rm.png" alt="">
-			</div>
-			<div>
-				<mat-card-title>
-					Welcome
-				</mat-card-title>
-			</div>
-			<div class="cardSubTitle">
-				Sign in with your credentials below
-			</div>
-		</mat-card-header>
-		<mat-card-content>
-			<form #signInForm="ngForm" class="example-form" (ngSubmit)="(signInForm.form.valid) && signIn()">
-				<mat-form-field class="example-full-width">
-					<input matInput 
-						type="text" 
-						placeholder="E-Mail" 
-						[(ngModel)]="signInFormData.email" 
-						name="email" 
-						spellcheck="false" 
-						pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-						required>
-				</mat-form-field>
+<div class="min-h-screen bg-[#ececece6] flex justify-center items-center">
+  <mat-card class="w-[400px] p-10">
+    <mat-card-header class="flex flex-col items-center gap-1">
+      <div class="mb-8">
+        <img src="assets/logo/logo-potatocs.png" alt="" />
+      </div>
+      <div>
+        <mat-card-title class="text-[#373737]">Welcome</mat-card-title>
+      </div>
+      <div class="text-[#aaaaaa] text-[14px]">
+        Sign in with your credentials below
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        [formGroup]="signInForm"
+        (ngSubmit)="signInForm.valid && signIn()"
+        class="flex flex-col items-center m-10"
+      >
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+            name="email"
+            spellcheck="false"
+            required
+          />
+          <mat-error *ngIf="signInForm.controls['email'].hasError('required')">
+            Please enter the email.
+          </mat-error>
+        </mat-form-field>
 
-				<mat-form-field class="example-full-width">
-					<input matInput 
-						type="password" 
-						placeholder="Password"
-						[(ngModel)]="signInFormData.password" 
-						name="password" 
-						minlength="4" 
-						maxlength="15"
-						required>
-				</mat-form-field>
-			  
-				<div fxLayoutAlign="center" fxLayout="column wrap">
-					<button type="submit" mat-raised-button class="signinBtn" [disabled]="!signInForm.form.valid">SIGN IN</button>
-				</div>
-			</form>
-		</mat-card-content>
-		<div fxLayout="row" fxLayoutAlign="center center">
-			<div class="findPwBox" [routerLink]="['/find-pw']">
-				Forgot password?
-			</div>
-		</div>
-	</mat-card>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            name="password"
+            required
+          />
+          <mat-error
+            *ngIf="signInForm.controls['password'].hasError('required')"
+          >
+            Please enter the password.
+          </mat-error>
+          <mat-error
+            *ngIf="
+              signInForm.controls['password'].hasError('minlength') ||
+              signInForm.controls['password'].hasError('maxlength')
+            "
+          >
+            Please enter 4-15 characters.
+          </mat-error>
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="!signInForm.valid"
+          class="w-[210px] mt-2"
+        >
+          Sing In
+        </button>
+      </form>
+    </mat-card-content>
+    <div
+      [routerLink]="['/find-pw']"
+      class="flex justify-center cursor-pointer text-[#00154fd6] font-bold mb-5"
+    >
+      Forgot password?
+    </div>
+  </mat-card>
 </div>

@@ -1,79 +1,60 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from './../../../stores/dialog/dialog.service';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { MaterialsModule } from '../../../materials/materials.module';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
-
-import { AuthService } from 'src/@dw/services/auth/auth.service';
-import { DialogService } from 'src/@dw/dialog/dialog.service';
-
-interface FormData {
-  email: string;
-  password: string;
-  confirmedPassword: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-sign-up',
+  standalone: true,
+  imports: [CommonModule, MaterialsModule],
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrl: './sign-up.component.scss'
 })
+export class SignUpComponent {
 
-// https://material.angular.io/components/input/overview
-// ErrorStateMatcher
-export class SignUpComponent implements OnInit {
+  // 의존성 주입
+  fb = inject(FormBuilder)
+  authService = inject(AuthService)
+  dialogService = inject(DialogService)
+  router = inject(Router);
 
+  signUpForm: FormGroup = this.fb.group({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+    confirmedPassword: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+  }, { validators: passwordMatchValidator });
 
-  form: FormGroup;
-
-
-  signUpFormData: FormData = {
-    email: '',
-    password: '',
-    confirmedPassword: '',
-    name: ''
-  }
-
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-
-    private dialogService: DialogService
-  ) {
-
-  }
-
-  ngOnInit(): void {
-    // console.log(this.f);
-    console.log()
-  }
-
-  // get f() {
-  //   return this.form.controls;
-  // }
+  constructor() { }
 
   signUp() {
-    // console.log(this.signUpFormData);
-    this.authService.signUp(this.signUpFormData).subscribe(
-      (data: any) => {
-        this.dialogService.openDialogPositive('Successfully, signed up');
+    console.log(this.signUpForm.value)
+    this.authService.signUp(this.signUpForm.value).subscribe({
+      next: (res: any) => {
+        console.log(res)
+        this.dialogService.openDialogPositive('Successfully signed up');
         this.router.navigate(['/sign-in']);
       },
-      err => {
-        // this.dialogService.openDialogNegative('failed to sign up.' + err.message)
-        this.errorAlert(err.error.message);
+      error: (error: any) => {
+        console.log(error.message)
+        this.dialogService.openDialogNegative(error.message);
       }
-    )
+    })
   }
 
-  errorAlert(err) {
-		switch(err) {
-      case 'retired':
-          this.dialogService.openDialogNegative(`An employee who's retired at the company.`);
-          break;
-      case 'duplicated':
-        this.dialogService.openDialogNegative(`This email already exists.`);
-        break;
-		}
-	};
+
 
 }
+
+export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  // control을 FormGroup으로 캐스팅합니다.
+  const formGroup = control as FormGroup;
+  const password = formGroup.get('password')?.value;
+  const confirmedPassword = formGroup.get('confirmedPassword')?.value;
+
+  // 비밀번호가 서로 일치하지 않으면 mismatch 오류를 반환합니다.
+  return password && confirmedPassword && password === confirmedPassword ? null : { mismatch: true };
+};
