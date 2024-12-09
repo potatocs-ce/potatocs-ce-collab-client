@@ -1,0 +1,209 @@
+<div class="mainContentContainer">
+  <div class="mainContent">
+    <div fxLayout="row">
+      <div class="mainTitle">Employee Leave Status</div>
+    </div>
+
+    <form [formGroup]="employeeForm" novalidate>
+      <div class="selectContainer">
+        <div
+          class="selectContent"
+          fxLayout="row wrap"
+          fxLayoutAlign="start none"
+        >
+          <div class="selectBoxContent" fxFlex="35">
+            <div class="selectBox">
+              <span class="selectLabel">
+                <label for="type" class="optionLabel fontBold">Type</label>
+              </span>
+              <mat-form-field
+                appearance="outline"
+                class="formFieldBox formSpacer"
+              >
+                <mat-select formControlName="type" required>
+                  <mat-option value="all">All</mat-option>
+                  <mat-option value="annual_leave">Annual Leave</mat-option>
+                  <mat-option value="sick_leave">Sick Leave</mat-option>
+                  <mat-option value="replacementday_leave"
+                    >Replacement Day</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="selectBoxContent" fxFlex="65">
+            <div class="selectBox">
+              <span class="selectLabel">
+                <label for="period" class="optionLabel fontBold">Period</label>
+              </span>
+              <mat-form-field class="formFieldBox" appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker1"
+                  formControlName="leave_start_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker1"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <label class="calenderLabel waveSpacer"> ~ </label>
+              <mat-form-field class="formFieldBox" appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker2"
+                  formControlName="leave_end_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex>
+            <div class="selectBox">
+              <span class="selectLabel">
+                <label for="email" class="optionLabel fontBold">Email</label>
+              </span>
+              <mat-form-field class="formEmailFieldBox" appearance="outline">
+                <mat-label>E-MAIL</mat-label>
+                <!-- https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+                <input
+                  matInput
+                  type="email"
+                  spellcheck="false"
+                  [formControl]="myControl"
+                  [matAutocomplete]="auto"
+                />
+                <mat-error>an e-mail is required</mat-error>
+                <mat-error>Please input a correct e-mail!</mat-error>
+                <mat-autocomplete #auto="matAutocomplete">
+                  @for (option of filteredOptions | async; track option) {
+                  <mat-option [value]="option.email"
+                    >{{ option.email }} ({{ option.name }})</mat-option
+                  >
+                  }
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div fxLayout="column nowrap" fxLayoutAlign="center center">
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="searchBtn"
+          (click)="searchBtn()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <div class="historyTableBox">
+      <table
+        mat-table
+        [dataSource]="dataSource()"
+        class="mat-elevation-z8 historyTable"
+        matSort
+        matSortActive="createdAt"
+        matSortDisableClear
+        matSortDirection="desc"
+      >
+        <!--- Note that these columns can be defined in any order.
+		              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef>Start Date</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            {{ element.startDate | date : "YYYY-MM-dd" }}
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef>End Date</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            {{ element.endDate | date : "YYYY-MM-dd" }}
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Requestor</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emailFind">
+          <th mat-header-cell *matHeaderCellDef>Requestor Email</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            {{ element.email }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveType">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            <div
+              class="leave-request-detail"
+              (click)="openDialogPendingLeaveDetail(element)"
+            >
+              {{ viewType[element.leaveType] }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef>Day(s)</th>
+          <td mat-cell class="center-text" *matCellDef="let element">
+            {{ element.duration }} day
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td
+            mat-cell
+            class="center-text"
+            *matCellDef="let element"
+            [ngClass]="{
+              approve: element.status == 'approve',
+              reject: element.status == 'reject'
+            }"
+          >
+            {{ element.status }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data</td>
+        </tr>
+      </table>
+      <mat-paginator
+        [length]="resultsLength()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+  <!-- mainContent -->
+</div>
+<!-- mainContentContainer -->

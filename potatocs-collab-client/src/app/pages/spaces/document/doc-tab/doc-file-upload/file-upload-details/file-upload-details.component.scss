@@ -1,0 +1,45 @@
+.mainTitle {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.modal-table {
+	font-size: 13px;
+	text-align: left;
+	border-top: 1px solid rgb(221, 221, 221);
+	border-collapse: collapse;
+}
+
+.modal-table tr {
+	height: 40px;
+}
+
+.modal-table th {
+	padding: 16px;
+	font-weight: 400;
+	border-bottom: 1px solid rgb(221, 221, 221);
+	border-left: 1px solid rgb(221, 221, 221);
+}
+
+.modal-table td {
+	border-bottom: 1px solid rgb(221, 221, 221);
+	border-left: 1px solid rgb(221, 221, 221);
+	padding: 16px 24px 16px 16px;
+	white-space: pre-line;
+}
+
+.modal-table th:first-child,
+td:first-child {
+	border-top: none;
+	border-left: none;
+}
+
+.modal-btn {
+	margin-top: 20px;
+	text-align: center;
+
+	button {
+		padding: 0px 40px;
+	}
+}

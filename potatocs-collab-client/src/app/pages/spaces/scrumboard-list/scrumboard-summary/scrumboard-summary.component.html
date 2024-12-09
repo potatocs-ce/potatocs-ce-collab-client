@@ -1,0 +1,516 @@
+<div class="main-container">
+  <div fxLayout="column" fxLayoutAlign="none">
+    <div fxLayout="low" fxLayoutAlign="none" class="first-row">
+      <div fxFlex="8">
+        <div>
+          <mat-icon>library_books</mat-icon>
+        </div>
+      </div>
+      <div fxFlex>
+        <div>
+          @if(!textareaFlag){
+          <div
+            fxFlex="95"
+            class="doc-title"
+            cdkDragHandle
+            (click)="textareaAble()"
+          >
+            {{ docTitle }}
+          </div>
+          } @if(textareaFlag){
+          <textarea
+            fxFlex="95"
+            class="description-box"
+            #text
+            (blur)="titleChange(text.value)"
+            >{{ docTitle }}</textarea
+          >
+          }
+
+          <mat-icon class="close-btn" mat-raised-button mat-dialog-close>
+            close
+          </mat-icon>
+        </div>
+
+        <div class="doc-status">status - {{ data.docStatus }}</div>
+        <div class="creator">Entry</div>
+        <div fxLayout="row">
+          @for(creator of data.document.creator ; track creator){
+          <div
+            class="profile-img"
+            [matTooltip]="creator.name"
+            matTooltipPosition="above"
+          >
+            @if(creator.profile_img == ''){
+            <img class="profile-img" [src]="basicProfile" alt="" />
+            } @else{
+            <img class="profile-img" [src]="creator.profile_img" alt="" />
+            }
+          </div>
+          }
+
+          <!-- prototype add button -->
+          <div
+            style="
+              width: 50px;
+              height: 50px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-left: -5px;
+            "
+          >
+            <div class="creator-plus-button-container">
+              <button
+                mat-fab
+                class="creator-plue-button"
+                (click)="mySelect.toggle()"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <mat-select
+            class="Member-select"
+            #mySelect
+            multiple
+            [(value)]="selectedMember"
+          >
+            @for(member of data.member ; track member){
+            <mat-option
+              class="member-option"
+              (click)="memberSelect()"
+              [value]="member._id"
+              multiLineOption
+            >
+              <div fxLayout="row" fxLayoutAlign="">
+                @if(member.profile_img != ''){
+                <img
+                  class="profile-img-select"
+                  [src]="member.profile_img"
+                  alt=""
+                />
+                <img class="profile-img-select" [src]="basicProfile" alt="" />
+                } @else{
+                <div fxLayout="column" fxLayoutAlign="center">
+                  <div class="member-select-option-name">{{ member.name }}</div>
+                  <div class="member-select-option-email">
+                    {{ member.email }}
+                  </div>
+                </div>
+                }
+              </div>
+            </mat-option>
+            }
+          </mat-select>
+        </div>
+        <div class="creator">Label</div>
+        <div
+          class="labels-container"
+          style="display: flex; width: 568px; align-items: center"
+        >
+          <mat-chip-listbox>
+            @for(label of data.document.labels ; track label){
+            <mat-chip [ngStyle]="{ background: label.color }">{{
+              label.title
+            }}</mat-chip>
+            }
+            <div class="label-plus-button-container">
+              <button
+                mat-mini-fab
+                class="label-plus-button"
+                #labelMenuTrigger="matMenuTrigger"
+                [mat-menu-trigger-for]="labelMenu"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+
+            <!-- <mat-select class="Member-select" style="width: 0px; height: 0px" #mylabelSelect multiple [(value)]="selectedLabel" [compareWith]="objectComparisonFunction">
+                            <mat-option (click)="labelSelect()" *ngFor="let label of data.labels" [value]="label" multiLineOption>
+                                {{label.title}}
+                            </mat-option>
+                        </mat-select> -->
+
+            <!-- label 추가, 수정, 삭제 하는 부분 w -->
+            <mat-menu #labelMenu="matMenu" class="label_box">
+              <div (click)="$event.stopPropagation()">
+                <!-- header -->
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between"
+                  class="dropdown-header"
+                >
+                  <div></div>
+                  <div class="box_title">
+                    <h3 class="dropdown-heading">Labels</h3>
+                  </div>
+                  <div
+                    class="close_button"
+                    style="cursor: pointer"
+                    (click)="labelMenuTrigger.closeMenu()"
+                  >
+                    <mat-icon>close</mat-icon>
+                  </div>
+                </div>
+
+                <mat-divider></mat-divider>
+                <!-- body -->
+                <div class="dropdown-body">
+                  <mat-selection-list
+                    [(ngModel)]="selectedLabel"
+                    [compareWith]="objectComparisonFunction"
+                  >
+                    @for(label of data.labels;track label;let i = $index){
+                    <mat-list-option
+                      class="dropdown-list-item"
+                      [disableRipple]="true"
+                      (click)="labelSelect()"
+                      checkboxPosition="before"
+                      [value]="label"
+                    >
+                      <section class="dropdown-checkbox-section">
+                        <div
+                          class="dropdown-checkbox-title"
+                          [ngStyle]="{ 'background-color': label.color }"
+                        >
+                          <input
+                            [value]="label.title"
+                            [id]="'labelTitle' + i"
+                            (click)="$event.stopPropagation()"
+                          />
+                        </div>
+
+                        <button
+                          [id]="'labelButton' + i"
+                          class="dropdown-list-button dropdown-edit-button mat-elevation-z2"
+                          mat-mini-fab
+                          (click)="$event.stopPropagation(); editLabelTitle(i)"
+                        >
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button
+                          style="display: none"
+                          [id]="'labelcheckButton' + i"
+                          class="dropdown-list-button dropdown-edit-button mat-elevation-z2"
+                          mat-mini-fab
+                          (click)="
+                            $event.stopPropagation();
+                            editDoneLabelTitle(i, label)
+                          "
+                        >
+                          <mat-icon>check</mat-icon>
+                        </button>
+                        <button
+                          class="dropdown-list-button dropdown-delete-button mat-elevation-z2"
+                          mat-mini-fab
+                          (click)="deleteLabel(label); $event.stopPropagation()"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </section>
+                    </mat-list-option>
+                    }
+                  </mat-selection-list>
+                </div>
+                <mat-divider></mat-divider>
+                <!-- footer -->
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="center"
+                  class="dropdown-footer"
+                >
+                  <div class="label-plus-button-container">
+                    <button
+                      mat-fab
+                      class="label-plue-button"
+                      [ngStyle]="{ 'background-color': selectedLabelColor }"
+                    ></button>
+                  </div>
+
+                  <input
+                    type="text"
+                    matInput
+                    name="title"
+                    [(ngModel)]="labelTitle"
+                    placeholder="라벨 제목을 입력하세요"
+                  />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="addLabel()"
+                  >
+                    add
+                  </button>
+                </div>
+
+                <div class="dropdown-color-selector">
+                  @for(color of labelsColors;track color){
+                  <div
+                    class="colors mat-elevation-z2"
+                    [ngStyle]="{
+                      'background-color': color,
+                      border: color === selectedLabelColor ? '2px solid' : ''
+                    }"
+                    (click)="selectColor(color)"
+                  ></div>
+                  }
+                </div>
+              </div>
+            </mat-menu>
+          </mat-chip-listbox>
+        </div>
+      </div>
+      <!-- <div fxFlex="40">
+                <div *ngFor = "let creator of creators" fxLayout="row" fxLayoutAlign="end center" >
+                    {{ creator.name }}
+                </div>
+            </div> -->
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="document-data">
+      <div class="description-row" fxLayout="column" fxLayoutAlign="none">
+        <div>
+          <div fxFlex="8">
+            <mat-icon>description</mat-icon>
+          </div>
+          <div fxFlex="85">DESCRIPTION</div>
+        </div>
+        <div>
+          <div fxFlex="8"></div>
+          <div fxFlex="85">
+            <div>
+              <textarea
+                #text
+                (blur)="description(text.value)"
+                placeholder="Add a more detailed description..."
+                class="description-box"
+                >{{ docDescription }}</textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+      <div class="file-row" fxLayout="column" fxLayoutAlign="none">
+        <div>
+          <div fxFlex="8">
+            <mat-icon class="row-main-icon">attach_file</mat-icon>
+          </div>
+          <div fxFlex="85" fxLayout="row" fxLayoutAlign="space-between center">
+            ATTACHMENTS
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div
+                class="choose_file_name"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <div class="uploadFileLabel">
+                  {{ fileName || "Upload a file" }}
+                </div>
+                <span class="example-spacer"></span>
+                @if(fileName != ''){
+                <mat-icon
+                  class="choose_file_delete"
+                  (click)="uploadFileDelete()"
+                  >close</mat-icon
+                >}
+              </div>
+              <div id="upload">
+                <label>
+                  <input
+                    type="file"
+                    ngf-select
+                    (change)="fileChangeEvent($event)"
+                  />
+                  <div
+                    class="choose_button_span"
+                    matTooltip="File attachment"
+                    matTooltipPosition="above"
+                    [matTooltipShowDelay]="500"
+                  >
+                    <mat-icon> attach_file</mat-icon>
+                  </div>
+                </label>
+              </div>
+              <div>
+                <div
+                  class="choose_button_span"
+                  (click)="fileUpload()"
+                  matTooltip="File upload"
+                  matTooltipPosition="above"
+                  [matTooltipShowDelay]="500"
+                >
+                  <mat-icon> publish</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div fxFlex="8"></div>
+          <div fxFlex="85">
+            <div class="select">
+              <table mat-table [dataSource]="filesArray" class="demo-table">
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef>File Name</th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    class="file-upload-detail"
+                    (click)="openFileUploadDetail(element)"
+                  >
+                    {{ element.originalname }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="creator">
+                  <th mat-header-cell *matHeaderCellDef>Uploader</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.creator }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="download">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    (click)="fileDownload(element)"
+                    matTooltip="File download"
+                    matTooltipPosition="above"
+                    [matTooltipShowDelay]="500"
+                  >
+                    <mat-icon class="cursor">get_app</mat-icon>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    (click)="deleteUploadFile(element._id, element.doc_id)"
+                    matTooltip="File delete"
+                    matTooltipPosition="above"
+                    [matTooltipShowDelay]="500"
+                  >
+                    <mat-icon class="cursor">delete_outline</mat-icon>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedFile"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedFile"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data</td>
+                </tr>
+              </table>
+              <!-- <mat-paginator [pageSizeOptions]="[pageSizeOptions]" aria-label="Select page of periodic elements">
+                            </mat-paginator> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="file-row" fxLayout="column" fxLayoutAlign="none">
+        <div>
+          <div fxFlex="8">
+            <mat-icon>chat</mat-icon>
+          </div>
+          <div fxFlex="80">WHITE BOARD</div>
+        </div>
+        <app-white-board [docId]="data.document.doc_id"></app-white-board>
+      </div>
+
+      <mat-divider></mat-divider>
+      <div class="comment-row" fxLayout="column" fxLayoutAlign="none">
+        <div>
+          <div fxFlex="8">
+            <mat-icon>chat</mat-icon>
+          </div>
+          <div fxFlex="80">COMMENTS</div>
+        </div>
+        <div class="comment">
+          <div fxFlex="8"></div>
+          <div fxFlex="85">
+            <div class="comment-input" fxLayout="row" fxLayoutAlign="none">
+              @if(user.profile_img==''){
+              <img class="chat-profile-img" [src]="basicProfile" alt="" />
+              } @else{
+              <img class="chat-profile-img" [src]="user.profile_img" alt="" />
+              }
+
+              <textarea
+                class="comment-textarea"
+                placeholder="Write a comment..."
+                [(ngModel)]="chatContent"
+              ></textarea>
+              <button
+                class="comment-save-btn"
+                mat-raised-button
+                (click)="createComment()"
+              >
+                SAVE
+              </button>
+            </div>
+
+            @for(chat of chatArray ; track chat){
+            <div class="comment-content">
+              <div class="chat-member-info" fxLayout="row" fxLayoutAlign="none">
+                @if(chat.profile_img == ''){
+                <img class="chat-profile-img" [src]="basicProfile" alt="" />
+                } @else{
+                <img
+                  class="chat-profile-img"
+                  [src]="chat.profile_img"
+                  alt=""
+                />}
+
+                <div fxLayout="column" fxLayoutAlign="none">
+                  <div class="chat-name">
+                    {{ chat.chatMember }}
+                  </div>
+                  <div class="chat-time">
+                    {{ chat.createdAt }}
+                  </div>
+                </div>
+              </div>
+              <div class="chat-content">
+                {{ chat.chatContent }}
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="last-row">
+      <div fxFlex="85">
+        <!-- <mat-icon>chat</mat-icon> -->
+      </div>
+      <!-- <div fxFlex="15">
+				<button
+					class="detail-btn"
+					mat-raised-button
+					color="primary"
+					mat-dialog-close
+					(click)="moveDetail()"
+					matTooltip="Detail for this document"
+					matTooltipPosition="above"
+					[matTooltipShowDelay]="500"
+				>
+					DETAIL
+				</button>
+			</div> -->
+      <div fxFlex="15">
+        <button class="delete-btn" mat-button (click)="deleteDoc()">
+          DELETE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

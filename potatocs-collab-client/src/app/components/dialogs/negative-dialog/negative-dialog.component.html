@@ -1,0 +1,25 @@
+<div class="m-10">
+  <div class="flex justify-center items-center">
+    <mat-icon class="text-[120px] text-[#f44336] w-[120px] h-[120px]"
+      >cancel</mat-icon
+    >
+  </div>
+
+  <div
+    class="flex justify-center items-center text-[28px] text-[#f44336] my-8 font-bold"
+  >
+    Error!
+  </div>
+
+  <div
+    class="flex flex-wrap justify-center items-center text-[#999] max-w-[395px]"
+  >
+    {{ data.content }}
+  </div>
+
+  <div class="flex flex-row justify-center items-center gap-5 mt-12">
+    <button mat-raised-button (click)="closeModal()">Confirm</button>
+  </div>
+
+  <div class="w-[395px]"></div>
+</div>

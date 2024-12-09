@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { QnaComponent } from './qna.component';
+
+describe('QnaComponent', () => {
+  let component: QnaComponent;
+  let fixture: ComponentFixture<QnaComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [QnaComponent]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(QnaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,0 +1,104 @@
+<h1 mat-dialog-title>Recording</h1>
+<div class="timer">
+	<span>{{time * 1000 | date: "mm:ss"}}</span>
+</div>
+<div mat-dialog-content>
+	<div class="form-input">
+		<form #f="ngForm" id="answerForm" (ngSubmit)="registerAnswer(f)" novalidate class="row">
+			<div class="button-set">
+				<!-- <button mat-fab><img src="assets/img/eraser.png"></button> -->
+				<div fxLayout="row">
+					<mat-form-field class="recordingTitle" appearance="outline">
+						<mat-label>Title</mat-label>
+						<input matInput name="recordingTitle" ngModel #recordingTitle="ngModel" value="" />
+					</mat-form-field>
+				</div>
+
+				<div class="drawing-tool">
+					<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px">
+						<div fxLayout="row" fxLayoutGap="10px">
+							<button type="button" mat-icon-button color="white" (click)="changeTool('pen', 'black');">
+								<mat-icon style="color: black;">create</mat-icon>
+							</button>
+							<button type="button" mat-icon-button color="white" (click)="changeTool('pen', 'blue');">
+								<mat-icon style="color: blue;">create</mat-icon>
+							</button>
+							<button type="button" mat-icon-button color="white" (click)="changeTool('pen', 'red');">
+								<mat-icon style="color: red;">create</mat-icon>
+							</button>
+							<button type="button" mat-icon-button color="white" (click)="changeTool('eraser', '');">
+								<img class="eraser-btn" src="assets/image/eraser.png" />
+							</button>
+							<button type="button" mat-icon-button color="white" (click)="initDrawing();">
+								<mat-icon style="color: black;">delete_forever</mat-icon>
+							</button>
+						</div>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<button mat-button type="button" (click)="imgInput.click()">
+								<mat-icon style="line-height: 24px;">image_search</mat-icon>
+								<!-- https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component -->
+								<input
+									#imgInput
+									type="file"
+									(click)="resetFileInput($event)"
+									(change)="handleUploadFileChanged($event)"
+									style="display:none;"
+									accept="image/*"
+								/>
+							</button>
+							<button mat-button type="button" *ngIf="imgPreview" (click)="emptyFiles();">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</div>
+
+						<div fxLayout="row" fxLayoutGap="10px">
+							<button
+								type="button"
+								mat-icon-button
+								color="white"
+								*ngIf="isRecording"
+								(click)="recordingStop();"
+							>
+								<mat-icon style="color: black;">mic</mat-icon>
+							</button>
+							<button
+								type="button"
+								mat-icon-button
+								color="white"
+								*ngIf="!isRecording"
+								(click)="recordingStart();"
+							>
+								<mat-icon style="color: black;">mic_off</mat-icon>
+							</button>
+						</div>
+						<!-- <div>
+							<button type="button" mat-icon-button color="white" *ngIf="imgPreview" (click)="showBg===true ? showBg = false : showBg = true">
+								<mat-icon style="color: black;">image</mat-icon>
+							</button>
+						</div> -->
+					</div>
+				</div>
+				<div
+					#canvasContainer
+					id="canvasContainer"
+					[ngStyle]="showBg && {'background-image': 'url(' + imgPreview + ')'}"
+				>
+					<div class="canvasTeacher">
+						<canvas #teacherCanvas></canvas>
+					</div>
+					<div class="cover">
+						<canvas #canvasCover></canvas>
+					</div>
+					<div class="cursor">
+						<canvas #cursorCanvas></canvas>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div mat-dialog-actions class="buttons" align="end">
+		<button mat-raised-button color="primary" form="answerForm" style="margin-right: 10px;">Save</button>
+		<button mat-raised-button [mat-dialog-close]>Close</button>
+	</div>
+</div>

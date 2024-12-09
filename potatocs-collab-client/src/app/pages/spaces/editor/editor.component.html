@@ -1,0 +1,111 @@
+<!-- Desktop일 경우 -->
+@if(mobileWidth>780){
+<div class="headerContainer">
+    <div>
+        <button mat-raised-button class="backBtn" (click)="toBack()">Back</button>
+    </div>
+    <div class="periodContent">
+        <span class="period">Period : </span>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput mwlFlatpickr [convertModelValue]="true" type="text" class="period-picker"
+                [(ngModel)]="startDate" (ngModelChange)="refresh.next()" dateFormat="Y-m-d H:i" placeholder="Not set"
+                [enableTime]="true" />
+        </mat-form-field>
+        ~
+        <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput mwlFlatpickr [convertModelValue]="true" class="period-picker" type="text"
+                [(ngModel)]="endDate" (ngModelChange)="refresh.next()" dateFormat="Y-m-d H:i" placeholder="Not set"
+                [enableTime]="true" />
+        </mat-form-field>
+        <mat-form-field class="selectUser" appearance="outline">
+            <mat-label>Select User</mat-label>
+            <mat-select required [(value)]="selectedMember" multiple>
+                @for(member of member_list;track member){
+                <mat-option (click)="memberSelect()" [value]="member._id" multiLineOption>
+                    <div class="member-select-option" fxLayout="row" fxLayoutAlign="">
+                        @if(member.profile_img != ''){
+                        <img class="profile-img-select" [src]="member.profile_img" alt="" />
+                        } @else{
+                        <img class="profile-img-select" [src]="basicProfile" alt="" />}
+
+                        <div fxLayout="column" fxLayoutAlign="center">
+                            <div class="member-select-option-name">{{ member.name }}</div>
+                            <div class="member-select-option-email">{{ member.email }}</div>
+                        </div>
+                    </div>
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <!-- <div>
+        <section>
+            <mat-checkbox [(ngModel)]="faceOption" [color]="faceOptionColor">
+                Face Authentificatio
+            </mat-checkbox>
+        </section>
+    </div> -->
+    <div>
+        <button mat-raised-button class="saveBtn" (click)="onSave()">Save</button>
+    </div>
+</div>
+}
+
+<!-- mobile일 경우 -->
+@if(mobileWidth<=780){ <div class="headerContainer">
+    <div class="btnContent">
+        <button mat-raised-button class="backBtn" (click)="toBack()">Back</button>
+        <button mat-raised-button class="saveBtn" (click)="onSave()">Save</button>
+    </div>
+
+    <div class="periodContent">
+        <div class="dateContent">
+            <mat-form-field appearance="outline" style="width: 47%">
+                <mat-label>Start Date</mat-label>
+                <input matInput type="text" class="period-picker" [(ngModel)]="startDate"
+                    (ngModelChange)="refresh.next()" dateFormat="Y-m-d H:i" placeholder="Not set" />
+            </mat-form-field>
+            ~
+            <mat-form-field appearance="outline" style="width: 47%">
+                <mat-label>End Date</mat-label>
+                <input matInput class="period-picker" type="text" [(ngModel)]="endDate" (ngModelChange)="refresh.next()"
+                    dateFormat="Y-m-d H:i" placeholder="Not set" />
+            </mat-form-field>
+        </div>
+    </div>
+    </div>
+    } @if(mobileWidth>780){ <mat-divider></mat-divider>}
+
+    <div class="editorContainer">
+        <div class="innderContainer">
+            <div fxLayout="row wrap" class="aboveTitle" fxLayoutAlign="initial center">
+                <div class="docStatus">
+                    <mat-form-field appearance="outline" class="spaceSelect">
+                        <mat-select required [(ngModel)]="selectedStatus">
+                            @for(status of docStatus; track status){
+                            <mat-option [value]="status">
+                                {{ status }}
+                            </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="docSpaceTitle">
+                    {{ spaceTitle }}
+                </div>
+            </div>
+
+            <div class="mg-t-20">
+                <div class="textAreaContainer taFont">
+                    <input matInput [(ngModel)]="editorTitle" required placeholder="Enter a title" maxlength="151"
+                        style="font-weight: bold" />
+                </div>
+            </div>
+
+            <div id="editorjs"></div>
+        </div>
+    </div>

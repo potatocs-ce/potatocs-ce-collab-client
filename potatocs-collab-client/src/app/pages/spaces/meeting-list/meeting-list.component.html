@@ -1,0 +1,130 @@
+<div class="body-margin">
+  <div class="cardContainer">
+    <div
+      class="cardMgCtr"
+      fxLayout="column"
+      fxLayoutGap="30px"
+      fxLayoutAlign="center"
+    >
+      <div class="meetingBtnBox" fxLayout="row" fxLayoutAlign="end center">
+        <button
+          class="scheduleBtn"
+          mat-raised-button
+          color="primary"
+          (click)="openDialogDocMeetingSet()"
+        >
+          Schedule a meeting
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="meetingBox" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <ng-container
+          *ngFor="let data of meetingArray; index as i; trackBy: trackById"
+        >
+          <mat-card class="example-card" fxFlex="0 1 calc(33.3% - 20px)">
+            <mat-card-header fxLayout="column">
+              <mat-card-title>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div fxFlex="90" class="card-title">
+                    Title : {{ data.meetingTitle }}
+                  </div>
+                  <div fxFlex *ngIf="data.isHost">
+                    <mat-slide-toggle
+                      [checked]="data.clicked"
+                      (change)="toggle(data, i)"
+                      [matTooltip]="
+                        data.clicked ? 'Meeting close' : 'Meeting open'
+                      "
+                      matTooltipPosition="above"
+                      matTooltipShowDelay="500"
+                    >
+                    </mat-slide-toggle>
+                    <!-- <mat-slide-toggle (click)="meetingItems[i]=!meetingItems[i];] toggle(data);"></mat-slide-toggle> -->
+                  </div>
+                </div>
+                <div class="card-title">
+                  Status : {{ data.status | titlecase }}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div class="card-title">Host : {{ data.manager_name }}</div>
+                  <img
+                    class="profile-img"
+                    [src]="data.manager_profile"
+                    alt=""
+                    [matTooltip]="data.manager_name"
+                    matTooltipPosition="above"
+                  />
+                </div>
+              </mat-card-title>
+              <mat-card-subtitle>
+                <h4>{{ data.meetingDescription }}</h4>
+                {{ data.start_date }} {{ data.start_time }}
+              </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content> </mat-card-content>
+
+            <mat-card-actions>
+              <button
+                mat-stroked-button
+                [disabled]="data.status !== 'Open'"
+                (click)="enterMeeting(data)"
+              >
+                Enter
+              </button>
+              <button
+                *ngIf="data.isHost"
+                mat-stroked-button
+                (click)="deleteMeeting(data)"
+              >
+                Cancel
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="meetingArray?.length < 1">
+    <div
+      class="no-meeting-room"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <mat-icon> no_meeting_room </mat-icon>
+      <div>No meetings were created</div>
+      <div>Schedule a new meeting</div>
+    </div>
+  </div>
+</div>
+<!-- <mat-card class="card">
+    <mat-card-title>Break Point</mat-card-title>
+
+    <mat-card-subtitle>
+    Simple flex-layout with break point.<br>
+    If you want customize to break point -> https://github.com/angular/flex-layout/wiki/Breakpoints
+    </mat-card-subtitle>
+
+
+    <mat-card-content>
+    <div fxLayout="column">
+
+        <div fxLayout="row" fxFlex="50px" style="background-color: #74edfd" fxLayoutAlign="center center">
+            header
+        </div>
+
+        <div fxLayout="column" style="height: 150px">
+            --------------
+            <div fxFlexOrder="1" fxLayout="row" fxLayout.xs="column" fxFlex.xs="100" fxFlex.gt-xs="30" style="background-color: #fd7474" fxLayoutAlign="center center">side nav</div>
+            <div fxFlexOrder="5" fxLayout="row" fxFlex.xs="100" fxFlex.gt-xs="70" fxFlex.gt-sm="50" style="background-color: #e8fd74" fxLayoutAlign="center center">article</div>
+            <div fxFlexOrder="10" fxLayout="row" fxHide.xs fxHide.sm fxFlex.gt-sm="20" style="background-color: #74fd86" fxLayoutAlign="center center">toc</div>
+            --------------
+            <div fxFlex style="background-color: #fd7474">side nav</div>
+            <div fxFlex style="background-color: #e8fd74">article</div>
+            <div fxFlex style="background-color: #74fd86">toc</div>
+        </div>
+
+        <div fxLayout="row" fxFlex="50px" style="background-color: #74edfd" fxLayoutAlign="center center">footer</div>
+    </div>
+    </mat-card-content>
+</mat-card> -->

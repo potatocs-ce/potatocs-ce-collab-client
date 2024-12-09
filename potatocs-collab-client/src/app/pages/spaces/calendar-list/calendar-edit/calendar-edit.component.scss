@@ -1,0 +1,59 @@
+.dialog_content {
+	width: 400px;
+}
+
+::ng-deep .mat-dialog-container {
+	padding: 40px;
+}
+
+.form_content {
+	display: flex;
+	flex-direction: column;
+}
+
+.btnContent {
+	margin: 0 auto;
+}
+
+.saveBtn {
+	background: #00154f;
+	color: #fff;
+	padding: 0 30px;
+	width: 150px;
+}
+
+.cancelBtn {
+	background: #a3a3a3;
+	color: #fff;
+	padding: 0 30px;
+	width: 150px;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 780px) {
+	.dialog_content {
+		width: 100% !important;
+	}
+
+	.saveBtn {
+		width: initial;
+	}
+
+	.cancelBtn {
+		width: initial;
+	}
+}
+
+::ng-deep .mat-dialog-container {
+	@media screen and (max-width: 780px) {
+		// max-width: 94vw !important;
+		margin: 0 !important;
+		// padding: 0px 0px;
+	}
+}
+
+::ng-deep .mat-form-field {
+	@media screen and (max-width: 780px) {
+		width: 100%;
+	}
+}

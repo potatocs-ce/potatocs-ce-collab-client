@@ -1,0 +1,30 @@
+.meetingBtnBox {
+  display: flex;
+}
+
+.recording-btn {
+  margin-left: auto;
+  background: #00154f;
+  color: #fff;
+}
+
+.demo-table {
+  //   width: 100%;
+  text-align: center;
+
+  th {
+    font-size: 14px;
+    // text-align: center;
+  }
+}
+
+table {
+  table-layout: fixed;
+  align-items: center;
+  word-break: break-all;
+}
+
+.select {
+  position: relative;
+  overflow: auto;
+}

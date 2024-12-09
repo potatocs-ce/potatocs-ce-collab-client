@@ -1,0 +1,68 @@
+<div class="chatAllBorder">
+	<div
+		id="safari1"
+		class="chatContainer"
+		[ngClass]="{'maxHEditted_1':replyFlag === true}"
+		#target
+		[scrollTop]="target.scrollHeight"
+	>
+		@for(item of chatDoc; track item){
+		<div class="chatInDoc">
+			@if(item.replyContent){
+			<div class="replyZone">
+				<div class="replyContent"><mat-icon>format_quote</mat-icon>{{ item.replyContent }}</div>
+			</div>
+			} @if(item.chatMemberId==userId){
+			<button mat-button class="deleteChatBtn" (click)="deleteChat(item._id, item.replyId)">
+				<mat-icon class="settingIcon ">close</mat-icon>
+			</button>
+			}
+			<div class="chatting">
+				@if(item.chatMember){
+				<div fxLayout="row">
+					<div class="chatting_charMember_name">
+						{{ item.chatMember }}
+					</div>
+					<div class="chatting_createdAt">
+						{{ item.createdAt}}
+					</div>
+				</div>
+				}
+				<div class="chatContent">
+					{{ item.chatContent }}
+				</div>
+			</div>
+			@if(item.chatMember){
+			<button (click)="replyChat(item)">reply</button>
+			}
+		</div>
+		}
+	</div>
+
+	<div id="safari2" class="textFormContainer">
+		<form (ngSubmit)="f.form.valid && createChat()" #f="ngForm" novalidate class="submit-form">
+			<div
+				class="chattingContainer"
+				[ngClass]="{'maxHEditted_2'
+            :replyFlag === true}"
+			>
+				@if(replyFlag){
+				<div class="replyDiv">
+					<div class="replyDivContent">&#64; {{ replyMember }} - {{ replyContent }}</div>
+					<mat-icon class="replyCancelBtnIcon" (click)="replyCancel()">close</mat-icon>
+				</div>
+				}
+
+				<div class="chattingContainer">
+					<div class="chatInput">
+						<textarea class="textarea-style" type="text" [(ngModel)]="chatContent" name="first"></textarea>
+					</div>
+					<div class="chatSendBtn" fxLayout="row" fxLayoutAlign="end end">
+						<button mat-stroked-button>send</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- <mat-checkbox class="chat-checkBox" color="primary">댓글만 보기</mat-checkbox> -->
+</div>

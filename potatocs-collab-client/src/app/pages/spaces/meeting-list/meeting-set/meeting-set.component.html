@@ -1,0 +1,70 @@
+<form [formGroup]="setMeetingForm" novalidate class="scheduleBox">
+	<div>
+		<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+			<div class="scheduleTitle">Schedule a meeting</div>
+			<div class="w-100p">
+				<mat-form-field class="w-100p" appearance="outline">
+					<mat-label>Meeting Title</mat-label>
+					<input matInput formControlName="meetingTitle" value="" />
+				</mat-form-field>
+			</div>
+			<div class="w-100p">
+				<mat-form-field class="w-100p" appearance="outline">
+					<mat-label>Meeting Description</mat-label>
+					<input matInput formControlName="meetingDescription" value="" />
+				</mat-form-field>
+			</div>
+			<div class="w-100p">
+				<mat-form-field appearance="outline" class="w-100p">
+					<mat-label>Choose a date</mat-label>
+					<input
+						matInput
+						[matDatepicker]="picker"
+						[matDatepickerFilter]="myFilter"
+						formControlName="startDate"
+						value="today"
+					/>
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div>
+			<div class="w-100p" fxLayout="row" fxLayoutGap="20px">
+				<mat-form-field appearance="outline" class="w-120px">
+					<mat-label>Start hour</mat-label>
+					<mat-select formControlName="startHour">
+						<mat-option *ngFor="let hour of hourList" [value]="hour.value">
+							{{ hour.value }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field appearance="outline" class="w-120px">
+					<mat-label>Start minute</mat-label>
+					<mat-select formControlName="startMin">
+						<mat-option *ngFor="let min of minList" [value]="min.value">
+							{{ min.value }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field appearance="outline" class="w-120px">
+					<mat-label>AM/PM</mat-label>
+					<mat-select formControlName="startUnit">
+						<mat-option *ngFor="let unit of timeUnit" [value]="unit.value">
+							{{ unit.value }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+
+			<div class="createMeeting">
+				<button
+					mat-raised-button
+					class="clickBtn"
+					(click)="createMeeting()"
+					[disabled]="setMeetingForm.invalid"
+				>
+					create
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

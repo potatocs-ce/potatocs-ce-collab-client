@@ -1,0 +1,91 @@
+<div class="mainTitle">Leave Request Details</div>
+<div class="modal-content">
+	<table class="modal-table">
+		<colgroup>
+			<col style="width: 120px" />
+			<col style="width: 380px" />
+		</colgroup>
+		<tbody>
+			<tr>
+				<th>Status</th>
+				<td
+					[ngClass]="{
+            approve: data.status == 'approve',
+            reject: data.status == 'reject'
+          }"
+				>
+					{{ data.status | titlecase }}
+				</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ data.requestorName }}</td>
+			</tr>
+			<tr>
+				<th>Request day</th>
+				<td>{{ data.createdAt | date : "YYYY-MM-dd" }}</td>
+			</tr>
+			<tr>
+				<th>Leave type</th>
+				<td>{{ viewType[data.leaveType] }}</td>
+			</tr>
+			<tr>
+				<th>Period</th>
+				<td>
+					{{ data.leave_start_date | date : "YYYY-MM-dd" }} ~
+					{{ data.leave_end_date | date : "YYYY-MM-dd" }} ({{
+            data.leaveDuration
+					}}
+					days)
+				</td>
+			</tr>
+			<tr>
+				<th>Leave of used</th>
+				<td>{{ data.leaveDuration }} days</td>
+			</tr>
+			<tr>
+				<th>Reason</th>
+				<td>{{ data.leave_reason }}</td>
+			</tr>
+			@if (data.rejectReason) {
+			<tr>
+				<th>Reject reason</th>
+				<td [ngClass]="{ reject: data.status == 'reject' }">
+					{{ data.rejectReason }}
+				</td>
+			</tr>
+			} @if (data.approver) {
+			<tr>
+				<th>Confirmor</th>
+				<td>{{ data.approver }}</td>
+			</tr>
+			} @if (data.reject) {
+			<tr>
+				<th>Reject reason</th>
+				<td>
+					<div [formGroup]="rejectForm">
+						<textarea formControlName="rejectReason" value=""></textarea>
+					</div>
+				</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+	@if (!data.reject) {
+	<div class="modal-btn">
+		<button class="requestCancel" color="primary" mat-raised-button mat-dialog-close>Confirm</button>
+		@if (data.status == 'pending' && !data.isManager) {
+		<button class="requestCancel pendingCancel" mat-raised-button (click)="requestCancel()">Pending Cancel</button>
+		} @if (data.status == 'approve' && data.isManager) {
+		<button class="requestCancel approveCancel" mat-raised-button (click)="approveLeaveCancel()">
+			Approve Cancel
+		</button>
+		}
+	</div>
+	} @if (data.reject) {
+	<div class="modal-btn-reject">
+		<button class="rejectBtn" (click)="rejectLeave()" mat-raised-button>Reject</button>
+		<button class="cancelBtn" mat-raised-button mat-dialog-close>Cancel</button>
+	</div>
+	}
+</div>

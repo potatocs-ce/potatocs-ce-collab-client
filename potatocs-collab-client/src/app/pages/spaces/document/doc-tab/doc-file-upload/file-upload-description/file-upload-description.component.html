@@ -1,0 +1,32 @@
+<div class="mainTitle">File Upload Description</div>
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div class="dialogContainer">
+	<div fxLayout="column" fxLayoutAlign="center center">
+		<table class="modal-table">
+			<colgroup>
+				<col style="width:120px" />
+				<col style="width:380px" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>File Name</th>
+					<td>
+						{{ data.fileData.name }}
+					</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>
+						<div [formGroup]="fileUpload">
+							<textarea formControlName="description" value=""></textarea>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="modal-btn" fxLayout="row" fxLayoutGap="25px">
+			<button class="confirmBtn" mat-raised-button (click)="descriptionMade()">Upload</button>
+			<button class="cancelBtn" mat-raised-button [mat-dialog-close]="false">Cancel</button>
+		</div>
+	</div>
+</div>

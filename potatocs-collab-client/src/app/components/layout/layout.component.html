@@ -1,0 +1,45 @@
+<div class="sidenav">
+
+  <!-- 0. sidenav container -->
+  <mat-sidenav-container class="sidenav-container" (backdropClick)="closeEvent()">
+
+    <!-- 1. side nav -->
+    <mat-sidenav #sidenav class="sidenav" [autoFocus]="false" [opened]="isDesktop()"
+      [mode]="isDesktop() ? 'side' : 'over'" [disableClose]="isDesktop()" [fixedInViewport]="!isDesktop()">
+
+      <app-side-nav></app-side-nav>
+
+    </mat-sidenav>
+
+    <!-- 2. side nav content -->
+    <mat-sidenav-content class="sidenav-content">
+      <!-- 2.1 상단 toolbar  -->
+      <app-toolbar></app-toolbar>
+
+
+
+      <!-- 2.2 main contents -->
+      <main>
+        <!-- <p>{{isDesktop$|async}}</p> -->
+        <router-outlet></router-outlet>
+      </main>
+
+      <!-- 2.3 footer -->
+      <!-- <po-footer></po-footer> -->
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
+
+
+<!-- <app-collab-header flexLayout="column"></app-collab-header>
+<div flexLayout="row" fxFlex>
+	<div fxFlex="15">
+		<app-collab-sidebar></app-collab-sidebar>
+		<po-sidenav></po-sidenav>
+	</div>
+	<div fxFlex="85">
+		<router-outlet></router-outlet>
+	</div>
+</div> -->

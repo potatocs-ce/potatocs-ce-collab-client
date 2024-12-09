@@ -1,0 +1,171 @@
+<div class="contentContainer">
+  <div class="titleContent">
+    <div class="content_1">
+      <div class="content content_left">
+        <div class="title_info">
+          <div class="title_main mat-22">
+            {{ spaceInfo?.displayName }}
+          </div>
+          <div class="spaceOption" fxLayoutAlign="default center">
+            <mat-icon
+              class="mat-18"
+              [class.isNotActive]="!spaceInfo?.isAdmin"
+              (click)="openSpaceOption()"
+              matTooltip="Space setting"
+              matTooltipPosition="above"
+              [matTooltipShowDelay]="500"
+            >
+              settings</mat-icon
+            >
+          </div>
+        </div>
+        <div class="title_sub">
+          {{ spaceInfo?.displayBrief }}
+        </div>
+      </div>
+
+      <div class="content content_right">
+        <!-- <div class="button_content">
+                    <button mat-raised-button class="createDoc" (click)="createDoc()">
+                        <mat-icon>folder_open</mat-icon>
+                        <span class="mat-18">Create Document</span>
+                    </button>
+                </div> -->
+
+        <!-- hokyun - 2022-08-16 - add labels -->
+        <div class="content memberContent">
+          <!-- <div>
+						<button
+							mat-button
+							(click)="openSpaceMemeber()"
+							matTooltip="Invite space member"
+							matTooltipPosition="above"
+							[matTooltipShowDelay]="500"
+						>
+							<mat-icon class="mat-18">person_add</mat-icon>
+						</button>
+					</div> -->
+          <div>
+            <div>
+              <button
+                mat-button
+                [matMenuTriggerFor]="memberList"
+                class="mat-icon-button"
+              >
+                <span class="member-text"
+                  >Member ({{ memberInSpace?.length }})</span
+                >
+                <mat-icon class="mat-18">expand_more</mat-icon>
+              </button>
+            </div>
+
+            <mat-menu #memberList="matMenu" class="dropdown-box">
+              <div class="dropdown">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="dropdown-header"
+                >
+                  <div>
+                    <div class="dropdown-heading">
+                      Member <span>({{ memberInSpace?.length }})</span>
+                      <button
+                        mat-button
+                        (click)="openSpaceMemeber()"
+                        matTooltip="Invite space member"
+                        matTooltipPosition="above"
+                        [matTooltipShowDelay]="500"
+                      >
+                        <mat-icon class="mat-18">person_add</mat-icon>
+                      </button>
+                    </div>
+                    <!-- <div class="dropdown-subheading">You have 8 new notifications.</div> -->
+                  </div>
+                  <div>
+                    <mat-icon>apps</mat-icon>
+                  </div>
+                </div>
+                <div class="dropdown-content">
+                  @for(item of memberInSpace; track item; let last=$last){
+                  <div>
+                    <div
+                      matRipple
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="notification notification-cursor"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        @if(item?.profile_img != ''){
+                        <img
+                          class="profile-img"
+                          [src]="item?.profile_img"
+                          alt=""
+                        />
+                        } @else {
+                        <img class="profile-img" [src]="basicProfile" alt="" />
+                        }
+
+                        <div>
+                          <div class="notification-label">{{ item?.name }}</div>
+                          <div class="notification-description">
+                            {{ item?.email }}
+                          </div>
+                        </div>
+                        <div
+                          class="adminIconCover"
+                          fxLayout="column"
+                          fxLayoutAlign="center center"
+                        >
+                          <mat-icon
+                            class="adminIcon"
+                            fxFlex
+                            [class.isNotActive]="!item?.isAdmin"
+                          >
+                            manage_accounts</mat-icon
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    @if(!last){
+                    <mat-divider></mat-divider>
+                    }
+                  </div>
+                  }
+                </div>
+              </div>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Scrumboard">
+      <div class="height_100">
+        <app-scrumboard-list
+          [spaceInfo]="spaceInfo"
+          [memberInSpace]="memberInSpace"
+        ></app-scrumboard-list>
+      </div>
+    </mat-tab>
+    <mat-tab label="Calendar">
+      <app-calendar-list [memberInSpace]="memberInSpace"></app-calendar-list>
+    </mat-tab>
+    <mat-tab label="Meeting">
+      @if(spaceInfo){
+      <app-meeting-list
+        [spaceInfo]="spaceInfo"
+        [memberInSpace]="memberInSpace"
+      ></app-meeting-list>
+      }
+    </mat-tab>
+    <!-- <mat-tab label="Document">
+			@if(spaceInfo){
+			<app-doc-list [spaceInfo]="spaceInfo" [spaceTime]="spaceTime"></app-doc-list>
+			}
+		</mat-tab> -->
+  </mat-tab-group>
+</div>

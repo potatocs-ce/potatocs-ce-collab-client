@@ -1,0 +1,19 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div class="dialogContainer">
+	<div class="mainTitle">ADD LIST</div>
+	<div fxLayout="column" fxLayoutAlign="center center">
+		<div class="w-100p">
+			<mat-form-field class="w-100p" appearance="outline">
+				<mat-label>Add list name</mat-label>
+				<input matInput [(ngModel)]="data.addStatus" />
+			</mat-form-field>
+		</div>
+
+		<div class="btnBox" fxLayout="row" fxLayoutGap="25px">
+			<button class="confirmBtn" mat-raised-button [mat-dialog-close]="data" [disabled]="data.addStatus === ''">
+				Create
+			</button>
+			<button class="cancelBtn" mat-raised-button [mat-dialog-close]="false">Cancel</button>
+		</div>
+	</div>
+</div>

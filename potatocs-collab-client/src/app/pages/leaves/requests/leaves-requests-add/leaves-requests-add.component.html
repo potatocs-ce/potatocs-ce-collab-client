@@ -1,0 +1,148 @@
+<div class="mainContentContainer">
+  <div class="mainContent">
+    <div fxLayout="row">
+      <div class="mainTitle">Request Leave</div>
+    </div>
+
+    <form [formGroup]="employeeLeaveForm" novalidate>
+      <div class="leaveTableContainer">
+        <div fxLayout="column" class="br_ltop">
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div class="leftBox">
+                <span>Requestor</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>{{ userProfileInfo()?.name }}</div>
+            </div>
+          </div>
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div class="leftBox">
+                <span>Leave Information</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <div fxLayout="column nowrap" fxLayoutGap="10px">
+                  <div>
+                    <span>Annual Leave:
+                      <em class="availableDays">{{ myLeaves()?.annual_leave - myLeaves()?.used_annual_leave }}</em>
+                      Day(s)
+                    </span>
+                  </div>
+                  <div *ngIf="userCompanyInfo()?.isRollover">
+                    <span>Rollover:
+                      <em class="availableDays">{{ myLeaves()?.rollover - myLeaves()?.used_rollover }}</em>
+                      Day(s)
+                    </span>
+                    <span>(available period : {{ rolloverMinDate }} ~ {{ rolloverMaxDate }})</span>
+                  </div>
+                  <div>
+                    <span>Sick Leave:
+                      <em class="availableDays">{{ myLeaves()?.sick_leave - myLeaves()?.used_sick_leave }}</em>
+                      Day(s)
+                    </span>
+                  </div>
+                  <div>
+                    <span>Replacement Day:
+                      <em class="availableDays">{{ (myLeaves()?.replacement_leave || 0) -
+                        (myLeaves()?.used_replacement_leave || 0) }}</em>
+                      Day(s)
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div><span>Type</span></div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <mat-form-field appearance="outline" class="matFormSize typeSection_1">
+                  <mat-label>Leave Classification</mat-label>
+                  <mat-select formControlName="leaveType1" (selectionChange)="classificationChange($event.value)">
+                    <mat-option value="annual_leave">Annual Leave</mat-option>
+                    <mat-option *ngIf="isRollover" value="rollover">Rollover</mat-option>
+                    <mat-option value="sick_leave">Sick Leave</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="matFormSize">
+                  <mat-label>Unit of Use</mat-label>
+                  <mat-select formControlName="leaveType2" (selectionChange)="typeSecondChange($event.value)">
+                    <mat-option value="day">Day</mat-option>
+                    <mat-option value="half">Half</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div><span>Period</span></div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <span *ngIf="isHalf else noHalf">
+                  <mat-form-field appearance="outline" class="matFormSize">
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepickerFilter]="holidayDateFilter"
+                      [matDatepicker]="picker1" formControlName="leave_start_date"
+                      (dateChange)="checkDateChange($event.value)">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </span>
+                <ng-template #noHalf>
+                  <span>
+                    <mat-form-field appearance="outline" class="matFormSize">
+                      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1"
+                        [matDatepickerFilter]="holidayDateFilter" formControlName="leave_start_date"
+                        (dateChange)="datePickChange($event.value)">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </span>
+                </ng-template>
+                <span class="datePickSpace">~</span>
+                <span>
+                  <mat-form-field appearance="outline" class="matFormSize">
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker2"
+                      [matDatepickerFilter]="holidayDateFilter" formControlName="leave_end_date"
+                      (dateChange)="checkDateChange($event.value)">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div class="leftBox">
+                <span>Reason</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <textarea class="demo-textarea" formControlName="leave_reason"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="requestLeaveBtn" fxLayout="row" fxLayoutAlign="center center">
+            <div class="btnSection_1">
+              <button mat-raised-button class="tableBtn" color="primary" (click)="requestLeave()"
+                [disabled]="employeeLeaveForm.invalid">Request</button>
+            </div>
+            <div>
+              <button mat-raised-button class="tableBtn" (click)="toBack()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

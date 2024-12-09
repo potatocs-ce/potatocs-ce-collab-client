@@ -1,0 +1,130 @@
+.mainTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 40px;
+}
+.modal-table {
+  font-size: 13px;
+  text-align: left;
+  border-top: 1px solid rgb(221, 221, 221);
+  border-collapse: collapse;
+}
+
+.modal-table tr {
+  height: 40px;
+}
+
+.modal-table th {
+  padding: 16px;
+  font-weight: 400;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  border-left: 1px solid rgb(221, 221, 221);
+}
+
+.modal-table td {
+  border-bottom: 1px solid rgb(221, 221, 221);
+  border-left: 1px solid rgb(221, 221, 221);
+  padding: 16px 24px 16px 16px;
+  white-space: pre-line;
+}
+
+.modal-table th:first-child,
+td:first-child {
+  border-top: none;
+  border-left: none;
+}
+
+$pending: isPending; // pending 일때 스타일 다르게 적용을 위한 변수
+.modal-btn {
+  margin-top: 20px;
+  text-align: center;
+
+  button {
+    padding: 0px 40px;
+    background-color: #00154f;
+    @if $pending {
+      // if 문
+      margin: 0 15px;
+    }
+  }
+  .requestCancel {
+    color: #fff;
+    // margin: 0 30px;
+  }
+}
+
+.modal-btn-reject {
+  margin-top: 20px;
+  text-align: center;
+
+  button {
+    padding: 0 40px;
+    margin: 0 15px;
+  }
+}
+
+.approve {
+  color: blue;
+}
+.reject {
+  color: red;
+}
+
+.rejectBtn {
+  background: #ff4081;
+  color: #fff;
+  padding: 0 30px;
+}
+
+.cancelBtn {
+  background: #969696;
+  color: #fff;
+  padding: 0 30px;
+}
+
+textarea {
+  resize: none;
+  overflow-wrap: break-word;
+  flex: 0 0 auto;
+  white-space: break-spaces !important;
+  // overflow-y:hidden;
+  width: 100%;
+  // border: none;
+  outline: none;
+  height: 100px;
+  font-size: 14px;
+  padding: 10px;
+  font-family: "Noto Sans", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 780px) {
+  th {
+    padding: 5px !important;
+  }
+
+  td {
+    padding: 5px 24px !important;
+  }
+
+  textarea {
+    height: auto;
+  }
+
+  .rejectBtn {
+    margin: 0 2px !important;
+  }
+  .cancelBtn {
+    margin: 0 2px !important;
+  }
+}
+
+::ng-deep.mat-dialog-container {
+  @media screen and (max-width: 780px) {
+    padding: 15px !important;
+  }
+}

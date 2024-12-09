@@ -1,0 +1,317 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+button.mat-icon-button {
+  display: flex; /* Flexbox 사용 */
+  justify-content: space-between; /* 좌우 정렬 */
+  align-items: center; /* 세로 정렬 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  width: 100%; /* 버튼 전체 너비 차지 */
+}
+
+.member-text {
+  flex-grow: 1; /* 텍스트가 가능한 공간 차지 */
+}
+
+.mat-icon {
+  margin-left: 10px; /* 아이콘과 텍스트 사이의 간격 */
+}
+
+.contentContainer {
+  // width: 100%;
+  //   padding: 0 0 10px 0;
+  background-color: bisque;
+}
+
+.titleContent {
+  padding: 10px 30px;
+}
+
+.title_info {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.title_sub {
+  padding: 5px;
+}
+
+.content_1 {
+  // margin: 20px 0 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  padding: 10px;
+}
+
+.content_right {
+  display: flex;
+  // width: 400px;
+}
+
+.memberContent {
+  display: flex;
+}
+
+.button_content {
+  margin: auto 0;
+}
+
+.mat-icon-button {
+  padding: 0 5px;
+  width: 105px;
+  border-radius: 3px;
+}
+
+.spaceOption {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.title_main {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.title_sub {
+  font-size: 12px;
+}
+
+.createDoc {
+  // .mat-icon {
+  // 	margin: 0 5px;
+  // }
+}
+
+// ::ng-deep .menuCus_2 {
+
+//     background-color: #fff;
+//     border: 1px solid #e1e1e1;
+//     box-shadow:
+// 	0px 5px 5px -3px rgb(0 0 0 / 20%),
+// 	0px 8px 10px 1px rgb(0 0 0 / 14%),
+// 	0px 3px 14px 2px rgb(0 0 0 / 12%);
+//     border-radius: 4px;
+//     overflow: hidden;
+//     color: #222;
+//     transition: all .25s;
+
+// height: calc((100vh - 85px) - 98px);
+//     padding-left: 12px;
+//     padding-right: 12px;
+//     overflow-y: auto;
+//     display: flex;
+//     flex-direction: column;
+//     width: 100% !important;
+
+// 	padding-left: 12px;
+//     padding-right: 12px;
+// }
+
+// .mat-menu-item {
+// 	overflow: initial;
+// 	line-height: initial;
+// }
+
+// ::ng-deep .mat-menu-content:not(:empty) {
+//     padding-top: 0px;
+//     padding-bottom: 0px;
+// }
+
+.adminIconCover .mat-icon {
+  // text-align: center;
+  // vertical-align: middle;
+  // margin-right: initial;
+  // margin-left: 10px;
+  // border-radius: 50%;
+  // background-color: #007a1b;
+  // padding: 6px;
+}
+
+.adminIcon {
+  margin-bottom: 13px;
+  font-size: 22px;
+  // color: #ffffff;
+}
+
+.isNotActive {
+  display: none;
+}
+
+// ----------------------------------------------------------------
+
+::ng-deep .mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+::ng-deep .mat-menu-panel {
+  min-width: initial !important;
+  max-width: initial !important;
+  overflow: initial !important;
+  border-radius: 4px;
+  outline: 0;
+  min-height: initial !important;
+}
+
+// Notification CSS
+::ng-deep .cdk-overlay-pane {
+  transform: translateY(14px);
+}
+
+.icon-btn-active {
+  background: rgba(255, 255, 255, 0.2);
+  // border-radius: 999999px;
+  // margin: 0 12px 0 0;
+  padding: 5px;
+}
+
+.dropdown {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  // box-shadow:
+  // 	0 16px 38px -12px rgb(0 0 0 / 56%),
+  // 	0 4px 25px 0 rgb(0 0 0 / 12%),
+  // 	0 8px 10px -5px rgb(0 0 0 / 20%);
+  max-width: 100vw;
+  overflow: hidden;
+  //   width: 350px;
+  border-radius: 0.25rem;
+}
+
+.dropdown-header {
+  padding: 1rem 1.5rem;
+  background: rgba(59, 130, 246, 0.8);
+  color: #fff;
+}
+
+.dropdown-profile-heading {
+  font-size: 18px;
+}
+
+.dropdown-profile-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999999px;
+  margin: 0 12px 0 0;
+  padding: 8px;
+}
+
+.dropdown-subheading {
+  font-size: 12px;
+}
+
+.dropdown-content {
+  max-height: 291px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// ��ũ�� CSS
+.dropdown-content::-webkit-scrollbar {
+  width: 12px;
+}
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #7176809d;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+// ��ũ�� CSS
+
+.notification {
+  color: #000;
+  padding: 16px 24px;
+  position: relative;
+  text-decoration: none;
+  // transition: var(--trans-ease-out);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.notification-cursor {
+  cursor: pointer;
+}
+
+.notification-label {
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.notification-description {
+  margin-left: 15px;
+  font-size: 11px;
+  color: gray;
+}
+
+.icon-box-1 {
+  margin-right: 20px;
+}
+
+// ::ng-deep .mat-tab-body.mat-tab-body-active{
+//     margin: 15px;
+// }
+
+.height_100 {
+  height: calc(100vh - 240px);
+}
+
+@media screen and (max-width: 780px) {
+  .content {
+    padding: 0;
+  }
+
+  .titleContent {
+    padding: 10px 20px;
+  }
+
+  .content_1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content_right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button_content {
+    margin: auto 0 5px auto;
+  }
+
+  .memberContent {
+    margin: 0 0 0 auto;
+  }
+
+  .mat-icon-button {
+    width: 100%;
+  }
+}
+
+.profile-img {
+  width: 35px;
+  border: 0;
+  height: auto;
+  margin-left: -15px;
+  border-radius: 100%;
+  z-index: -10;
+
+  // margin-left: 60px;
+}
+// ::ng-deep .cdk-overlay-pane {
+//     @media  screen and (max-width: 780px) {
+//         padding: 15px !important;
+//         max-width: 94vw !important;
+//     }
+// }

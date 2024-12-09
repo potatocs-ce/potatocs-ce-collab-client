@@ -1,0 +1,143 @@
+.mainContentContainer {
+  padding: 40px 40px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.mainTitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.selectContainer {
+  padding: 20px 20px 0;
+  border: 1px solid rgba(238, 238, 238, 0.548);
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 13px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  flex: 1;
+  // min-width: 1200px;
+}
+
+.selectBox {
+  margin-bottom: 20px;
+}
+
+.selectLabel {
+  padding: 20px;
+  display: inline-block;
+  min-width: 60px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.formFieldBox {
+  width: 180px;
+}
+
+.formEmailFieldBox {
+  width: 360px;
+}
+
+.formSpacer {
+  margin-right: 5px;
+}
+
+.waveSpacer {
+  margin: 0 5px;
+}
+
+.fontBold {
+  font-weight: bold;
+}
+
+.searchBtn {
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #00154f;
+}
+
+.historyTableBox {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  // min-width: 1200px;
+  margin-top: 50px;
+}
+
+.historyTable {
+  width: 100%;
+  text-align: center;
+
+  th {
+    text-align: center;
+  }
+
+  box-shadow: none;
+}
+
+.mat-header-row {
+  // background-color: #273da0;
+  background-color: #00154f;
+
+  th {
+    color: #fff;
+  }
+}
+
+.leave-request-detail {
+  cursor: pointer;
+  font-weight: 450;
+  text-decoration: underline;
+}
+
+.approve {
+  color: blue;
+}
+
+.reject {
+  color: red;
+}
+
+@media screen and (max-width: 780px) {
+  .mainContentContainer {
+    padding: 10px 10px;
+  }
+
+  .mainTitle {
+    margin: 20px auto;
+  }
+
+  .selectBoxContent {
+    max-width: 100% !important;
+  }
+
+  .selectContent {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .historyTableBox {
+    word-break: break-all;
+
+    th {
+      padding: 0 10px;
+    }
+
+    td {
+      padding: 0 10px;
+      font-size: 0.7em;
+    }
+  }
+}
+
+.center-text {
+  text-align: center;
+}

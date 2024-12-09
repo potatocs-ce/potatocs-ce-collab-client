@@ -1,0 +1,304 @@
+// // .docMeeting-div{
+// //     // height: 100vh;
+// // }
+
+// .meetingListBox {
+// 	overflow: auto;
+//     margin-bottom: 12px;
+//     font-size: 13px;
+//     line-height: 1.4;
+//     flex: 1 1;
+//     width: 100%;
+// }
+
+// // .select {
+// //     // height: 100%;
+// // }
+
+// table {
+//     width:100%;
+//     table-layout: fixed;
+//     align-items: center;
+//     word-break: break-all;
+// }
+// .select {
+//     position: relative;
+//     // min-height: 200px;
+//     // max-height: 600px;
+//     overflow: auto;
+//   }
+//   .select::-webkit-scrollbar-track{
+// 	background-color: #F5F5F5;
+// }
+// .select::-webkit-scrollbar{
+//     width: 8px;
+// 	background-color: #F5F5F5;
+// }
+// .select::-webkit-scrollbar-thumb{
+//     border-radius: 8px;
+//     background-color: #bebebe;
+// 	border: 1px solid #e2e2e2;
+// }
+
+// .demo-table {
+//     // flex: 1 1;
+// 	width: 100%;
+// 	text-align: center;
+
+// 	th {
+// 		text-align: center;
+// 	}
+//     td {
+//         cursor: pointer;
+//     }
+// }
+
+// .meetingBtnBox {
+//     margin: 15px 0;
+//     text-align: center;
+//     cursor: pointer; /* "hand" cursor */
+//     // position: fixed;
+//     // margin-left: 122px;
+//     // margin-right: 122px;
+//     // margin-bottom: 50px;
+//     // bottom: 0;
+// }
+
+// .mat-divider {
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+// }
+
+// .createMeeting{
+//     text-align: center;
+// }
+
+// .mat-column-Enter {
+//     width: 30px;
+// }
+// .mat-column-Delete {
+//     width: 30px;
+// }
+
+// .cursor {
+//     cursor: pointer;
+// }
+
+.scheduleBtn {
+	background-color: #00154f;
+}
+
+.body-margin {
+	margin: 30px;
+}
+
+/////////////////////////////////////// dialog ///////////////////////////////////////
+
+.scheduleBox {
+	width: 400px;
+	padding: 20px;
+}
+
+.scheduleTitle {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.w-100p {
+	width: 100%;
+}
+.w-120px {
+	width: 120px;
+}
+
+.createMeeting {
+	width: 100%;
+}
+
+.clickBtn {
+	background: #00154f;
+	color: #fff;
+	padding: 0 30px;
+	width: 100%;
+}
+
+::ng-deep .mat-form-field-wrapper {
+	padding-bottom: 0;
+}
+
+.datePickSpace {
+	display: none;
+}
+
+.mat-dialog-container {
+	padding: 0 !important;
+}
+
+.mainTitle {
+	font-size: 20px;
+	margin: 20px 15px;
+}
+
+.leaveTableContainer {
+	min-width: 0;
+	padding: 20px 0px;
+}
+
+.lineDivider {
+	display: flex;
+	width: 100%;
+}
+
+.leftTable {
+	text-align: center;
+	flex: 1 1 !important;
+	padding: 5px 0;
+	font-size: 0.7em;
+	max-width: 20% !important;
+}
+
+.rightTable {
+	// flex: 1 1 !important;
+	max-width: 100%;
+	padding: 10px;
+	font-size: 0.7em !important;
+}
+
+.matFormSize {
+	width: 100% !important;
+}
+
+.typeSection_1 {
+	margin: 0;
+}
+
+.demo-textarea {
+	height: auto;
+	padding: 0;
+}
+
+.requestLeaveBtn {
+	margin-top: 20px;
+}
+
+.requestBtn {
+	margin-top: 10px;
+}
+
+.card {
+	max-width: 300px;
+	margin: 20px;
+}
+
+.one {
+	background-color: #009688;
+}
+.one {
+	background-color: #fd7474;
+	background-color: #ffa1a1;
+}
+.one {
+	background-color: #e8fd74;
+	background-color: #f1fac0;
+}
+.one {
+	background-color: #74fd86;
+	background-color: #b5ffbf;
+}
+.two,
+div.colored > div:nth-child(10n + 2) {
+	background-color: #3949ab;
+}
+
+::ng-deep .cdk-overlay-pane {
+	@media screen and (max-width: 780px) {
+		max-width: 94vw !important;
+	}
+}
+
+.card-title {
+	font-size: 16px;
+	font-weight: bold;
+}
+.profile-img {
+	width: 30px;
+	border: 0;
+	height: auto;
+	border-radius: 100%;
+	// margin-left: 60px;
+}
+
+// ::ng-deep .mat-slide-toggle-thumb {
+//     width: 10px !important;
+//     height: 10px !important;
+//     transform: translate(50%, 50%);
+// }
+
+// ::ng-deep .mat-slide-toggle-bar {
+//   background-color: #000;
+//   border-radius: 15px !important;
+//   height: 16px !important;
+// }
+
+// ::ng-deep .mat-slide-toggle-thumb-container {
+//   top: -2px !important;
+// }
+
+// ::ng-deep.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+//   background-color: #000;
+// }
+
+// ::ng-deep.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+//     background-color: #fff;
+// }
+
+@media screen and (max-width: 780px) {
+	.scheduleBox {
+		width: 100%;
+		padding: 0;
+	}
+
+	.w-120px {
+		min-width: 80px;
+		max-width: 88px;
+	}
+}
+
+.cardContainer {
+	width: 100%;
+	height: calc(90%);
+	overflow: auto;
+}
+
+// mat card
+.cardMgCtr {
+	// max-width: 300px;
+
+	// margin-left: 50px;
+	margin: 0 auto;
+}
+
+// .meetingBox{
+//     height: 100vh;
+// }
+
+.example-card {
+	// width: 300px;
+	margin: 10px;
+}
+
+.meetingBtnBox {
+	margin: 0 10px;
+}
+
+.no-meeting-room {
+	.mat-icon {
+		font-size: 100px;
+		height: 100%;
+		width: 100px;
+		color: #00154f;
+	}
+
+	font-size: 24px;
+	color: gray;
+}

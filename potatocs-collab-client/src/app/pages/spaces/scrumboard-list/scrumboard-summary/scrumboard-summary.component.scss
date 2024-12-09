@@ -1,0 +1,541 @@
+.main-container {
+  padding: 20px;
+  width: 650px;
+  max-height: 855px;
+}
+
+.first-row {
+  margin-bottom: 15px;
+
+  .doc-title {
+    word-break: break-all;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -10px;
+  }
+
+  .doc-status {
+    color: rgb(141, 141, 141);
+  }
+  .mat-icon {
+    color: #00154f;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+  }
+
+  .creator {
+    margin-top: 10px;
+    color: rgb(141, 141, 141);
+  }
+}
+
+.member-select-option-name {
+  font-size: 14px;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+.member-select-option-email {
+  font-size: 12px;
+  margin-top: -8px;
+  margin-left: 6px;
+}
+
+.member-option {
+  height: 70px;
+}
+.profile-img-set {
+  margin-block-end: 10px;
+}
+.profile-img {
+  width: 50px;
+  border: 0;
+  height: auto;
+  border-radius: 100%;
+  margin-right: -15px;
+  // margin-left: 60px;
+}
+
+.profile-img-select {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin-top: 15px;
+}
+
+.document-data {
+  // width: 800px;
+  min-height: 590px;
+  // max-height: 590px;
+
+  overflow: auto;
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+table {
+  //   table-layout: fixed;
+  //   align-items: center;
+  //   word-break: break-all;
+}
+
+.select {
+  position: relative;
+  overflow: auto;
+}
+
+.demo-table {
+  width: 100%;
+  text-align: center;
+
+  th {
+    font-size: 14px;
+    // text-align: center;
+  }
+}
+.mat-column-download {
+  width: 30px;
+}
+.mat-column-delete {
+  width: 30px;
+}
+.cursor {
+  cursor: pointer;
+}
+
+.document-data::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+.document-data::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+.document-data::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #bebebe;
+  border: 1px solid #e2e2e2;
+}
+
+.file-row {
+  margin: 15px 0;
+
+  .row-main-icon {
+    color: #00154f;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+    margin-top: 3px;
+  }
+  .choose_file_name {
+    width: 255px;
+    height: 36px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 8px;
+    font-weight: 300;
+    font-size: 14px;
+    color: gray;
+    background-color: rgb(238, 238, 238);
+  }
+  .uploadFileLabel {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #upload input[type="file"] {
+    display: none;
+  }
+  .upload_choose_button {
+    height: 28px;
+  }
+  .choose_button_span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-align: end;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #00154f;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+      0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    border-radius: 3px;
+    padding: 3px 6px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .file-upload-detail {
+    cursor: pointer;
+    font-weight: 550;
+    text-decoration: underline;
+  }
+}
+
+.description-row {
+  margin: 15px 0;
+
+  .mat-icon {
+    color: #00154f;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+}
+
+.description-box {
+  position: relative;
+  resize: vertical;
+  border: 1.5px solid #bebebe;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  font-family: "Noto Sans", "Roboto", "Helvetica Neue", sans-serif;
+  // overflow:hidden;
+  width: 100%;
+  height: 67px;
+  overflow-wrap: break-word;
+}
+
+.description-box:hover {
+  border: 1.5px solid #00154f;
+  border-radius: 5px;
+}
+
+.description-box::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+.description-box::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+.description-box::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #bebebe;
+  border: 1px solid #e2e2e2;
+}
+
+.comment-row {
+  margin: 15px 0;
+
+  .mat-icon {
+    color: #00154f;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+  }
+  .comment-input {
+    margin-bottom: 10px;
+  }
+  .comment-textarea {
+    position: relative;
+    resize: none;
+    border: 1.5px solid #bebebe;
+    border-radius: 5px;
+    outline: none;
+    font-size: 13px;
+    font-family: "Noto Sans", "Roboto", "Helvetica Neue", sans-serif;
+    // overflow:hidden;
+    width: 100%;
+    height: 36px;
+    overflow-wrap: break-word;
+  }
+  .comment-textarea:hover {
+    border: 1.5px solid #00154f;
+    border-radius: 5px;
+  }
+  .comment-textarea::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+  .comment-textarea::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f5f5;
+  }
+  .comment-textarea::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #bebebe;
+    border: 1px solid #e2e2e2;
+  }
+  .comment-save-btn {
+    margin-left: 5px;
+    background: #00154f;
+    color: #fff;
+  }
+
+  .chat-name {
+    font-weight: 400;
+  }
+  .chat-time {
+    font-size: 14px;
+    color: rgb(141, 141, 141);
+  }
+  .chat-content {
+    font-size: 13px;
+    color: rgb(141, 141, 141);
+    white-space: pre-line;
+    word-break: break-word;
+  }
+  .comment-content {
+    margin-bottom: 12px;
+    // padding: 5px;
+    // border: 1px solid #e2e2e2;
+    // border-radius: 4px;
+    // background-color: #f0f0f0;
+  }
+  .chat-member-info {
+    margin-bottom: 5px;
+  }
+  .chat-profile-img {
+    width: 45px;
+    border: 0;
+    height: auto;
+    border-radius: 100%;
+    margin-right: 10px;
+  }
+}
+
+.last-row {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.detail-btn {
+  background-color: #00154f;
+}
+
+.delete-btn {
+  color: red;
+}
+
+.closeMark {
+  cursor: pointer;
+}
+
+.Member-select {
+  ::ng-deep.mat-select-arrow {
+    display: none;
+  }
+}
+//hokyun
+
+.creator-plus-button-container {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+
+  button {
+    width: 40px;
+    height: 40px;
+    background-color: #7c7c7c;
+    opacity: 0.5;
+    line-height: 40px;
+    &::ng-deep .mat-button-wrapper {
+      line-height: 40px;
+      padding: 0;
+    }
+    mat-icon {
+      color: #fff;
+    }
+  }
+}
+
+.label-plus-button-container {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+
+  button {
+    width: 30px;
+    height: 30px;
+    background-color: #7c7c7c;
+    opacity: 0.5;
+    color: #fff;
+    line-height: 30px;
+    border-radius: 10%;
+
+    &::ng-deep .mat-button-wrapper {
+      line-height: 30px;
+      padding: 0;
+    }
+    .mat-icon {
+      color: #fff;
+    }
+  }
+}
+
+.mat-chip-list {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+
+  .mat-chip {
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 560px;
+    pointer-events: none;
+  }
+  .mat-chip.mat-standard-chip::after {
+    background: none !important; // color that you want on hover
+  }
+}
+
+::ng-deep .label_box {
+  padding: 8px;
+  min-width: 550px;
+
+  .dropdown-body {
+    padding: 3px 0;
+    max-height: 200px;
+    overflow: auto;
+    :hover {
+      border-radius: 8px;
+    }
+
+    .dropdown-list-item {
+      margin: 3px 0;
+      .mat-list-text {
+        height: 100% !important;
+        padding-left: 0px !important;
+      }
+    }
+    //체크박스 스타일링
+    .mat-pseudo-checkbox::after {
+      color: green;
+      width: 14px;
+      height: 6px;
+      transition: none;
+      top: auto;
+      left: auto;
+      border-left: 3px solid currentColor;
+      border-bottom: 3px solid currentColor;
+    }
+    .mat-pseudo-checkbox {
+      width: 20px;
+      height: 20px;
+      border: none;
+      margin-right: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mat-pseudo-checkbox-checked {
+      background-color: #00000000;
+    }
+
+    .dropdown-checkbox-section {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .dropdown-checkbox-title {
+        flex: 1;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        margin-right: 3px;
+        padding: 10px;
+
+        input {
+          user-select: none;
+          pointer-events: none;
+
+          background-color: #00000000;
+          border: none;
+          color: #fff;
+          font-weight: bold;
+          width: 100%;
+        }
+        input:focus {
+          outline: 2px solid #f0f0f0;
+          border-radius: 4px;
+        }
+      }
+
+      .dropdown-list-button {
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 0 3px;
+        width: 35px;
+        height: 35px;
+
+        &::ng-deep .mat-button-wrapper {
+          line-height: 35px;
+          padding: 0;
+        }
+        .mat-icon {
+          color: #000;
+        }
+      }
+
+      .dropdown-edit-button {
+      }
+
+      .dropdown-delete-button {
+      }
+    }
+  }
+
+  .dropdown-footer {
+    padding-top: 8px;
+    padding-bottom: 3px;
+    padding: 8px 5px 3px 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+
+    .label-plus-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      margin-right: 10px;
+
+      .mat-fab {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        background-color: red;
+        &::ng-deep .mat-button-wrapper {
+          line-height: 20px;
+          padding: 0;
+        }
+      }
+    }
+    .Label-select {
+      ::ng-deep.mat-select-arrow {
+        display: none;
+      }
+    }
+
+    button {
+      background-color: #00154f;
+    }
+  }
+
+  .dropdown-color-selector {
+    width: 500px;
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    .colors {
+      width: 65px;
+      height: 40px;
+      border-radius: 8px;
+      margin: 3px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+//mat-select 눌렀을 때 나오는 조금한 창 크기 수정
+.mat-mdc-select {
+  width: 50%;
+}
+
+.mat-mdc-menu-panel {
+  min-width: none;
+}

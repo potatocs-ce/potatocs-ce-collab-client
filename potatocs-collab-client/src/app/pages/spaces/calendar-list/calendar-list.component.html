@@ -1,0 +1,77 @@
+<div class="body-margin">
+  <div class="headLine">
+    <div class="chevrons" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="flex">
+        <button (click)="view = CalendarView.Month" mat-button>MONTH</button>
+        <button (click)="view = CalendarView.Week" mat-button>WEEK</button>
+        <button (click)="view = CalendarView.Day" mat-button>DAY</button>
+      </div>
+      <div class="dateContent">
+        <button
+          class="monthBtn"
+          [(viewDate)]="viewDate"
+          [view]="view"
+          mwlCalendarPreviousView
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <div class="date">
+          {{ viewDate | calendarDate : view + "ViewTitle" : "en" }}
+        </div>
+        <button
+          class="monthBtn"
+          [(viewDate)]="viewDate"
+          [view]="view"
+          mwlCalendarNextView
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+
+      <div class="memberFilter">
+        <mat-form-field appearance="outline">
+          <mat-label>Member</mat-label>
+          <mat-select [formControl]="member" multiple>
+            <mat-option
+              (click)="memberFilter()"
+              *ngFor="let member of memberInSpace"
+              [value]="member._id"
+            >
+              {{ member.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-0 shadow flex-auto relative">
+    @switch(view){ @case ('month'){
+    <mwl-calendar-month-view
+      (dayClicked)="dayClicked($event.day)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      [activeDayIsOpen]="activeDayIsOpen"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate"
+    >
+    </mwl-calendar-month-view>
+    } @case('week'){
+    <mwl-calendar-week-view
+      (eventTimesChanged)="eventTimesChanged($event)"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate"
+    >
+    </mwl-calendar-week-view>
+    } @case('day'){
+    <mwl-calendar-day-view
+      (eventTimesChanged)="eventTimesChanged($event)"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate"
+    >
+    </mwl-calendar-day-view
+    >} }
+  </div>
+</div>

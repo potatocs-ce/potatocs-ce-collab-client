@@ -1,0 +1,117 @@
+<div class="mainContentContainer">
+  <div class="mainContent">
+    <div fxLayout="row">
+      <div class="mainTitle">A replacement day confirming request</div>
+    </div>
+
+    <form [formGroup]="rdLeaveForm" novalidate>
+      <div class="leaveTableContainer">
+        <div fxLayout="column" class="br_ltop">
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div class="leftBox">
+                <span>Requestor</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                {{data?.name}}
+              </div>
+            </div>
+          </div>
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div>
+                <span>Type</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <mat-form-field appearance="outline" class="matFormSize typeSection_1">
+                  <mat-label>Leave Classification</mat-label>
+                  <mat-select formControlName="leaveType1" (selectionChange)="classificationChange($event.value)">
+                    <mat-option value="replacement_leave">Replacement Day</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="matFormSize">
+                  <mat-label>Unit of Use</mat-label>
+                  <mat-select formControlName="leaveType2" (selectionChange)="typeSecondChange($event.value)">
+                    <mat-option value="day">Day</mat-option>
+                    <mat-option value="half">Half</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="lineDivider" fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div>
+                <span>Period</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <span *ngIf="isHalf() else noHalf">
+                  <mat-form-field appearance="outline" class="matFormSize">
+                    <input matInput [matDatepicker]="picker1" formControlName="from"
+                      (dateChange)="checkDateChange($event.value)">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </span>
+                <ng-template #noHalf>
+                  <span>
+                    <mat-form-field appearance="outline" class="matFormSize">
+                      <input matInput [matDatepicker]="picker1" formControlName="from"
+                        (dateChange)="datePickChange($event.value)">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </span>
+                </ng-template>
+                <span class="datePickSpace">~</span>
+                <span>
+                  <mat-form-field appearance="outline" class="matFormSize">
+                    <input matInput [matDatepicker]="picker2" formControlName="to"
+                      (dateChange)="checkDateChange($event.value)">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap">
+            <div class="leftTable" fxFlex="30" fxFlex.gt-md="20">
+              <div class="leftBox">
+                <span>Reason</span>
+              </div>
+            </div>
+            <div class="rightTable" fxFlex>
+              <div>
+                <textarea class="demo-textarea" formControlName="leave_reason"></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- <div fxLayout="row" fxLayoutAlign="center center">
+						<div class="btnSection_1">
+							<button mat-raised-button class="tableBtn" color="primary" (click)="requestLeave()" [disabled]="employeeLeaveForm.invalid">Request</button>
+						</div>
+						<div>
+							<button mat-raised-button class="tableBtn" (click)="toBack()">Cancel</button>
+						</div>
+					</div> -->
+          <div class="requestBtn" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <button mat-raised-button class="approveBtn" (click)="requestConfirmRd()" [disabled]="rdLeaveForm.invalid">
+              Request
+            </button>
+            <button mat-raised-button class="cancelBtn" mat-dialog-close> Cancel </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>

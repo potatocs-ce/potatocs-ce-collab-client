@@ -1,0 +1,190 @@
+.headerContainer {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 24px 0px 16px;
+}
+
+.editorContainer {
+	background: #e9f5fd;
+	border-radius: 50px;
+	max-width: 85%;
+	margin: 50px auto;
+	padding: 30px 30px;
+}
+
+.innderContainer {
+	min-height: 600px;
+	background: #fff;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%), 0 9px 45px 0 rgb(114 119 160 / 12%);
+	box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%), 0 9px 45px 0 rgb(114 119 160 / 12%);
+	padding: 20px 50px 70px 50px;
+	font-size: 16px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.spaceSelect {
+	font-size: 12px;
+}
+
+.textAreaContainer {
+	position: relative;
+	width: 90%;
+	-webkit-transition: background-color 0.15s ease;
+	transition: background-color 0.15s ease;
+	font-size: 26px;
+	margin: auto;
+
+	textarea {
+		resize: none;
+		overflow-wrap: break-word;
+		flex: 0 0 auto;
+		white-space: break-spaces !important;
+		overflow-y: hidden;
+	}
+
+	.inputTitleBox {
+		width: 100%;
+	}
+
+	.taFont {
+		font-weight: bold;
+	}
+}
+
+//park
+//select user 부분
+.profile-img-select {
+	width: 35px;
+	height: 35px;
+	border-radius: 100%;
+	margin-top: 15px;
+}
+
+.member-select-option-name {
+	font-size: 14px;
+	margin-top: 2px;
+	margin-left: 5px;
+}
+.member-select-option-email {
+	font-size: 12px;
+	margin-top: -32px;
+	margin-left: 6px;
+}
+
+.member-option {
+	height: 70px;
+}
+
+//////////////////////////////////////////////////////////////
+.aboveTitle {
+	font-size: 12px;
+	padding-bottom: 30px;
+}
+.docSpaceTitle {
+	margin: 0 20px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.mg-t-20 {
+	margin: 20px 0;
+}
+
+.ce-toolbar__content {
+	max-width: 90%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.saveBtn {
+	background: #00154f;
+	color: #fff;
+	padding: 0 30px;
+}
+
+.selectUser {
+	padding: 0 10px;
+}
+.backBtn {
+	background: #bdbdbd;
+	color: #fff;
+	padding: 0 30px;
+}
+
+::ng-deep .mat-form-field-wrapper .ng-tns-c105-3 {
+	padding: 0 !important;
+}
+
+/////////////////////////////////////////////////////////
+
+.periodContent {
+	height: 73px;
+	padding: 0 50px;
+	line-height: 4;
+}
+
+.btnContent {
+	align-items: center;
+	display: flex;
+	padding: 0 50px;
+}
+
+.period {
+	font-size: 20px;
+	// margin-right: 15px;
+}
+.period-picker {
+	font-size: 16px;
+	padding: 7px;
+	width: 125px;
+}
+
+.ce-block__content {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 780px) {
+	.headerContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: initial;
+		height: 120px;
+	}
+
+	.btnContent {
+		justify-content: space-between;
+		padding: 10px 0 20px 0;
+	}
+
+	.periodContent {
+		display: flex;
+		flex-direction: row;
+		padding: 0;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.dateContent {
+		width: 100%;
+	}
+
+	// .editorContainer {
+	//     margin: 10px 0;
+	//     // max-width: 85%;
+	// }
+
+	.innderContainer {
+		padding: 11px 10px 70px 10px;
+	}
+}
+
+::ng-deep .mat-form-field {
+	@media screen and (max-width: 780px) {
+	}
+}

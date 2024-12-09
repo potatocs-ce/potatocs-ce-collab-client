@@ -1,0 +1,90 @@
+<div class="documentWholePage">
+	<!-- <div fxLayout="column"> -->
+	<div class="headerContainer" fxLayout="row" fxLayoutAlign="space-between center">
+		<div>
+			<button mat-raised-button class="backBtn" (click)="toBack()">Back</button>
+		</div>
+		<div>
+			<div fxLayout="row" fxLayoutGap="10px">
+				<div>
+					<button mat-button [matMenuTriggerFor]="menuRef" *ngIf="isSpaceAdmin">
+						<mat-icon class="settingIcon">more_vert</mat-icon>
+					</button>
+					<mat-menu #menuRef="matMenu" class="menuCustomize">
+						<div fxFlex fxLayout="column">
+							<div>
+								<button mat-menu-item class="menuCus_3" (click)="deleteDoc()">Delete Document</button>
+							</div>
+							@if(mobileWidth<=700){
+							<div class="menuCus_4">
+								<button mat-menu-item (click)="viewMore()">View more</button>
+							</div>
+							}
+						</div>
+					</mat-menu>
+				</div>
+				<div>
+					<button mat-raised-button class="saveBtn" (click)="updateDoc()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="twoBlocksBodies" fxLayout="row" fxLayoutAlign="space-between stretch">
+		<div class="leftBlock" [ngClass]="{'viewMoreLeft': toggle === true}">
+			<div #innderContainer class="leftBlockBody innderContainer" fxLayout="column">
+				<div class="ce-block">
+					<div class="status_title_box_1">
+						<div class="status_title_box_1 status_title_paragraph" data-placeholder="">
+							<div fxLayout="row" class="aboveTitle" fxLayoutAlign="initial center">
+								<div class="docStatus">
+									<mat-form-field appearance="outline" class="spaceSelect">
+										<mat-select required [(ngModel)]="selectedStatus">
+											<mat-option *ngFor="let status of docStatus" [value]="status">
+												{{status}}
+											</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+								<div class="docSpaceTitle">
+									{{ spaceTitle }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mg-t-20">
+					<div class="textAreaContainer taFont">
+						<input
+							matInput
+							[(ngModel)]="editorTitle"
+							required
+							placeholder="Enter a title"
+							maxlength="151"
+							style="font-weight: bold;"
+						/>
+					</div>
+				</div>
+
+				<div id="editorjs"></div>
+			</div>
+		</div>
+
+		<div class="rightBlock" [ngClass]="{'viewMoreRight': toggle === true}">
+			<mat-tab-group mat-stretch-tabs>
+				<mat-tab label="Comment">
+					<app-doc-chat></app-doc-chat>
+				</mat-tab>
+				<!-- <mat-tab label="Meeting">
+					<app-doc-meeting></app-doc-meeting>
+				</mat-tab> -->
+				<mat-tab label="File Upload">
+					<app-doc-file-upload [docId]="docId"></app-doc-file-upload>
+				</mat-tab>
+				<!-- <mat-tab label="White Board">
+					<app-white-board [docId]="docId"></app-white-board>
+				</mat-tab> -->
+			</mat-tab-group>
+		</div>
+	</div>
+</div>

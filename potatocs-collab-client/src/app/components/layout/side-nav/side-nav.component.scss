@@ -1,0 +1,47 @@
+@import '../../../../styles.scss';
+
+// sidenav 전체 -> overflow: hidden으로 하고 내부 item 쪽에 scroll 추가
+// vex 방식 (::ng-deep) 또는 아래 링크 방식 가능.
+// https://stackoverflow.com/questions/53541915/how-to-show-the-scrollbar-below-the-sidenav-toolbar-in-angularmaterial-7
+.sidenav {
+  overflow: hidden;
+  height: 100%;
+}
+
+// logo, title 부분
+.sidenav-toolbar {
+  height: $sidenav-toolbar-height;
+  color: white;
+
+  // align-items: center;
+  // box-sizing: border-box;
+  // display: flex;
+  // flex-direction: row;
+  // white-space: nowrap;
+  // width: 100%;
+}
+
+.sidenav-toolbar:hover {
+  cursor: pointer;
+}
+
+.sidenav-items {
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+  padding-top: 1.5rem;
+}
+
+.sidenav-items::-webkit-scrollbar {
+  display: none !important;
+}
+
+
+// material defaul가 599 이하에서 64->56으로 변경됨
+@media screen and (max-width: 599px) {
+  .sidenav-toolbar {
+    height: $sidenav-toolbar-height-mobile;
+  }
+}

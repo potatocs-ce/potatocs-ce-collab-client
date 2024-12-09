@@ -1,0 +1,95 @@
+.body-margin {
+  margin: 10px;
+}
+
+.chevrons {
+  height: 53px;
+  //   padding-top: 10px;
+  font-size: 30px;
+  .mat-form-field {
+    font-size: 14px;
+  }
+}
+
+.dateContent {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.date {
+  margin: 0px 10px;
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+}
+
+.monthBtnContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.monthBtn {
+  .mat-icon {
+    // width: 100%;
+    // height: 100%;
+    // padding-top: 9px;
+    font-size: 25px;
+    margin-top: -5px;
+  }
+}
+
+.memberFilter {
+  .mat-form-field {
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .flex {
+    padding-bottom: 10px;
+  }
+
+  .chevrons {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .dateContent {
+    display: flex;
+    flex-direction: row !important;
+  }
+
+  .memberFilter {
+    width: 100%;
+    text-align: center;
+  }
+
+  .monthBtnContainer {
+    display: flex;
+    flex-direction: row !important;
+  }
+
+  mwl-calendar-month-view {
+    font-size: 12px;
+  }
+}
+
+::ng-deep .mat-form-field {
+  @media screen and (max-width: 780px) {
+    width: 70%;
+  }
+}
+
+.dateContent {
+	display: flex; /* Flexbox 사용 */
+	align-items: center; /* 세로 정렬 */
+	justify-content: space-between; /* 요소 간격 균등 분배 */
+}
+
+.monthBtn {
+	margin: 0 5px; /* 버튼 사이의 간격 조정 */
+}
+
+.date {
+	margin: 0 10px; /* 날짜 텍스트 주변 여백 */
+}

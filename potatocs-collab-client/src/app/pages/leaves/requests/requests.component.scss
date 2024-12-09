@@ -1,0 +1,145 @@
+.mainContentContainer {
+  padding: 40px 40px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.disableReason {
+  font-size: 13px;
+  color: #999;
+  margin-right: 5px;
+}
+
+.mainTitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.fontBold {
+  font-weight: bold;
+}
+
+.requestBtn {
+  background-color: #00154F;
+}
+
+.searchBtn {
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #00154F;
+}
+
+.historyTableBox {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  margin-top: 50px;
+}
+
+.historyTable {
+  width: 100%;
+  text-align: center;
+
+  th,
+  td {
+    text-align: center;
+  }
+
+  box-shadow: none;
+}
+
+.mat-header-row {
+  background-color: #00154F;
+
+  th {
+    color: #fff;
+  }
+}
+
+.selectContainer {
+  padding: 20px 20px 0;
+  border: 1px solid rgba(238, 238, 238, 0.548);
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 13px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  flex: 1;
+}
+
+.selectBox {
+  margin-bottom: 20px;
+}
+
+.selectLabel {
+  padding: 20px;
+  display: inline-block;
+  min-width: 60px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.formFieldBox {
+  width: 230px;
+}
+
+.formSpacer {
+  margin-right: 10px;
+}
+
+.waveSpacer {
+  margin: 0 5px;
+}
+
+.leave-request-detail {
+  cursor: pointer;
+  font-weight: 450;
+  text-decoration: underline;
+}
+
+.approve {
+  color: blue;
+}
+
+.reject {
+  color: red;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 780px) {
+
+  .mainContentContainer {
+    padding: 10px 10px;
+  }
+
+  .mainContainer {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .disableReason {
+    padding: 0 30px;
+  }
+
+  .requestBtn {
+    margin: 10px 0 20px 0;
+  }
+
+  .formFieldBox {
+    width: 100% !important;
+  }
+
+  .historyTableBox {
+    word-break: break-all;
+
+    td {
+      font-size: 0.7em;
+      padding: 10px;
+    }
+  }
+}

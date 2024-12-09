@@ -1,0 +1,130 @@
+.profile-edit {
+    position: relative;
+    z-index: 20;
+    max-width: 954px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.profile-edit-title {
+    margin-top: 20px;
+}
+
+.inputContainer {
+    position: relative;
+    padding: 32px 51px;
+    border: 2px solid rgb(212, 212, 212);
+    border-radius: 5px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    margin: 100px auto 0px;
+    position: relative;
+    padding: 10px 10px 25px; // box-shadow: 0 4px 6px rgba(0,0,0,.3);
+}
+
+.profile-photo img {
+    width: 150px;
+    border: 0;
+    height: auto;
+    border-radius: 100%;
+    // max-width: 100%;
+}
+
+.profile-photo .overlay {
+    width: 170px;
+    height: 170px;
+    top: 0;
+    left: 0;
+    background: rgba(117, 117, 117, 0.5);
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    border-radius: 100%;
+}
+
+.profile-photo .overlay:hover {
+    opacity: 1;
+    cursor: pointer;
+    text-align: center;
+}
+
+.profile-id {
+    text-align: center;
+}
+
+.profile-image {
+    width: 250px;
+    align-content: center;
+}
+
+.profile_input {
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 60px;
+    width: 550px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.inpurRow {
+    margin-bottom: 30px;
+    width: 100%;
+    align-items: center;
+}
+
+.inpurRow .data-input {
+    padding: 15px 0 0 5px;
+}
+
+.input-btn button {
+    float: right;
+    border: 0px;
+    background-color: #fafafa;
+    font-size: 16px;
+    padding: 15px 6px 0px;
+}
+
+.input-btn .cancel-btn {
+    color: rgb(182, 182, 182);
+}
+
+
+@media screen and (max-width: 780px) {
+
+    .profile-edit {
+        margin: 0;
+        width: 100%;
+
+        h2 {
+            padding: 0 20px;
+        }
+    }
+
+
+    .profile-edit-title {
+        width: 100vw;
+    }
+
+    .inputContainer {
+        width: 100vw;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .profile_input {
+        margin: 0;
+        width: 100% !important;
+    }
+}

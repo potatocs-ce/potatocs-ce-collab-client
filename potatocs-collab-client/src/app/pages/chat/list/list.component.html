@@ -1,0 +1,52 @@
+<div class="list_container">
+    <section class="title_section">
+        <div class="title">
+            Informantin management
+        </div>
+        <div class="add_button">
+            <button mat-flat-button color="primary" [routerLink]="['/chat/upload']"><mat-icon>add</mat-icon> add
+                Doc</button>
+        </div>
+    </section>
+    <section class="list_section">
+        <!-- 리스트 부가 기능들 -->
+        <div class="list_options">
+            <!-- 새로고침 -->
+            <button class="option_icon" (click)="refresh()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <!-- 정렬 -->
+            <button class="option_icon" (click)="sort()">
+                <mat-icon>swap_vert</mat-icon>
+            </button>
+            <!-- 검색 -->
+            <form class="search" (submit)="search()">
+                <input [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" />
+                <button><mat-icon>search</mat-icon></button>
+            </form>
+        </div>
+        <!-- 구분선 -->
+        <hr />
+        <!-- 로딩바 -->
+        @if(loading) {
+        <mat-progress-bar class="example-margin" mode="query">
+        </mat-progress-bar>
+        }
+
+        <!-- 데이터 리스트 부분 -->
+        <ul class="list">
+            @for(data of listData; track data) {
+            <li class="data">
+                <section class="text_section">
+                    <h1>{{data.originalFileName}}</h1>
+                    <p>{{data.createdAt | date:'yyyy-MM-dd hh:mm a'}}</p>
+                </section>
+                <section class="button_section">
+                    <button (click)="open(data.saveKey)"><mat-icon>open_in_new</mat-icon></button>
+                    <button (click)="delete(data._id)"><mat-icon>delete</mat-icon></button>
+                </section>
+            </li>
+            }
+        </ul>
+    </section>
+</div>

@@ -1,0 +1,173 @@
+.mainContentContainer {
+  padding: 40px 40px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.disableReason {
+  font-size: 13px;
+  color: #999;
+  margin-right: 5px;
+}
+
+.mainTitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.requestBtn {
+  background: #00154f;
+}
+
+.historyTableBox {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  // min-width: 1200px;
+}
+
+.historyTable {
+  width: 100%;
+  text-align: center;
+
+  th,
+  td {
+    text-align: center;
+  }
+
+  box-shadow: none;
+}
+
+.confirmBtn {
+  background: #00154f;
+  color: #fff;
+  padding: 0 30px;
+  width: 110px;
+}
+
+.rejectBtn {
+  background: #ff4081;
+  color: #fff;
+  padding: 0 30px;
+  width: 110px;
+}
+
+.mat-header-row {
+  // background-color: #273da0;
+  background-color: #00154f;
+
+  th {
+    color: #fff;
+  }
+}
+
+.cancelBtn {
+  background-color: gray;
+  color: white;
+  padding: 0 30px;
+  width: 110px;
+}
+
+//----------------pending leave detail style--------------------------
+
+::ng-deep .mat-dialog-container {
+  padding: 40px !important;
+}
+
+.modal-table {
+  font-size: 13px;
+  text-align: left;
+  border-top: 1px solid rgb(221, 221, 221);
+  border-collapse: collapse;
+}
+
+.modal-table tr {
+  height: 40px;
+}
+
+.modal-table th {
+  padding: 16px;
+  font-weight: 400;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  border-left: 1px solid rgb(221, 221, 221);
+}
+
+.modal-table td {
+  border-bottom: 1px solid rgb(221, 221, 221);
+  border-left: 1px solid rgb(221, 221, 221);
+  padding: 16px 24px 16px 16px;
+  white-space: pre-line;
+}
+
+.modal-table th:first-child,
+td:first-child {
+  border-top: none;
+  border-left: none;
+}
+
+.modal-btn {
+  margin-top: 20px;
+  text-align: center;
+
+  button {
+    padding: 0px 40px;
+  }
+}
+
+.leave-request-detail {
+  cursor: pointer;
+  font-weight: 450;
+  text-decoration: underline;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.confirmBtn:disabled {
+  background-color: gray; /* 원하는 색상으로 변경 */
+  color: white; /* 텍스트 색상 변경 */
+  cursor: not-allowed; /* 포인터 커서 변경 */
+  opacity: 0.6; /* 불투명도 설정 */
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 780px) {
+  .mainContentContainer {
+    padding: 10px 10px;
+  }
+
+  .mainContainer {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .disableReason {
+    margin: 10px 0 20px 0;
+  }
+
+  .requestBtn {
+    margin-bottom: 20px;
+  }
+
+  .formFieldBox {
+    width: 100% !important;
+  }
+
+  .historyTableBox {
+    word-break: break-all;
+
+    th {
+      padding: 0 5px;
+    }
+
+    td {
+      font-size: 0.7em;
+      padding: 10px;
+    }
+
+    button {
+      width: 20px;
+      font-size: 0.3em;
+      padding: 0;
+    }
+  }
+}

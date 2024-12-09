@@ -1,0 +1,45 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+
+<form class="add_doc_container" (ngSubmit)="submit()">
+    <section class="title_section">
+        <h1 class="title">File Upload</h1>
+    </section>
+
+    @if(uploading) {
+    <mat-progress-bar class="example-margin" mode="query">
+    </mat-progress-bar>
+    }@else {
+    <hr />
+    <section class="input_section">
+
+        <div class="dropzone" appDnd (fileDropped)="onFileDropped($event)">
+            <input type="file" (change)="fileBrowseHandler($event.target)" multiple />
+            <mat-icon class="upload_icon" fontSet="material-icons-outlined">cloud_upload</mat-icon>
+            <h3>Drag and drop file here</h3>
+            <h3>or</h3>
+            <button mat-flat-button color="primary" for="fileDropRef">Browse for file</button>
+        </div>
+
+
+
+        @for(file of files; track file;let i = $index) {
+        <div class="single_file">
+            <section class="file_info_section">
+                <h4>{{file?.name}}</h4>
+                <p>{{ formatBytes(file?.size) }}</p>
+            </section>
+            <section class="file_button_section">
+                <button (click)="deleteFile(i)" mat-icon-button><mat-icon>delete_forever</mat-icon></button>
+            </section>
+        </div>
+        }
+
+    </section>
+    <section class="button_section">
+        <button type="submit" mat-flat-button color="primary" class="submit_button">submit</button>
+        <button [routerLink]="['/chat/list']" (click)="$event.preventDefault()" mat-flat-button
+            class="cancel_button">cancel</button>
+    </section>
+    }
+
+</form>

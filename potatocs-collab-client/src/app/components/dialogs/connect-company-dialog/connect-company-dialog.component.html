@@ -1,0 +1,21 @@
+<div class="mainContentContainer">
+  <div class="mainContent">
+    <div fxLayout="row">
+      <div class="mainTitle">Add Company</div>
+    </div>
+    <div class="selectContainer">
+      <div class="selectBox">
+        <span class="selectLabel">
+          <label for="type" class="optionLabel">Code</label>
+        </span>
+        <mat-form-field color="accent" appearance="outline" style="min-width:300px;" class="selectInput">
+          <mat-label>Company Code</mat-label>
+          <input type="text" matInput [formControl]="addCodeInput">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="submit-button" (click)="requestCompanyConnection()"
+          [disabled]="addBtn">Add</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="mainContentContainer">
+  <div class="mainContent">
+    <div class="mainContainer" fxLayout="row" fxLayoutAlign="start center">
+      <div class="mainTitle">Replacement Day Ranked</div>
+      <span class="example-spacer"></span>
+      <span class="disableReason" *ngIf="userCompanyInfo() == null || userManagerInfo()== null">getMyLeavesStatus
+        You need to register a company and manager to activate!
+      </span>
+      <button class="requestBtn" [disabled]="userCompanyInfo() == null || userManagerInfo()== null" mat-raised-button
+        color="primary" (click)="openRdRequest();">Request RD to confirm</button>
+
+    </div>
+
+    <div class="historyTableBox">
+      <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8 historyTable" matSort
+        matSortActive="createdAt" matSortDisableClear matSortDirection="desc">
+
+        <!--- Note that these columns can be defined in any order.
+					  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- from Column -->
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef> From </th>
+          <td mat-cell *matCellDef="let element"> {{element.leave_start_date | date: 'YYYY-MM-dd'}}</td>
+        </ng-container>
+
+        <!-- to Column -->
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef> To </th>
+          <td mat-cell *matCellDef="let element">{{element.leave_end_date | date: 'YYYY-MM-dd'}}</td>
+        </ng-container>
+
+        <!-- type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="leave-request-detail" (click)="openDialogRdRequestDetails(element)">
+              {{ element.leaveType | titlecase }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="taken">
+          <th mat-header-cell *matHeaderCellDef> Taken </th>
+          <td mat-cell *matCellDef="let element">{{element.taken || 0}}</td>
+        </ng-container>
+
+        <!-- days Column -->
+        <ng-container matColumnDef="days">
+          <th mat-header-cell *matHeaderCellDef> Day(s) </th>
+          <td mat-cell *matCellDef="let element">{{element.leaveDuration}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="manager">
+          <th mat-header-cell *matHeaderCellDef> Manager </th>
+          <td mat-cell *matCellDef="let element"> {{element.approver}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{'approve' :element.status == 'approve',
+								'reject' : element.status == 'reject'}">
+            {{ element.status | titlecase }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="btns">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+              <button *ngIf="element.status != 'approve'" mat-flat-button class="cancelBtn"
+                (click)="cancelRd(element._id)">
+                Cancel
+              </button>
+              <button *ngIf="element.status == 'approve'" mat-flat-button class="confirmBtn"
+                (click)="openRdLeaveRequest(element)" [disabled]="element.taken - element.leaveDuration == 0">
+                Request
+              </button>
+              <!-- <button mat-flat-button class="rejectBtn">Reject</button> -->
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">
+            No data
+          </td>
+        </tr>
+      </table>
+      <mat-paginator [length]="resultsLength()" [pageSize]="pageSize()" [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </div>
+
+  </div>
+</div>

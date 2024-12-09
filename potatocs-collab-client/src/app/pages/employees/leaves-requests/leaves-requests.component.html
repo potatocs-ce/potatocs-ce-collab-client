@@ -1,0 +1,123 @@
+<div class="mainContentContainer">
+  <!-- @if (isLoadingResults() || isRateLimitReached()) {
+  <div class="example-loading-shade">
+    @if (isLoadingResults()) {
+    <mat-spinner></mat-spinner>
+    } @if (isRateLimitReached()) {
+    <div class="example-rate-limit-reached">
+      API rate limit has been reached. It will be reset in one minute.
+    </div>
+    }
+  </div>
+  } -->
+  <div class="mainContent">
+    <div fxLayout="row">
+      <div class="mainTitle">Employee Leave Request</div>
+    </div>
+
+    <div class="historyTableBox">
+      <table
+        mat-table
+        [dataSource]="leavesRequestList()"
+        class="mat-elevation-z8 historyTable"
+        matSort
+        matSortActive="createdAt"
+        matSortDisableClear
+        matSortDirection="desc"
+      >
+        <!-- Date Column -->
+        <ng-container matColumnDef="period">
+          <th mat-header-cell *matHeaderCellDef>Period</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.leave_start_date | date : "YYYY-MM-dd" }} ~
+            {{ element.leave_end_date | date : "YYYY-MM-dd" }}
+          </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <!-- <ng-container matColumnDef="leave_end_date">
+					<th mat-header-cell *matHeaderCellDef> to </th>
+					<td mat-cell *matCellDef="let element"> {{element.leave_end_date | date: 'YYYY-MM-dd'}} </td>
+				</ng-container> -->
+
+        <!-- Leave Days Column -->
+        <ng-container matColumnDef="leaveDuration">
+          <th mat-header-cell *matHeaderCellDef>Day(s)</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.leaveDuration }} day
+          </td>
+        </ng-container>
+
+        <!-- leaveType Column -->
+        <ng-container matColumnDef="leaveType">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element">
+            <div
+              class="leave-request-detail"
+              (click)="openDialogPendingLeaveDetail(element)"
+            >
+              {{ viewType[element.leaveType] }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="requestorName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.requestorName }}
+          </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <!-- Accept Column -->
+        <ng-container matColumnDef="btns">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <div
+              class="btnContent"
+              fxLayout="row"
+              fxLayoutGap="20px"
+              fxLayoutAlign="center center"
+            >
+              <button
+                mat-flat-button
+                class="confirmBtn"
+                (click)="approveLeave(element, $event)"
+              >
+                Accept
+              </button>
+              <!-- <button mat-flat-button class="cancelBtn" (click)="cancelLeave(element._id)">Cancel</button> -->
+              <button
+                mat-flat-button
+                class="rejectBtn"
+                (click)="rejectLeave(element, $event)"
+              >
+                Reject
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data</td>
+        </tr>
+      </table>
+      <mat-paginator
+        [length]="resultsLength()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

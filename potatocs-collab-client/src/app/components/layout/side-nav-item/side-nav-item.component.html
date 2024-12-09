@@ -1,0 +1,71 @@
+<!-- angular flex:
+      flex layout: https://github.com/angular/flex-layout
+      fxLayout: https://github.com/angular/flex-layout/wiki/fxLayout-API
+      fxLayoutAlign: https://github.com/angular/flex-layout/wiki/fxLayoutAlign-API
+      fxFlex: https://github.com/angular/flex-layout/wiki/fxFlex-API -->
+<!-- route link -->
+<div *ngIf="isLink(item)">
+    @if((item.isManager == userProfileInfo()?.isManager || userProfileInfo()?.isManager) && (item.isReplacementDay ==
+    userCompanyInfo()?.isReplacementDay || userCompanyInfo()?.isReplacementDay)){
+    <a [routerLinkActiveOptions]="item.routerLinkActive || { exact: false }" [routerLink]="item.route" class="item"
+        fxLayout="row" fxLayoutAlign="start center" matRipple routerLinkActive="active">
+        <mat-icon *ngIf="level === 0" class="item-icon" fxFlex="none"> {{item.icon}} </mat-icon>
+        <mat-icon *ngIf="level !== 0 && item.faceAuthentication" class="item-icon" fxFlex="none">face</mat-icon>
+        <span class="item-label" fxFlex="auto">{{ item.label }}</span>
+    </a>
+    }
+
+</div>
+
+<!-- drop down menu -->
+@if(isDropdown(item)){
+<ng-container>
+    @if((item.isManager === userProfileInfo()?.isManager || userProfileInfo()?.isManager)){
+    <div>
+        <div (click)="toggleOpen()" [class.active]="isOpen || isActive" [class.open]="isOpen" class="item"
+            fxLayout="row" fxLayoutAlign="start center" matRipple>
+            <mat-icon *ngIf="level === 0" class="item-icon" fxFlex="none">{{item.icon}}</mat-icon>
+            <span class="item-label" fxFlex="auto">{{ item.label }}</span>
+            <!-- arrow icon -->
+            <mat-icon class="item-dropdown-icon" fxFlex="none">keyboard_arrow_right</mat-icon>
+        </div>
+
+        <!-- dropdown menu 하위 list: animation으로 처리 -->
+        <div [@dropdown]="isOpen?'open':'closed'" class="item-dropdown">
+            <!-- kje: recursive component (dropdown menu의 하위 children)
+          https://netbasal.com/recursion-in-angular-components-1cd636269b12 -->
+            <app-side-nav-item *ngFor="let subItem of item.children" [item]="subItem" [user]="user"
+                [level]="level + 1"></app-side-nav-item>
+        </div>
+    </div>
+    }
+</ng-container>
+}
+
+
+
+<!-- Subheading menu -->
+@if(isSubheading(item)){
+<ng-container>
+    <div class="subheading mat-caption">{{ item.label }}</div>
+    <app-side-nav-item *ngFor="let subItem of item.children" [item]="subItem" [user]="user"
+        [level]="0"></app-side-nav-item>
+</ng-container>
+
+}
+
+
+<!-- Create Space -->
+@if(isCreateSpace(item)){
+<a class="item creatingSpace" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="createSpaceDialog()">
+    <!-- routelink가 active인 상태에 추가할 class : 'active'-->
+
+    <!-- icon은 level 0인 경우만 있음,
+    fxFlex="none" : flex: 0 0 auto -->
+    @if(level === 0){
+    <mat-icon class="item-icon" fxFlex="none"> {{item.icon}} </mat-icon>
+    }
+    <span class="item-label" fxFlex="auto">{{ item.label }}</span>
+
+</a>
+}

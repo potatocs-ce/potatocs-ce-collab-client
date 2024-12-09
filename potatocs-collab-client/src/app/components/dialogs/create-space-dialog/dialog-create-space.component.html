@@ -1,0 +1,34 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div class="dialogContainer">
+    <div class="mainTitle">Create space</div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="w-100p">
+            <mat-form-field class="w-100p" appearance="outline" *ngIf="data.spaceFlag.spaceFlag=='collab'">
+                <mat-label>space name</mat-label>
+                <input matInput [(ngModel)]="data.spaceName" />
+            </mat-form-field>
+        </div>
+        <div class="w-100p">
+            <mat-form-field class="w-100p" appearance="outline" *ngIf="data.spaceFlag.spaceFlag=='collab'">
+                <mat-label>description</mat-label>
+                <input matInput [(ngModel)]="data.spaceBrief" />
+            </mat-form-field>
+        </div>
+        <div>
+            <section>
+                <mat-checkbox [(ngModel)]="data.faceOption" [color]="faceOptionColor">
+                    Face Authentication
+                </mat-checkbox>
+            </section>
+        </div>
+
+        <div class="btnBox" fxLayout="row" fxLayoutGap="25px">
+            <button class="confirmBtn" mat-raised-button [mat-dialog-close]="data"
+                *ngIf="data.spaceFlag.spaceFlag=='collab'" [disabled]="data.spaceName === ''">
+                Create
+            </button>
+            <button mat-raised-button *ngIf="data.spaceFlag.spaceFlag=='menuList'">Move to space</button>
+            <button class="cancelBtn" mat-raised-button (click)="onNoClick()">Cancel</button>
+        </div>
+    </div>
+</div>

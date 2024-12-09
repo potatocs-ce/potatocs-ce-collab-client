@@ -1,0 +1,14 @@
+<div class="sidenav" fxLayout="column" fxLayoutAlign="none">
+	<!-- sidebar logo, title -->
+	<div class="sidenav-toolbar" fxLayout="row" fxLayoutAlign="center center" click="main()">
+		<img src="assets/logo/logo-potatocs.png" height="30px" [routerLink]="['']" />
+	</div>
+
+	<!-- sidebar menu : 여기부분은 scroll 가능하도록 설정함. (overflow: auto) -->
+	<!-- 현재 TEST 용도 -> 나중에 po-sidenav-item으로 추가 -->
+	<!-- https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-angular -->
+	<div class="sidenav-items">
+		<!-- <app-side-nav-item *ngFor="let item of navItems;" [item]="item" [user]="user" [level]="0"></app-side-nav-item> -->
+		<app-side-nav-item *ngFor="let item of navItems;" [item]="item" [level]="0"></app-side-nav-item>
+	</div>
+</div>

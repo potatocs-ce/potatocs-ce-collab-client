@@ -1,0 +1,136 @@
+<!-- <app-profile-header></app-profile-header> -->
+
+<div class="profile-edit" fxLayout="column">
+    <div class="profile-edit-title">
+        <h2>Profile Edit</h2>
+    </div>
+    <div fxLayout="row" class="inputContainer">
+        <div class="profile-image">
+            <div class="profile-photo">
+                <img [src]="userInfo?.profile_img" alt="" />
+                <label class="overlay">
+                    <!-- {{userInfo.profile_img}} -->
+                    <input type="file" (change)="fileChangeEvent($event)" style="display:none" accept="image/*" />
+                </label>
+            </div>
+            <div class="profile-id">
+                <h4>ID : {{ userInfo?.email }}</h4>
+            </div>
+            <div (click)="openCamera()">
+                face Detection
+            </div>
+        </div>
+        <div class="profile_input">
+            <div class="inpurRow" fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Name</mat-label>
+                    <div class="flex-row">
+                        <div fxFlex>
+                            <input class="data-input" matInput [(ngModel)]="info.name" [disabled]="flag.nameFlag" />
+                        </div>
+                    </div>
+                </mat-form-field>
+                <div class="input-btn" fxLayout="row">
+                    <div *ngIf="flag.nameFlag; else elseName">
+                        <button (click)="onEdit('nameFlag')">edit</button>
+                    </div>
+                    <ng-template #elseName>
+                        <button (click)="onSave('nameFlag')">save</button>
+                        <button class="cancel-btn" (click)="onCanel('nameFlag')">cancel</button>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>New Password</mat-label>
+                    <div fxFlex>
+                        <input type="password" class="data-input" matInput [(ngModel)]="info.new_password"
+                            [disabled]="flag.passwordFlag" />
+                    </div>
+                </mat-form-field>
+                <div class="input-btn" fxLayout="row">
+                    <div *ngIf="flag.passwordFlag; else elsePassword">
+                        <button (click)="onEdit('passwordFlag')">edit</button>
+                    </div>
+                    <ng-template #elsePassword>
+                        <button (click)="onSave('passwordFlag')">save</button>
+                        <button class="cancel-btn" (click)="onCanel('passwordFlag')">cancel</button>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="inpurRow" fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Confirm Password</mat-label>
+                    <div fxLayout="row">
+                        <div fxFlex>
+                            <input type="password" class="data-input" matInput [(ngModel)]="info.confirm_password"
+                                [disabled]="flag.passwordFlag" />
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="inpurRow" fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Mobile</mat-label>
+                    <div fxLayout="row">
+                        <div fxFlex>
+                            <input class="data-input" matInput [(ngModel)]="info.mobile" [disabled]="flag.mobileFlag" />
+                        </div>
+                    </div>
+                </mat-form-field>
+                <div class="input-btn" fxLayout="row">
+                    <div *ngIf="flag.mobileFlag; else elseMobile">
+                        <button (click)="onEdit('mobileFlag')">edit</button>
+                    </div>
+                    <ng-template #elseMobile>
+                        <button (click)="onSave('mobileFlag')">save</button>
+                        <button class="cancel-btn" (click)="onCanel('mobileFlag')">cancel</button>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="inpurRow" fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Department</mat-label>
+                    <div fxLayout="row">
+                        <div fxFlex>
+                            <input class="data-input" matInput [(ngModel)]="info.department"
+                                [disabled]="flag.departmentFlag" />
+                        </div>
+                    </div>
+                </mat-form-field>
+                <div class="input-btn" fxLayout="row">
+                    <div *ngIf="flag.departmentFlag; else elseDepartment">
+                        <button (click)="onEdit('departmentFlag')">edit</button>
+                    </div>
+                    <ng-template #elseDepartment>
+                        <button (click)="onSave('departmentFlag')">save</button>
+                        <button class="cancel-btn" (click)="onCanel('departmentFlag')">cancel</button>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="inpurRow" fxLayout="row">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Position</mat-label>
+                    <div fxLayout="row">
+                        <div fxFlex>
+                            <input class="data-input" matInput [(ngModel)]="info.position"
+                                [disabled]="flag.positionFlag" />
+                        </div>
+                    </div>
+                </mat-form-field>
+                <div class="input-btn" fxLayout="row">
+                    <div *ngIf="flag.positionFlag; else elsePosition">
+                        <button (click)="onEdit('positionFlag')">edit</button>
+                    </div>
+                    <ng-template #elsePosition>
+                        <button (click)="onSave('positionFlag')">save</button>
+                        <button class="cancel-btn" (click)="onCanel('positionFlag')">cancel</button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

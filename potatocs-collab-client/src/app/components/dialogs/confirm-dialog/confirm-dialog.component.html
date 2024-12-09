@@ -1,0 +1,28 @@
+<div class="m-10">
+  <div class="flex justify-center items-center">
+    <mat-icon class="text-[120px] text-[#00154f] w-[120px] h-[120px]"
+      >help_outline</mat-icon
+    >
+  </div>
+
+  <div
+    class="flex justify-center items-center text-[28px] text-[#00154f] my-8 font-bold"
+  >
+    Are you sure?
+  </div>
+
+  <div
+    class="flex flex-wrap justify-center items-center text-[#999] max-w-[395px]"
+  >
+    {{ data.content }}
+  </div>
+
+  <div class="flex flex-row justify-center items-center gap-5 mt-12">
+    <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">
+      Confirm
+    </button>
+  </div>
+
+  <div class="w-[395px]"></div>
+</div>

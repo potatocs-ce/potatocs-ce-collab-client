@@ -1,0 +1,376 @@
+// Ra
+:host {
+  background: #eee;
+}
+
+.dashContent {
+  padding: 40px 40px;
+  margin: 0 auto;
+}
+
+.dashTitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.dash {
+  color: #fff;
+  background-color: rgba(23, 133, 23, 0.8);
+  height: 100% !important;
+}
+
+.dashBoxBuild {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  padding: 30px;
+  border-radius: 4px;
+  min-height: 168px;
+}
+
+#leaveBalance {
+  height: 100% !important;
+}
+
+.leaveContent {
+  padding: 5px 0;
+}
+
+#todayDate {
+  max-height: 168px !important;
+}
+
+
+.historyTableBox {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  // min-width: 1200px;
+  border-radius: 0.25rem;
+}
+
+.tableTitle {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+.tableTitleBox {
+  background: #fff;
+}
+
+.table-pd-tb {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.table-pd-lr {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.historyTable {
+  width: 100%;
+  text-align: center;
+
+  th {
+    text-align: center;
+  }
+
+  box-shadow: none;
+}
+
+.mat-header-row {
+  background-color: #00154F;
+
+  th {
+    color: #fff;
+  }
+}
+
+.addMe {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  padding: 20px;
+  border-radius: 4px;
+  background: #fff;
+  color: rgba(0, 0, 0, .87);
+  // background-color: rgba(23, 133, 23, 0.5);
+}
+
+.addTitle {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.addImage {
+  font-size: 75px;
+  width: 75px;
+  height: 75px;
+}
+
+.addDesc {
+
+  font-size: 18px;
+
+  .descSpan {
+    font-weight: bold;
+  }
+}
+
+.addMark {
+  font-size: 100px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+// .dashSub {
+//     vertical-align: middle;
+// }
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.closeMark {
+  cursor: pointer;
+}
+
+
+::ng-deep .mat-card-image:first-child {
+  margin-top: 0 !important;
+  width: initial !important;
+}
+
+::ng-deep .mat-card-image {
+  margin: 0 !important;
+}
+
+.space_alarm {
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+}
+
+// Ra
+
+//=================================================
+
+
+.daysSection {
+  flex: 1;
+  text-align: right;
+}
+
+.fontBold {
+  font-weight: bold;
+}
+
+//==-================= company manager modal =============================
+.mainContentContainer {
+  margin: 0 auto;
+  height: 100%;
+}
+
+.mainTitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.selectContainer {
+  padding: 20px 20px 0;
+  border: 1px solid rgba(238, 238, 238, 0.548);
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 13px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  flex: 1;
+  min-width: 650px;
+}
+
+.selectBox {
+  margin-bottom: 20px;
+}
+
+.selectLabel {
+  padding: 20px;
+  display: inline-block;
+  min-width: 60px;
+}
+
+.historyTableBox {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+  min-width: 650px;
+  margin-top: 50px;
+}
+
+.historyTable {
+  width: 100%;
+  text-align: center;
+
+  th {
+    text-align: center;
+  }
+
+  box-shadow: none;
+}
+
+.historyTitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 56px;
+  margin-bottom: 10px;
+  ;
+
+  .inHistoryTitle {
+    font-size: 13px;
+    color: #999;
+    margin-left: 5px;
+  }
+}
+
+.mat-header-row {
+  background-color: #00154F;
+
+  th {
+    color: #fff;
+  }
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 959px) {
+  .dashName {
+    font-size: 20px;
+  }
+
+  .dashDetail {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1279px) {
+  .dashName {
+    font-size: 23px;
+  }
+
+  .dashDetail {
+    font-size: 16px;
+  }
+
+  .leaveSubSection {
+    font-size: 13px;
+  }
+
+  .leaveSubSection_sec {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1440px) {
+  .dashName {
+    font-size: 24px;
+  }
+
+  .dashDetail {
+    font-size: 18px;
+  }
+
+  .leaveSubSection {
+    font-size: 14px;
+  }
+
+  .leaveSubSection_sec {
+    font-size: 14px;
+  }
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 780px) {
+
+  .selectLabel {
+    padding: 5px;
+  }
+
+  .dashContainer {
+    // width: 100vw !important;
+    // height: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .dashContent {
+    // width: 100vw !important;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .dashTitle {
+    margin: 20px 24px;
+  }
+
+  .dashWrap {
+    width: 100vw !important;
+    margin-bottom: 20px;
+
+  }
+
+  .dashDetail {
+    font-size: 14px;
+  }
+
+  #leaveBalance {
+    height: 100% !important;
+  }
+
+  /* 모바일 수평 스크롤 금지 */
+  // body {
+  //     overflow: hidden;
+  //     width: 100%;
+  //     -webkit-box-sizing: border-box;
+  //     -moz-box-sizing: border-box;
+  //     box-sizing: border-box;
+  //     }
+
+
+  // add company, find manager
+  .selectContainer {
+    min-width: 0;
+  }
+
+  .selectInput {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+
+  // find manager list
+  .historyTableBox {
+    min-width: 0 !important;
+    word-break: break-all;
+
+    th {
+      padding: 0 5px;
+    }
+
+    td {
+      font-size: 0.7em;
+      padding: 10px;
+    }
+
+    button {
+      width: 20px;
+      font-size: 0.3em;
+      padding: 0;
+    }
+  }
+
+}

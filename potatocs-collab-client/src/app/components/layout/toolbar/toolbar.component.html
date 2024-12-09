@@ -1,0 +1,83 @@
+<mat-toolbar
+  class="h-[64px] bg-[#00154F] box-border border-b-[#E3E3E3] text-white border-l min-w-[500px]"
+>
+  <!-- Responsive Side Menu Button -->
+  <div *ngIf="!isDesktop()" class="ml-2">
+    <button mat-icon-button (click)="openSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <span class="flex-grow"></span>
+  <!-- This pushes the navigation to the right -->
+
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+    <!-- Profile Menu -->
+    <div>
+      <button mat-button [matMenuTriggerFor]="profile" class="text-white">
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+          <img
+            class="toolbar-profile-img"
+            [src]="profilesService.userProfileInfo()?.profile_img"
+            alt=""
+          />
+          <span *ngIf="userProfileInfo()" class="profileName">{{
+            userProfileInfo().name
+          }}</span>
+        </div>
+      </button>
+      <mat-menu #profile="matMenu" xPosition="before" class="dropdown-box">
+        <div class="dropdown">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="dropdown-header"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <img
+                class="toolbar-profile-img"
+                [src]="profilesService.userProfileInfo()?.profile_img"
+                alt=""
+              />
+              <div class="dropdown-profile-heading text-white">
+                {{ userProfileInfo()?.name }}
+              </div>
+            </div>
+            <mat-icon>apps</mat-icon>
+          </div>
+          <div class="dropdown-content">
+            <div
+              matRipple
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="notification notification-cursor"
+              [routerLink]="['/profile']"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="icon-box-1 company-request"
+                  >account_circle</mat-icon
+                >
+                <div>
+                  <div class="notification-label">My Profile</div>
+                  <div class="notification-description">
+                    Personal Information
+                  </div>
+                </div>
+              </div>
+              <mat-icon class="icon-box-2">keyboard_arrow_right</mat-icon>
+            </div>
+          </div>
+          <div
+            class="dropdown-footer"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+          >
+            <button mat-button color="primary" (click)="logOut()">
+              LOGOUT
+            </button>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

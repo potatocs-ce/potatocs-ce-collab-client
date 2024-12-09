@@ -1,0 +1,110 @@
+<div class="m-10">
+  <div class="mainTitle">Replacement Request Details</div>
+  <table class="modal-table">
+    <colgroup>
+      <col style="width: 120px" />
+      <col style="width: 380px" />
+    </colgroup>
+    <tbody>
+      <tr>
+        <th>Status</th>
+        <td
+          [ngClass]="{
+            approve: data.status == 'approve',
+            reject: data.status == 'reject'
+          }"
+        >
+          {{ data.status | titlecase }}
+        </td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>
+          {{ data.requestorName }}
+        </td>
+      </tr>
+      <tr>
+        <th>Request day</th>
+        <td>
+          {{ data.createdAt | date : "YYYY-MM-dd" }}
+        </td>
+      </tr>
+      <tr>
+        <th>Leave type</th>
+        <td>
+          {{ viewType[data.leaveType] }}
+        </td>
+      </tr>
+      <tr>
+        <th>Period</th>
+        <td>
+          {{ data.leave_start_date | date : "YYYY-MM-dd" }} ~
+          {{ data.leave_end_date | date : "YYYY-MM-dd" }} ({{
+            data.leaveDuration
+          }}
+          days)
+        </td>
+      </tr>
+      <tr>
+        <th>Leave of used</th>
+        <td>{{ data.leaveDuration }} days</td>
+      </tr>
+      <tr>
+        <th>Reason</th>
+        <td>
+          {{ data.leave_reason }}
+        </td>
+      </tr>
+      <tr *ngIf="data.rejectReason">
+        <th>Reject reason</th>
+        <td [ngClass]="{ reject: data.status == 'reject' }">
+          {{ data.rejectReason }}
+        </td>
+      </tr>
+      <tr *ngIf="data.approver">
+        <th>Confirmor</th>
+        <td>
+          {{ data.approver }}
+        </td>
+      </tr>
+      <tr *ngIf="data.reject == true">
+        <th>Reject reason</th>
+        <td>
+          <div [formGroup]="reject">
+            <!-- <input type="text" formControlName="rejectReason" value=""> -->
+            <textarea formControlName="rejectReason" value=""></textarea>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal-btn" *ngIf="!data.reject">
+    <button color="primary" mat-raised-button mat-dialog-close>Confirm</button>
+    <!-- employee -->
+    <button
+      *ngIf="data.pending && data.isManager == false"
+      class="requestCancel"
+      mat-raised-button
+      (click)="requestCancel()"
+    >
+      Pending Cancel
+    </button>
+    <!-- manager -->
+    <button
+      *ngIf="data.status == 'approve' && data.isManager == true"
+      class="requestCancel"
+      mat-raised-button
+      (click)="approveLeaveCancel()"
+    >
+      Approve Cancel
+    </button>
+  </div>
+
+  <div class="modal-btn-reject" *ngIf="data.reject == true">
+    <button class="rejectBtn" (click)="rejectLeave()" mat-raised-button>
+      Reject
+    </button>
+    <button class="cancelBtn" mat-raised-button mat-dialog-close>Cancel</button>
+  </div>
+</div>

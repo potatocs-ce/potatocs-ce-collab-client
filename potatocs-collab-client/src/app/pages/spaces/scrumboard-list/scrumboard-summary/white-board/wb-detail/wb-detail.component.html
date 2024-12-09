@@ -1,0 +1,58 @@
+<mat-dialog-content>
+	<div class="rec-title" fxLayout="row" fxLayoutAlign="space-between center">
+		<h1 mat-dialog-title>
+			{{ recData.recordingTitle }}
+		</h1>
+
+		<button mat-icon-button (click)="deleteRec()" color="warn">
+			<mat-icon>delete_forever</mat-icon>
+		</button>
+	</div>
+
+	<div class="recording-answer">
+		<div class="playing-slider mg-bt-30">
+			<span class="slider-time">{{ currentTime_mSec | date:'mm:ss' }}</span>
+			<mat-slider id="slider" [min]="0" [max]="duration_mSec" (input)="onTouched($event)"> </mat-slider>
+			<span class="slider-time">{{ duration_mSec | date:'mm:ss' }}</span>
+		</div>
+
+		<div class="playing-menu mg-bt-30" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
+			<button type="button" mat-icon-button (click)="replay('backward');">
+				<mat-icon>skip_previous</mat-icon>
+			</button>
+			@if(!replayModule?.isPlaying){
+			<button type="button" mat-icon-button (click)="replay('play');">
+				<mat-icon>play_arrow</mat-icon>
+			</button>
+			} @else{
+			<button type="button" mat-icon-button (click)="replay('pause');">
+				<mat-icon>pause</mat-icon>
+			</button>
+			}
+
+			<button type="button" mat-icon-button (click)="replay('stop');">
+				<mat-icon>stop</mat-icon>
+			</button>
+			<button type="button" mat-icon-button (click)="replay('forward');">
+				<mat-icon>skip_next</mat-icon>
+			</button>
+		</div>
+
+		<div
+			#canvasContainer
+			id="canvasContainer"
+			style="border:1px teal solid;"
+			[ngStyle]="showBg && {'background-image': 'url(' + recData.bgImg_location + ')'}"
+		>
+			<div class="canvasTeacher">
+				<canvas #teacherCanvas></canvas>
+			</div>
+			<div class="cover">
+				<canvas #canvasCover></canvas>
+			</div>
+			<div class="cursor">
+				<canvas #cursorCanvas></canvas>
+			</div>
+		</div>
+	</div>
+</mat-dialog-content>

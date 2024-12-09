@@ -1,0 +1,102 @@
+<div class="fileUpload-table">
+	<div class="uploadSection">
+		<div class="upload_choose_button" fxLayout="row">
+			<div class="choose_file_name" fxLayout="row" fxLayoutAlign="space-between center">
+				<div class="uploadFileLabel">
+					{{ fileName || 'Upload a file'}}
+				</div>
+				<span class="example-spacer"></span>
+				@if(fileName != ''){
+				<mat-icon class="choose_file_delete" (click)="uploadFileDelete()">close</mat-icon>
+				}
+			</div>
+			<div id="upload">
+				<label>
+					<input type="file" ngf-select (change)="fileChangeEvent($event)" />
+					<div
+						class="choose_button_span"
+						matTooltip="File attachment"
+						matTooltipPosition="above"
+						[matTooltipShowDelay]="500"
+					>
+						<mat-icon> attach_file</mat-icon>
+					</div>
+				</label>
+			</div>
+			<div>
+				<!-- <button  mat-raised-button color="primary" class="upload_button_btn" mat-stroked-button (click)="fileUpload()"><mat-icon>publish</mat-icon></button> -->
+				<div
+					class="choose_button_span"
+					(click)="fileUpload()"
+					matTooltip="File upload"
+					matTooltipPosition="above"
+					[matTooltipShowDelay]="500"
+				>
+					<mat-icon> publish</mat-icon>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="choose_file_name" *ngIf="fileName != ''" fxLayout="row" fxLayoutAlign="start center"> 
+            <div class="uploadFileLabel">
+                {{ fileName }}
+            </div>
+            <span class="example-spacer"></span>
+            <mat-icon class="choose_file_delete" (click)="uploadFileDelete()">close</mat-icon>
+        </div> -->
+	</div>
+
+	<div class="select">
+		<mat-paginator [pageSizeOptions]="[pageSizeOptions]" aria-label="Select page of periodic elements">
+		</mat-paginator>
+		<table mat-table [dataSource]="filesArray" class="demo-table">
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef>File Name</th>
+				<td
+					mat-cell
+					*matCellDef="let element"
+					class="file-upload-detail"
+					(click)="openFileUploadDetail(element)"
+				>
+					{{element.originalname}}
+				</td>
+			</ng-container>
+
+			<ng-container matColumnDef="creator">
+				<th mat-header-cell *matHeaderCellDef>Uploader</th>
+				<td mat-cell *matCellDef="let element">{{element.creator}}</td>
+			</ng-container>
+			<ng-container matColumnDef="download">
+				<th mat-header-cell *matHeaderCellDef></th>
+				<td
+					mat-cell
+					*matCellDef="let element"
+					(click)="fileDownload(element)"
+					matTooltip="File download"
+					matTooltipPosition="above"
+					[matTooltipShowDelay]="500"
+				>
+					<mat-icon class="cursor">get_app</mat-icon>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="delete">
+				<th mat-header-cell *matHeaderCellDef></th>
+				<td
+					mat-cell
+					*matCellDef="let element"
+					(click)="deleteUploadFile(element._id)"
+					matTooltip="File delete"
+					matTooltipPosition="above"
+					[matTooltipShowDelay]="500"
+				>
+					<mat-icon class="cursor">delete_outline</mat-icon>
+				</td>
+			</ng-container>
+			<tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			<tr class="mat-row" *matNoDataRow>
+				<td class="mat-cell" colspan="4">No data</td>
+			</tr>
+		</table>
+	</div>
+</div>
