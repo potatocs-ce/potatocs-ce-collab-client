@@ -1,24 +1,16 @@
 import { Route } from '@angular/router';
-import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { LeavesRequestsComponent } from './leaves-requests/leaves-requests.component';
 import { LeavesStatusComponent } from './leaves-status/leaves-status.component';
 import { ManagersConnectionComponent } from './managers-connection/managers-connection.component';
 import { ReplacementDaysComponent } from './replacement-days/replacement-days.component';
 
-
-
-
 export const EMPLOYEES_ROUTES: Route[] = [
-  {
-    path: 'list', // 직원 리스트
-    loadComponent: () => EmployeesListComponent,
-  },
   {
     path: 'leaves/status', // 직원들 휴가 사용 목록
     loadComponent: () => LeavesStatusComponent,
   },
   {
-    path: 'leaves/requests', // 직원들 휴가 요청 목록 
+    path: 'leaves/requests', // 직원들 휴가 요청 목록
     loadComponent: () => LeavesRequestsComponent,
   },
   {
@@ -33,5 +25,5 @@ export const EMPLOYEES_ROUTES: Route[] = [
     path: '',
     redirectTo: 'employees/list',
     pathMatch: 'full',
-  }
+  },
 ];
