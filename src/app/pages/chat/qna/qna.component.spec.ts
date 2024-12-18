@@ -8,10 +8,9 @@ describe('QnaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [QnaComponent]
-    })
-    .compileComponents();
-    
+      imports: [QnaComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(QnaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

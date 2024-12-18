@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { MaterialsModule } from '../../../materials/materials.module';
 import { ChatService } from '../../../services/chat/chat.service';
 import { ProfilesService } from '../../../services/profiles/profiles.service';
-import { ProgressBarMode } from '@angular/material/progress-bar';
 import { DialogService } from '../../../stores/dialog/dialog.service';
 
 @Component({
