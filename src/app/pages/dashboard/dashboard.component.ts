@@ -81,7 +81,6 @@ export class DashboardComponent {
   constructor() {
     effect(() => {
       if (this.userProfileInfo()) {
-        console.log('rollover');
         this.calculateTenure(this.userProfileInfo());
       }
     });
@@ -90,7 +89,6 @@ export class DashboardComponent {
         this.rolloverDate();
         // this.leavesService.getMyLeavesStatus().subscribe({
         //   next: (res: any) => {
-        //     console.log(res);
         //     this.leaveInfo = res;
         //     this.leaveInfo.rollover = Math.min(
         //       this.leaveInfo.rollover,
@@ -188,8 +186,6 @@ export class DashboardComponent {
           );
           // this.leavesService.checkPendingLeave().subscribe(
           // 	(data: any) => {
-          // 		console.log(data);
-
           // 		if (data.pendingFlag) {
           // 			this.managersService.deletePending(managerId).subscribe({
           // 				next: (res: any) => {
