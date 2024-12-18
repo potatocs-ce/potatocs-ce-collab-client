@@ -6,6 +6,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { DocumentsService } from '../../../../services/spaces/documents.service';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { FlatpickrModule } from 'angularx-flatpickr';
+
 @Component({
   selector: 'app-calendar-edit',
   standalone: true,
