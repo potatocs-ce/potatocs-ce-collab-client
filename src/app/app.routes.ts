@@ -47,11 +47,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'leaves',
-        loadChildren: () =>
-          import('./pages/leaves/routes').then((m) => m.LEAVES_ROUTES),
-      },
-      {
         path: 'space',
         loadChildren: () =>
           import('./pages/spaces/routes').then((m) => m.SPACES_ROUTES),
