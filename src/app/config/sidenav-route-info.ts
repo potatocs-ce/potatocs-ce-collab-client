@@ -29,46 +29,6 @@ export const sidenavRouteInfo: NavigationItem[] = [
       },
     ],
   },
-
-  // Leave
-  {
-    type: 'subheading',
-    label: 'Leave ',
-    children: [
-      {
-        type: 'dropdown',
-        label: 'Leave Management',
-        icon: 'event_available',
-        isManager: false,
-        children: [
-          {
-            type: 'link',
-            label: 'My Leave Status',
-            route: '/leaves/my-status',
-            icon: 'update',
-            isManager: false,
-            isReplacementDay: false,
-          },
-          {
-            type: 'link',
-            label: 'Leave Request',
-            route: '/leaves/requests',
-            icon: 'update',
-            isManager: false,
-            isReplacementDay: false,
-          },
-          {
-            type: 'link',
-            label: 'Replacement Day Request',
-            route: '/leaves/rd-request-list',
-            icon: 'update',
-            isManager: false,
-            isReplacementDay: true,
-          },
-        ],
-      },
-    ],
-  },
   // chat
   {
     type: 'subheading',
