@@ -1,5 +1,4 @@
 import { Route } from '@angular/router';
-import { LeavesRequestsAddComponent } from './requests/leaves-requests-add/leaves-requests-add.component';
 import { StatusComponent } from './status/status.component';
 import { LeavesComponent } from './leaves.component';
 
