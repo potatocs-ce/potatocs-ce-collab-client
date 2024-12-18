@@ -4,7 +4,6 @@
 
 .chevrons {
   height: 53px;
-  //   padding-top: 10px;
   font-size: 30px;
   .mat-form-field {
     font-size: 14px;
@@ -30,9 +29,6 @@
 
 .monthBtn {
   .mat-icon {
-    // width: 100%;
-    // height: 100%;
-    // padding-top: 9px;
     font-size: 25px;
     margin-top: -5px;
   }
@@ -81,15 +77,15 @@
 }
 
 .dateContent {
-	display: flex; /* Flexbox 사용 */
-	align-items: center; /* 세로 정렬 */
-	justify-content: space-between; /* 요소 간격 균등 분배 */
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 세로 정렬 */
+  justify-content: space-between; /* 요소 간격 균등 분배 */
 }
 
 .monthBtn {
-	margin: 0 5px; /* 버튼 사이의 간격 조정 */
+  margin: 0 5px; /* 버튼 사이의 간격 조정 */
 }
 
 .date {
-	margin: 0 10px; /* 날짜 텍스트 주변 여백 */
+  margin: 0 10px; /* 날짜 텍스트 주변 여백 */
 }

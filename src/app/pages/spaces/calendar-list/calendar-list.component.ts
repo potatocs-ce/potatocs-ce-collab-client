@@ -5,7 +5,6 @@ import {
   Signal,
   TemplateRef,
   ViewChild,
-  ViewEncapsulation,
   effect,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -20,16 +19,7 @@ import {
   CalendarModule,
   CalendarView,
 } from 'angular-calendar';
-import {
-  addDays,
-  addHours,
-  endOfDay,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  startOfDay,
-  subDays,
-} from 'date-fns';
+import { isSameDay, isSameMonth } from 'date-fns';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormsModule } from '@angular/forms';
 import { DocDataStorageService } from '../../../stores/doc-data-storage.service';
