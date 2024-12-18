@@ -20,7 +20,7 @@ export const SpaceGuard: CanActivateFn = async (
 
   let spaceInfo = spaces.navList[0].spaces;
   let flag = false;
-
+  console.log('spaceTime : ', spaceTime);
   for (let index = 0; index < spaceInfo.length; index++) {
     const element = spaceInfo[index]._id;
     if (spaceTime == element) {
