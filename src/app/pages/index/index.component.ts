@@ -4,7 +4,6 @@ import {
   Renderer2,
   OnInit,
   ElementRef,
-  ViewChild,
   ViewChildren,
   QueryList,
 } from '@angular/core';
