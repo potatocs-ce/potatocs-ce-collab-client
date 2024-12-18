@@ -5,117 +5,96 @@
     </div>
 
     <div fxLayout="column" fxLayoutGap="30px" class="dashWrap">
-      <div class="leave_line_container" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center" fxLayoutGap.gt-sm="30px"
-        fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start" fxLayoutGap.lt-sm="30px">
-        <div #dash id="dash" class="dash dashBoxBuild" fxFlex.gt-sm="50" fxFlex.lt-sm="100" fxLayout="row"
-          fxLayoutAlign="start center" fxLayoutGap="20px">
+      <div
+        class="leave_line_container"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="start center"
+        fxLayoutGap.gt-sm="30px"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="start"
+        fxLayoutGap.lt-sm="30px"
+      >
+        <div
+          #dash
+          id="dash"
+          class="dash dashBoxBuild"
+          fxFlex.gt-sm="50"
+          fxFlex.lt-sm="100"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="20px"
+        >
           <div>
-            <img matCardImage class="dashImg" src="./assets/image/todo-list.png">
+            <img
+              matCardImage
+              class="dashImg"
+              src="./assets/image/todo-list.png"
+            />
           </div>
           <div fxLayout="column" fxLayoutGap="20px">
-            <div class="dashName">
-              Hi, {{ userProfileInfo()?.name }}!
-            </div>
-            <div class="dashDetail" *ngIf="userProfileInfo()?.emp_start_date != null">
+            <div class="dashName">Hi, {{ userProfileInfo()?.name }}!</div>
+            <div
+              class="dashDetail"
+              *ngIf="userProfileInfo()?.emp_start_date != null"
+            >
               <div>
-                Contract Start : {{ userProfileInfo()?.emp_start_date | date:'YYYY-MM-dd' }}
+                Contract Start :
+                {{ userProfileInfo()?.emp_start_date | date : "YYYY-MM-dd" }}
               </div>
-              <div>
-                Tenure today : {{ tenure_today }}
-              </div>
-              <div *ngIf="isRollover">
-                Rollover Period : {{ minDate }} ~ {{ maxDate }}
-              </div>
+              <div>Tenure today : {{ tenure_today }}</div>
             </div>
           </div>
         </div>
 
-
-        <div #leaveBalance id="leaveBalance" class="dashBoxBuild" fxFlex.gt-sm="25" fxFlex.ls-sm="100" fxLayout="column"
-          fxLayoutGap="10px">
-          <div>
-            <span class="fontBold">Leave Balance</span>
-          </div>
-          <div fxLayout="row">
-            <div class="leaveSubSection" fxFlex="60">
-              Annual Leave
-            </div>
-            <div fxLayout="row" fxFlex="40" fxLayoutAlign="end center">
-              <div class="leaveSubSection_sec daysSection">
-                <span class="fontBold">
-                  {{ leaveInfo?.annual_leave - leaveInfo?.used_annual_leave || 0}}
-                </span>
-                Day(s)
-              </div>
-
-            </div>
-          </div>
-
-          <div fxLayout="row" fxFlex="40" fxLayoutAlign="end center" *ngIf="isRollover">
-            <div class="leaveSubSection">
-              Rollover
-            </div>
-            <div class="leaveSubSection_sec daysSection">
-              <span class="fontBold">
-                {{ leaveInfo?.rollover - leaveInfo?.used_rollover || 0}}
-              </span>Day(s)
-            </div>
-          </div>
-
-          <div fxLayout="row" fxFlex="40" fxLayoutAlign="end center">
-            <div class="leaveSubSection">
-              Sick Leave
-            </div>
-            <div class="leaveSubSection_sec daysSection">
-              <span class="fontBold">
-                {{ leaveInfo?.sick_leave - leaveInfo?.used_sick_leave || 0}}
-              </span>Day(s)
-            </div>
-          </div>
-
-          <div fxLayout="row" fxFlex="40" fxLayoutAlign="end center" *ngIf="userCompanyInfo()?.isReplacementDay">
-            <div class="leaveSubSection">
-              Replacement Leave
-            </div>
-            <div class="leaveSubSection_sec daysSection">
-              <span class="fontBold">
-                {{ leaveInfo?.replacement_leave - leaveInfo?.used_replacement_leave || 0}}
-              </span>Day(s)
-            </div>
-          </div>
-        </div>
-
-
-
-        <div id="todayDate" class="dashBoxBuild" fxFlex.gt-sm="25" fxFlex.ls-sm="100" fxLayout="row"
-          fxLayoutAlign="center center" fxShow.gt-md fxHide.lt-md>
+        <div
+          id="todayDate"
+          class="dashBoxBuild"
+          fxFlex.gt-sm="25"
+          fxFlex.ls-sm="100"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          fxShow.gt-md
+          fxHide.lt-md
+        >
           <div class="fontBold">
-            {{ currentDate | date: 'YYYY.MM.dd' }}
+            {{ currentDate | date : "YYYY.MM.dd" }}
           </div>
         </div>
-
-
-
-
       </div>
 
-      <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center" fxLayoutGap.gt-sm="30px" fxLayout.lt-sm="column"
-        fxLayoutAlign.lt-sm="start" fxLayoutGap.lt-sm="30px">
+      <div
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="start center"
+        fxLayoutGap.gt-sm="30px"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="start"
+        fxLayoutGap.lt-sm="30px"
+      >
         <div fxFlex.gt-sm="50" fxFlex.lt-sm="100">
           <div class="addMe">
             <div fxLayout="row" fxLayoutAlign="start">
-              <div class="addTitle">
-                Company
-              </div>
+              <div class="addTitle">Company</div>
               <span class="example-spacer"></span>
-              <mat-icon class="closeMark" (click)="deleteCompany(userCompanyInfo()?.request_id)" *ngIf="userCompanyInfo() != null
-                            ">close</mat-icon>
+              <mat-icon
+                class="closeMark"
+                (click)="deleteCompany(userCompanyInfo()?.request_id)"
+                *ngIf="userCompanyInfo() != null"
+                >close</mat-icon
+              >
             </div>
 
-            <div *ngIf="userCompanyInfo()?.length == 0 || userCompanyInfo() == undefined; else showCompanyInfo">
+            <div
+              *ngIf="
+                userCompanyInfo()?.length == 0 ||
+                  userCompanyInfo() == undefined;
+                else showCompanyInfo
+              "
+            >
               <div fxLayout="row" fxLayoutAlign="center">
                 <div>
-                  <mat-icon class="addMark" (click)="openDialogFindMyCompany()">add</mat-icon>
+                  <mat-icon class="addMark" (click)="openDialogFindMyCompany()"
+                    >add</mat-icon
+                  >
                 </div>
               </div>
             </div>
@@ -127,10 +106,12 @@
                 </div>
                 <div fxLayout="column" fxLayoutAlign="center default">
                   <div class="addDesc">
-                    <span class="descSpan">Company :</span> {{ userCompanyInfo()?.company_name | uppercase }}
+                    <span class="descSpan">Company :</span>
+                    {{ userCompanyInfo()?.company_name | uppercase }}
                   </div>
                   <div class="addDesc">
-                    <span class="descSpan">Status :</span> {{ userCompanyInfo()?.status | titlecase }}
+                    <span class="descSpan">Status :</span>
+                    {{ userCompanyInfo()?.status | titlecase }}
                   </div>
                 </div>
               </div>
@@ -142,18 +123,22 @@
         <div fxFlex.gt-sm="50" fxFlex.lt-sm="100">
           <div class="addMe">
             <div fxLayout="row" fxLayoutAlign="start">
-              <div class="addTitle">
-                Manager
-              </div>
+              <div class="addTitle">Manager</div>
               <span class="example-spacer"></span>
-              <mat-icon class="closeMark" (click)="deleteManager(userManagerInfo()?.manager_id)"
-                *ngIf="userManagerInfo() != null">close</mat-icon>
+              <mat-icon
+                class="closeMark"
+                (click)="deleteManager(userManagerInfo()?.manager_id)"
+                *ngIf="userManagerInfo() != null"
+                >close</mat-icon
+              >
             </div>
 
-            <div *ngIf="userManagerInfo()  == null; else showManagerInfo">
+            <div *ngIf="userManagerInfo() == null; else showManagerInfo">
               <div fxLayout="row" fxLayoutAlign="center">
                 <div>
-                  <mat-icon class="addMark" (click)="openDialogFindMyManager()">add</mat-icon>
+                  <mat-icon class="addMark" (click)="openDialogFindMyManager()"
+                    >add</mat-icon
+                  >
                 </div>
               </div>
             </div>
@@ -165,12 +150,19 @@
                 </div>
                 <div fxLayout="column" fxLayoutAlign="center default">
                   <div class="addDesc">
-                    <span class="descSpan">Manager Name :</span> {{ userManagerInfo()?.name }}
+                    <span class="descSpan">Manager Name :</span>
+                    {{ userManagerInfo()?.name }}
                   </div>
                   <div class="addDesc">
-                    <span class="descSpan">Manager Email :</span> {{ userManagerInfo()?.email }}
+                    <span class="descSpan">Manager Email :</span>
+                    {{ userManagerInfo()?.email }}
                   </div>
-                  <div *ngIf="userManagerInfo()?.accepted === false; else statusPositive">
+                  <div
+                    *ngIf="
+                      userManagerInfo()?.accepted === false;
+                      else statusPositive
+                    "
+                  >
                     <div class="addDesc">
                       <span class="descSpan">status :</span> Pending
                     </div>
