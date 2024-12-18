@@ -8,10 +8,9 @@ describe('PositiveDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PositiveDialogComponent]
-    })
-    .compileComponents();
-    
+      imports: [PositiveDialogComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PositiveDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,7 +1,7 @@
 import { DialogService } from './../../../stores/dialog/dialog.service';
 import { ManagersService } from './../../../services/managers/managers.service';
 import { CommonModule } from '@angular/common';
-import { Component, Inject, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialsModule } from '../../../materials/materials.module';
 import {
@@ -30,7 +30,6 @@ export class ConnectManagerDialogComponentComponent {
   manager: any;
 
   managerInfo: any;
-  // displayedColumns: string[] = ['name', 'email', 'acceptButton', 'cancelButton'];
   displayedColumns: string[] = ['name', 'email', 'acceptButton'];
   emailForm: FormGroup = this.fb.group({
     email: new FormControl('', [

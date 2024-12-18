@@ -8,10 +8,9 @@ describe('NegativeDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NegativeDialogComponent]
-    })
-    .compileComponents();
-    
+      imports: [NegativeDialogComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NegativeDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

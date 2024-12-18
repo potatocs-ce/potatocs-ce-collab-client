@@ -8,10 +8,9 @@ describe('ConnectManagerDialogComponentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConnectManagerDialogComponentComponent]
-    })
-    .compileComponents();
-    
+      imports: [ConnectManagerDialogComponentComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ConnectManagerDialogComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

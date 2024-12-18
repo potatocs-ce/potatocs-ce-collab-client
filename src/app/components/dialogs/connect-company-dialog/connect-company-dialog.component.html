@@ -8,14 +8,25 @@
         <span class="selectLabel">
           <label for="type" class="optionLabel">Code</label>
         </span>
-        <mat-form-field color="accent" appearance="outline" style="min-width:300px;" class="selectInput">
+        <mat-form-field
+          color="accent"
+          appearance="outline"
+          style="min-width: 300px"
+          class="selectInput"
+        >
           <mat-label>Company Code</mat-label>
-          <input type="text" matInput [formControl]="addCodeInput">
+          <input type="text" matInput [formControl]="addCodeInput" />
         </mat-form-field>
-        <button mat-raised-button color="primary" class="submit-button" (click)="requestCompanyConnection()"
-          [disabled]="addBtn">Add</button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="submit-button"
+          (click)="requestCompanyConnection()"
+          [disabled]="addBtn"
+        >
+          Add
+        </button>
       </div>
     </div>
-
   </div>
 </div>
