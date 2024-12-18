@@ -11,7 +11,6 @@ import { AuthService } from '../services/auth/auth.service';
 import { SideNavService } from '../stores/side-nav/side-nav.service';
 import { FaceRecognitionDialogComponent } from '../components/dialogs/face-recognition-dialog/face-recognition-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { MemberDataStorageService } from '../stores/member-data-storage/member-data-storage.service';
 import { ProfilesService } from '../services/profiles/profiles.service';
 import { WebcamDeviceService } from '../services/webcam/webcam-device.service';

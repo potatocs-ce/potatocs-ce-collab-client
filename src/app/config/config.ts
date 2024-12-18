@@ -1,4 +1,4 @@
 export const ENV = {
-	tokenName: 'coop',
-	eCodeName: 'findPw'
-}
+  tokenName: 'coop',
+  eCodeName: 'findPw',
+};

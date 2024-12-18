@@ -6,7 +6,6 @@ import {
   CanActivateFn,
 } from '@angular/router';
 import { DialogService } from '../stores/dialog/dialog.service';
-import { AuthService } from '../services/auth/auth.service';
 import { SideNavService } from '../stores/side-nav/side-nav.service';
 
 export const SpaceGuard: CanActivateFn = async (
