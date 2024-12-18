@@ -8,10 +8,9 @@ describe('DocChatComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocChatComponent]
-    })
-    .compileComponents();
-    
+      imports: [DocChatComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DocChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

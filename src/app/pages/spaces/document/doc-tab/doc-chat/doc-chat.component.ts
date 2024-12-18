@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DocumentsService } from '../../../../../services/spaces/documents.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../../../../../services/common/common.service';
 import { ProfilesService } from '../../../../../services/profiles/profiles.service';
 import { ViewChild, ElementRef } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
 import { DialogService } from '../../../../../stores/dialog/dialog.service';
 import { MaterialsModule } from '../../../../../materials/materials.module';
+
 @Component({
   selector: 'app-doc-chat',
   templateUrl: './doc-chat.component.html',
