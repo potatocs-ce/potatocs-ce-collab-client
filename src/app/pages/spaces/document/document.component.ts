@@ -32,7 +32,7 @@ import { EventBusService } from '../../../services/eventBus/event-bus.service';
 import { MaterialsModule } from '../../../materials/materials.module';
 import { DocChatComponent } from './doc-tab/doc-chat/doc-chat.component';
 import { DocFileUploadComponent } from './doc-tab/doc-file-upload/doc-file-upload.component';
-// import { WhiteBoardComponent } from "./doc-tab/white-board/white-board.component";
+
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
