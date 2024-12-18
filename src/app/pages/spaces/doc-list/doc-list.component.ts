@@ -8,11 +8,9 @@ import {
   effect,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { DocDataStorageService } from '../../../stores/doc-data-storage.service';
-import { CommonService } from '../../../services/common/common.service';
 import { DialogSpaceMemberComponent } from '../dialogs/dialog-space-member/dialog-space-member.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -53,12 +51,10 @@ export class DocListComponent implements OnInit {
     'createdAt',
   ];
   constructor(
-    private route: ActivatedRoute,
     private ddsService: DocDataStorageService,
     private router: Router,
     public dialog: MatDialog,
-    private dialogService: DialogService,
-    private CommonService: CommonService
+    private dialogService: DialogService
   ) {
     effect(() => {
       if (this.docs()) {
