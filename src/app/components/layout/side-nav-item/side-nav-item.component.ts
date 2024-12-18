@@ -29,6 +29,7 @@ import { SideNavService } from '../../../stores/side-nav/side-nav.service';
 import { DialogService } from '../../../stores/dialog/dialog.service';
 import { SpacesService } from '../../../services/spaces/spaces.service';
 import { SpaceListStorageService } from '../../../stores/space-list-storage.service';
+
 @Component({
   selector: 'app-side-nav-item',
   standalone: true,
@@ -240,23 +241,6 @@ export class SideNavItemComponent {
     });
   }
 
-  // isReplacement(item: NavigationLink) {
-  //   if (item.isReplacementDay == false || item.isReplacementDay == undefined) {
-  //     return true;
-  //   }
-
-  //   return item.isReplacementDay == true && this.userLeaveData?.isReplacementDay == true
-  // }
-
-  signOut() {
-    // this.authService.signOut();
-    // this.router.navigate(['/sign-in']);
-  }
-
-  closeEvent() {
-    // this.isSideNavOpen.set(false);
-  }
-
   createSpaceDialog(): void {
     const spaceDialogRef = this.dialog.open(DialogCreateSpaceComponent, {
       // width: '270px',
@@ -292,11 +276,11 @@ export class SideNavItemComponent {
       }
     );
   }
+
   //2024-06-14 박재현
   //sideMenu Update
   updateSideMenu() {
     this.sideNavService.updateSideMenu().subscribe((data: any) => {
-      ///////////////
       const space = data.navList[0].spaces[data.navList[0].spaces.length - 1];
 
       this.navItems = this.space();
@@ -327,6 +311,7 @@ export class SideNavItemComponent {
       // this.sideNavService.updateMenuData(sideNavLists);
     });
   }
+
   updateSpacePlace(data: any) {
     // this.sideNavService.updateSpacePlace(data).subscribe(
     //   (data: any) => {

@@ -8,10 +8,9 @@ describe('SideNavItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideNavItemComponent]
-    })
-    .compileComponents();
-    
+      imports: [SideNavItemComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SideNavItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

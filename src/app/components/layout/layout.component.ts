@@ -16,8 +16,7 @@ import {
   Router,
   RouterModule,
 } from '@angular/router';
-import { filter, tap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
 import { MaterialsModule } from '../../materials/materials.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -73,7 +72,6 @@ export class LayoutComponent {
    */
   @HostListener('window:resize', ['$event'])
   onResize() {
-    // this.isDesktop.update(() => window.innerWidth > 1440);
     this.isDesktop.update(() => window.innerWidth > 1280);
   }
 

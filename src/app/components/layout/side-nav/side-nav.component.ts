@@ -2,20 +2,10 @@ import { MaterialsModule } from '../../../materials/materials.module';
 import { CommonModule } from '@angular/common';
 import { SideNavItemComponent } from '../side-nav-item/side-nav-item.component';
 import { sidenavRouteInfo } from '../../../config/sidenav-route-info';
-import { NavigationItem } from '../../../interfaces/navigation-item.interface';
 import { RouterModule } from '@angular/router';
 import { SideNavService } from '../../../stores/side-nav/side-nav.service';
 import { ProfilesService } from '../../../services/profiles/profiles.service';
-import {
-  Component,
-  HostBinding,
-  Input,
-  SimpleChanges,
-  WritableSignal,
-  inject,
-  effect,
-} from '@angular/core';
-import { NavigationService } from '../../../stores/navigation/navigation.service';
+import { Component, WritableSignal, inject } from '@angular/core';
 import { SpacesService } from '../../../services/spaces/spaces.service';
 import { SpaceListStorageService } from '../../../stores/space-list-storage.service';
 
@@ -39,7 +29,6 @@ export class SideNavComponent {
 
   constructor(
     private sideNavService: SideNavService,
-    private navigationService: NavigationService,
     private spaceListStorageService: SpaceListStorageService
   ) {}
 
