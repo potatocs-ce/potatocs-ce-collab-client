@@ -96,7 +96,6 @@ export class ProfileEditComponent {
               return this.dialogService.openDialogNegative(
                 'The password must be at least 4 letters.'
               );
-              // return alert('The password must be at least 4 letters.');
             }
 
             const isPwd = this.comparePwdEachOther(
@@ -109,7 +108,6 @@ export class ProfileEditComponent {
               return this.dialogService.openDialogNegative(
                 'Two passwords are different. Try again.'
               );
-              // return alert('Two passwords are different. Try again.');
             }
           }
 
@@ -162,11 +160,9 @@ export class ProfileEditComponent {
         this.dialogService.openDialogNegative(
           'Profile photos are only available for PNG and JPG.'
         );
-        // alert('프로필 사진은 PNG와 JPG만 가능합니다.');
       }
     } else {
       this.dialogService.openDialogNegative('Can not bring up pictures.');
-      // alert('사진을 불러올 수 없습니다.');
     }
   }
   changeProfileImage(imgFile: any) {
