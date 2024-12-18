@@ -22,9 +22,7 @@ import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { DialogService } from '../../../stores/dialog/dialog.service';
 import { SpacesService } from '../../../services/spaces/spaces.service';
 import { ProfilesService } from '../../../services/profiles/profiles.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
-import { isNull } from 'lodash';
 import moment from 'moment';
 import { MaterialsModule } from '../../../materials/materials.module';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -173,7 +171,6 @@ export class EditorComponent implements OnInit {
             return this.dialogService.openDialogNegative(
               'Please write the title down'
             );
-            // return alert('please write the title down');
           }
 
           const startDate = moment(new Date(this.startDate)).format(
