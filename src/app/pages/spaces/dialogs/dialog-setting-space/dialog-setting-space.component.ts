@@ -1,19 +1,7 @@
-import {
-  Component,
-  Inject,
-  inject,
-  OnInit,
-  ViewChild,
-  WritableSignal,
-} from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Inject, OnInit, WritableSignal } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { SpacesService } from '../../../../services/spaces/spaces.service';
-import { DocumentsService } from '../../../../services/spaces/documents.service';
 import { CommonService } from '../../../../services/common/common.service';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { SideNavService } from '../../../../stores/side-nav/side-nav.service';

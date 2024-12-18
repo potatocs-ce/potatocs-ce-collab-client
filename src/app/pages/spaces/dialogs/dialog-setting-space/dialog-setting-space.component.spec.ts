@@ -8,10 +8,9 @@ describe('DialogSettingSpaceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogSettingSpaceComponent]
-    })
-    .compileComponents();
-    
+      imports: [DialogSettingSpaceComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DialogSettingSpaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
