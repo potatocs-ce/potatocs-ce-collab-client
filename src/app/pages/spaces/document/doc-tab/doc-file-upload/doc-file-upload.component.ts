@@ -16,7 +16,6 @@ import { DialogService } from '../../../../../stores/dialog/dialog.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { FileUploadDescriptionComponent } from './file-upload-description/file-upload-description.component';
 import { FileUploadDetailsComponent } from './file-upload-details/file-upload-details.component';
