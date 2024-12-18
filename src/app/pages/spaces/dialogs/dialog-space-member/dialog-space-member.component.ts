@@ -1,13 +1,9 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SpacesService } from '../../../../services/spaces/spaces.service';
 import { DialogService } from '../../../../stores/dialog/dialog.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MaterialsModule } from '../../../../materials/materials.module';

@@ -8,10 +8,9 @@ describe('DialogSpaceMemberComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogSpaceMemberComponent]
-    })
-    .compileComponents();
-    
+      imports: [DialogSpaceMemberComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DialogSpaceMemberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
