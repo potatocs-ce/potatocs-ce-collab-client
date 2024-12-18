@@ -302,12 +302,13 @@ export class ScrumboardListComponent implements OnInit {
   }
 
   createDoc(status) {
+    console.log('status : ', status);
     const editorQuery = {
       spaceTime: this.spaceInfo._id,
       spaceTitle: this.spaceInfo.displayName,
       status: status.label,
     };
-
+    console.log('editorQuery : ', editorQuery);
     this.router.navigate(['/space/editor/ctDoc'], { queryParams: editorQuery });
     this.textareaFlag = false;
   }

@@ -233,7 +233,7 @@ export class ScrumboardSummaryComponent implements OnInit {
     });
   }
 
-  // table 에서 휴지통 누르면 삭제
+  // table 에서 휴지통 누르면
   deleteUploadFile(fileId, docId) {
     this.dialogService
       .openDialogConfirm('Do you want to delete the file?')
