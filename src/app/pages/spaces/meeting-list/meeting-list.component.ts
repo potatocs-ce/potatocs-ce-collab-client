@@ -1,7 +1,5 @@
 import {
   Component,
-  HostListener,
-  Inject,
   Input,
   OnInit,
   ViewChild,
@@ -9,23 +7,16 @@ import {
   effect,
 } from '@angular/core';
 
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DocumentsService } from '../../../services/spaces/documents.service';
 import { ActivatedRoute } from '@angular/router';
 import { MemberDataStorageService } from '../../../stores/member-data-storage/member-data-storage.service';
-import { CommonService } from '../../../services/common/common.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 //table page
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../stores/dialog/dialog.service';
-import { takeUntil } from 'rxjs/operators';
-import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 // env
 import { environment } from '../../../../environments/environment';
@@ -33,12 +24,6 @@ import { MeetingDetailComponent } from './meeting-detail/meeting-detail.componen
 import { MeetingListStorageService } from '../../../stores/meeting-list-storage.service';
 import { ProfilesService } from '../../../services/profiles/profiles.service';
 import { MaterialsModule } from '../../../materials/materials.module';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MeetingSetComponent } from './meeting-set/meeting-set.component';
 //view table
