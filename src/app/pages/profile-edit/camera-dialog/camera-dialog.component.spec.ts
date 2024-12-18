@@ -8,10 +8,9 @@ describe('CameraDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CameraDialogComponent]
-    })
-    .compileComponents();
-    
+      imports: [CameraDialogComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CameraDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

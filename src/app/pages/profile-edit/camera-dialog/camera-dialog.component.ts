@@ -1,12 +1,6 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, ViewChild, ElementRef, inject } from '@angular/core';
 import { ProfilesService } from '../../../services/profiles/profiles.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { DialogService } from '../../../stores/dialog/dialog.service';
 
 @Component({
