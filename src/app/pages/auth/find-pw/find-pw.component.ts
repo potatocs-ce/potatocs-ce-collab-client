@@ -44,7 +44,6 @@ export class FindPwComponent {
   ngOnDestroy(): void {}
 
   getEcode() {
-    // console.log(this.emailFormData);
     this.authService.getEcode(this.emailFormData).subscribe({
       next: (data: any) => {
         if (data.message == 'created') {

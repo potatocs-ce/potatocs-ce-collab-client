@@ -12,46 +12,54 @@ import { MaterialsModule } from '../../../materials/materials.module';
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, DndDirective, RouterModule, FormsModule, MaterialsModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    DndDirective,
+    RouterModule,
+    FormsModule,
+    MaterialsModule,
+  ],
   templateUrl: './upload.component.html',
-  styleUrl: './upload.component.scss'
+  styleUrl: './upload.component.scss',
 })
 export class UploadComponent {
   company: string = '';
   files: any[] = [];
   uploading: boolean = false;
 
-  constructor(private chatService: ChatService, private profilesService: ProfilesService, private router: Router) {
-
-  }
+  constructor(
+    private chatService: ChatService,
+    private profilesService: ProfilesService,
+    private router: Router
+  ) {}
   userCompanyInfo: WritableSignal<any> = this.profilesService.userCompanyInfo;
   // on file drop handler
   onFileDropped($event: any) {
-    // console.log($event)
-    this.prepareFileList($event)
-
+    this.prepareFileList($event);
   }
 
   // handle file from browsing
   fileBrowseHandler(target: any) {
-    // console.log(target.files)
-    this.prepareFileList(target.files)
+    this.prepareFileList(target.files);
   }
 
   // delete file from files list
   deleteFile(index: number) {
-    this.files.splice(index, 1)
+    this.files.splice(index, 1);
   }
 
   // submit file and company name
   submit() {
     this.uploading = true;
-    this.chatService.addDocs(this.userCompanyInfo()._id, this.files).subscribe((res) => {
-      this.uploading = false;
-      this.router.navigate(['/chat/list'])
-    })
+    this.chatService
+      .addDocs(this.userCompanyInfo()._id, this.files)
+      .subscribe((res) => {
+        this.uploading = false;
+        this.router.navigate(['/chat/list']);
+      });
   }
-
 
   // prepare file list
   prepareFileList(files: Array<any>) {

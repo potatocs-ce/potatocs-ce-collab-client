@@ -13,12 +13,12 @@ import { DialogService } from '../../../stores/dialog/dialog.service';
   standalone: true,
   imports: [CommonModule, MaterialsModule, RouterModule, FormsModule],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  styleUrl: './list.component.scss',
 })
 export class ListComponent {
   listData: any = [];
   listDataBackup: any = [];
-  // 
+  //
   loading: boolean = false;
   isAscending: boolean = true;
 
@@ -29,13 +29,15 @@ export class ListComponent {
     private profilesService: ProfilesService,
     private dialogService: DialogService
   ) {
-    const effectRef = effect(() => {
-      if (this.userProfileInfo() && this.userCompanyInfo()) {
-        this.refresh();
-        effectRef.destroy();
-      }
-
-    }, { manualCleanup: true })
+    const effectRef = effect(
+      () => {
+        if (this.userProfileInfo() && this.userCompanyInfo()) {
+          this.refresh();
+          effectRef.destroy();
+        }
+      },
+      { manualCleanup: true }
+    );
   }
 
   userCompanyInfo: WritableSignal<any> = this.profilesService.userCompanyInfo;
@@ -44,11 +46,13 @@ export class ListComponent {
   // 새로고침
   refresh() {
     this.loading = true;
-    this.chatService.getList(this.userCompanyInfo()._id, this.userProfileInfo()._id).subscribe((res: any) => {
-      this.listData = res;
-      this.listDataBackup = this.listData;
-      this.loading = false;
-    })
+    this.chatService
+      .getList(this.userCompanyInfo()._id, this.userProfileInfo()._id)
+      .subscribe((res: any) => {
+        this.listData = res;
+        this.listDataBackup = this.listData;
+        this.loading = false;
+      });
   }
 
   // 정렬
@@ -63,47 +67,47 @@ export class ListComponent {
       } else {
         return dataB - dataA;
       }
-    })
+    });
   }
 
   // 검색
   search() {
-    this.listData = this.listDataBackup.filter((item: any) => item.originalFileName.includes(this.searchValue));
+    this.listData = this.listDataBackup.filter((item: any) =>
+      item.originalFileName.includes(this.searchValue)
+    );
   }
-
 
   // 새 창에서 열기
   open(key: string) {
-
     this.chatService.getDoc(key).subscribe({
       next: (response) => {
         const fileBlob = response.body;
         if (fileBlob) {
           const fileUrl = URL.createObjectURL(fileBlob);
-          window.open(fileUrl, "_blank");
+          window.open(fileUrl, '_blank');
         }
       },
       error: (err) => {
-        console.error("Error fetching document:", err);
-      }
+        console.error('Error fetching document:', err);
+      },
     });
   }
 
   // 삭제
   delete(_id: string) {
-    this.dialogService.openDialogConfirm('Do you want delete this file?').subscribe((res: any) => {
-      if (res) {
-        this.chatService.deleteDoc(_id).subscribe({
-          next: (response) => {
-            console.log(response);
-            this.refresh();
-          },
-          error: (err) => {
-            console.error("Error deleting document", err);
-          }
-        })
-      }
-    })
-
+    this.dialogService
+      .openDialogConfirm('Do you want delete this file?')
+      .subscribe((res: any) => {
+        if (res) {
+          this.chatService.deleteDoc(_id).subscribe({
+            next: (response) => {
+              this.refresh();
+            },
+            error: (err) => {
+              console.error('Error deleting document', err);
+            },
+          });
+        }
+      });
   }
 }
