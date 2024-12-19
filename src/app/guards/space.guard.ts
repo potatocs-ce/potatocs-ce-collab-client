@@ -17,6 +17,8 @@ export const SpaceGuard: CanActivateFn = async (
     const sidenavService = inject(SideNavService);
     const spaces: any = await sidenavService.updateSideMenu().toPromise();
     let spaceTime = ''
+
+    // create doc 할 때는 param 말고 queryParams 로 받아야해서 코드 수정
     if (route.params['spaceTime']) {
         spaceTime = route.params['spaceTime'];
     }
