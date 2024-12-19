@@ -14,7 +14,7 @@ export const SPACES_ROUTES: Route[] = [
     {
         path: 'editor/ctDoc',
         loadComponent: () => EditorComponent,
-        canActivate: [],
+        canActivate: [SpaceGuard],
     },
     {
         path: ':spaceTime/doc',
